@@ -2,12 +2,13 @@ import { Dot, Facebook, Instagram, Linkedin } from "lucide-react";
 
 export default function HomePage() {
   return (
-    <div className="mb-20">
+    <div className="">
       <NavBar />
       <Hero />
       <div className="bg-gray-100 py-10">
         <Skills />
       </div>
+      <Footer />
     </div>
   );
 }
@@ -31,6 +32,73 @@ const NavBar = () => {
   );
 };
 
+const Footer = () => {
+  const menuItems = ["Expertise", "About", "Our Work", "Team", "Blog", "Contacts"];
+  return (
+
+    <div className="bg-[#d9dce4] text-gray-800">
+      <div className="container mx-auto px-4 pt-12 pb-6">
+        <div className="grid grid-cols-12 gap-5 items-start">
+
+
+          <div className="col-span-12 md:col-span-3 flex flex-col items-start gap-4">
+            <img width={70} src="./lawyerlogo.png" alt="Logo" />
+            <div className="flex gap-4">
+              <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow">
+                <Facebook size={18} />
+              </div>
+              <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow">
+                <Linkedin size={18} />
+              </div>
+              <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow">
+                <Instagram size={18} />
+              </div>
+            </div>
+          </div>
+
+
+          <div className="col-span-12 md:col-span-6 flex justify-center items-start mt-6 md:mt-0">
+            <div className="flex flex-wrap justify-center gap-6 text-sm font-medium">
+              {menuItems.map((item, index) => (
+                <button key={index} className="hover:underline">
+                  {item}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="col-span-12 md:col-span-3 text-sm space-y-4">
+            <div>
+              <p className="font-semibold">Phone</p>
+              <p>+44 20 482 705 41</p>
+            </div>
+            <div>
+              <p className="font-semibold">Address</p>
+              <p>6 Murray Glens lake</p>
+            </div>
+            <div>
+              <p className="font-semibold">Email</p>
+              <p>lawcompany@gmail.com</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div className="border-t border-gray-300 my-6"></div>
+
+
+        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 gap-3">
+          <p>Company © 2024. All rights reserved.</p>
+          <div className="flex gap-4">
+            <a href="#" className="hover:underline">Cookies Policy</a>
+            <a href="#" className="hover:underline">Privacy Policy</a>
+            <a href="#" className="hover:underline">Terms and Conditions</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 const Skills = () => {
   const statsData = [

@@ -8,6 +8,7 @@ export default function HomePage() {
       <div className="bg-gray-100 py-10">
         <Skills />
       </div>
+      <Contacts />
       <Footer />
     </div>
   );
@@ -94,6 +95,25 @@ const Footer = () => {
             <a href="#" className="hover:underline">Privacy Policy</a>
             <a href="#" className="hover:underline">Terms and Conditions</a>
           </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const Contacts = () => {
+  return (
+    <div className="bg-[url('/hero.jpg')] m-1 rounded-3xl py-28 my-5">
+      <div className="container mx-auto flex justify-center items-center gap-5">
+        <div>
+          <h2 className="text-7xl font-medium text-white w-7/12">
+            Lets make an action plan!
+          </h2>
+        </div>
+        <div>
+          <button className=" bg-white text-black py-3 px-7 rounded-3xl">
+            Get a Consultation
+          </button>
         </div>
       </div>
     </div>

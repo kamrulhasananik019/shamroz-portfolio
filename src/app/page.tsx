@@ -1,19 +1,108 @@
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Dot, Facebook, Instagram, Linkedin } from "lucide-react";
 
 export default function HomePage() {
   return (
-    <div>
+    <div className="mb-20">
+      <NavBar />
       <Hero />
-      <Skills />
+      <div className="bg-gray-100 py-10">
+        <Skills />
+      </div>
     </div>
   );
 }
 
+const NavBar = () => {
+  const menuItems = ["Expertise", "About", "Our Work", "Team", "Blog", "Contacts"];
+
+  return (
+    <div className="w-full bg-transparent absolute">
+      <div className="container mx-auto grid grid-cols-2 py-4 px-6 pb-5">
+        <div>
+          <img width={70} className="invert" src="./lawyerlogo.png" alt="Logo" />
+        </div>
+        <div className="text-white flex items-center justify-around">
+          {menuItems.map((item, index) => (
+            <button key={index}>{item}</button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 
 const Skills = () => {
+  const statsData = [
+    {
+      value: "600+",
+      label: "",
+      description: "of consultation conducted for the entire work of the company",
+    },
+    {
+      value: "12",
+      label: "barristers",
+      description: "highly qualified and experienced lawyers with international recognition",
+    },
+    {
+      value: "32",
+      label: "partners",
+      description: "of consultation conducted for the entire work of the company",
+    },
+    {
+      value: "26",
+      label: "times",
+      description: 'recognized as the "Best Law firm in England " by the professional ratings',
+    },
+    {
+      value: "40",
+      label: "times",
+      description: "attracted to England as investments, thanks to our work",
+    },
+  ];
   return (
-    <div>
+    <div className="flex justify-center ">
+      <div className="max-w-7xl  ">
+        <div className="pt-36">
+          <div className="grid grid-cols-2 ">
+            <div>
+              <div className="flex items-center text-blue-700">
+                <Dot size={50} />
+                <p className="font-medium">Introduction</p>
+              </div>
+            </div>
+            <div>
+              <h2 className="text-4xl font-medium">We are a leading English law firm operating in accordance <span className="text-blue-700">
+                with  international standards of legal services
+              </span>
+              </h2>
+            </div>
+          </div>
 
+          <div >
+            <div className="flex items-center py-10 text-blue-700">
+              <Dot size={50} />
+              <p className="font-medium ">why Choose Us</p>
+            </div>
+
+            <div className="grid grid-cols-3 gap-10">
+              {statsData.map((item, index) => (
+                <div key={index} className="p-5 bg-white rounded-md">
+                  <div className="pt-20">
+                    <p className="text-5xl py-2 text-blue-700">
+                      {item.value}{" "}
+                      {item.label && <span className="text-2xl">{item.label}</span>}
+                    </p>
+                    <p className="text-sm w-9/12">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+
+      </div>
     </div>
   )
 }
@@ -21,7 +110,7 @@ const Skills = () => {
 
 const Hero = () => {
   return (
-    <div className="flex items-center h-[90vh] w-screen text-white bg-[url('/hero.jpg')] bg-cover bg-center bg-no-repeat">
+    <div className="flex items-center h-[90vh]  text-white bg-[url('/hero.jpg')] bg-cover bg-center bg-no-repeat">
       <div className="container mx-auto">
         <h1 className="text-7xl font-semibold w-5/12">The power of legal protection</h1>
         <div className="grid grid-cols-2">

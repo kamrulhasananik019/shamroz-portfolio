@@ -52,9 +52,9 @@ const OurWork = () => {
 
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 py-20">
       <div className="max-w-7xl mx-auto  py-8">
-        <div className="flex justify-between items-center ">
+        <div className="flex justify-between items-center mb-10 ">
 
           <div className="flex items-center text-blue-700">
             <Dot size={50} />
@@ -146,7 +146,7 @@ const Expertise = () => {
   ];
   return (
     <div>
-      <div className="max-w-7xl mx-auto  py-8">
+      <div className="max-w-7xl mx-auto  py-8 pb-16">
         <div className="flex justify-between items-center mb-8">
           <div className="flex items-center text-blue-600 ">
             <Dot size={50} />
@@ -440,7 +440,7 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          <div>video</div>
+          {/* <div>video</div> */}
         </div>
         <div></div>
       </div>

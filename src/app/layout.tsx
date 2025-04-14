@@ -6,8 +6,8 @@ import "~/styles/globals.css";
 import { TRPCReactProvider } from "~/trpc/react";
 
 export const metadata: Metadata = {
-  title: "Basic Nextjs Starter",
-  description: "Basic Nextjs Starter",
+  title: "Shamroz",
+  description: "",
 };
 
 export default function RootLayout({

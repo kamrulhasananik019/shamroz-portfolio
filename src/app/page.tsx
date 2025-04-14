@@ -9,6 +9,7 @@ export default function HomePage() {
         <Skills />
       </div>
       <Expertise />
+      <OurWork />
       <Contacts />
       <Footer />
     </div>
@@ -16,7 +17,97 @@ export default function HomePage() {
 }
 
 
+interface Case {
+  category: string;
+  title: string;
+  description: string;
+  team: string[];
+}
 
+const OurWork = () => {
+
+  const cases: Case[] = [
+    {
+      category: 'Commercial Law',
+      title: 'Airport Litigation',
+      description:
+        'Paris airport faced a legal challenge when neighboring residents filed a lawsuit against noise pollution caused by increas...',
+      team: ['./man.jpg', './man.jpg', './man.jpg'],
+    },
+    {
+      category: 'Corporate Law',
+      title: 'Patent Defense',
+      description:
+        'Client, a young tech company, faced patent infringements from competitors attempting to replicate their innovative developments…',
+      team: ['/team2.jpg', '/team3.jpg'],
+    },
+    {
+      category: 'Migration Law',
+      title: 'Migration Legal Case',
+      description:
+        'A multinational corporation faced a complex legal challenge regarding immigration laws when several of its key...',
+      team: ['/team1.jpg', '/team3.jpg'],
+    },
+  ];
+
+
+  return (
+    <div className="bg-gray-100">
+      <div className="max-w-7xl mx-auto  py-8">
+        <div className="flex justify-between items-center ">
+
+          <div className="flex items-center text-blue-700">
+            <Dot size={50} />
+            <p className="font-medium">Our Work</p>
+          </div>
+
+          <div>
+            <button className="text-blue-600 border border-blue-600 rounded-full px-4 py-1 text-sm font-medium hover:bg-blue-50 transition-colors">
+              Show All
+            </button>
+          </div>
+        </div>
+        <div>
+          <div className=" grid md:grid-cols-3 gap-6 ">
+            {cases.map((item, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl shadow-md p-6 flex flex-col justify-between pt-16"
+              >
+                <div>
+
+                  <div className="flex justify-between">
+                    <div className="flex items-center space-x-2 mb-2">
+                      {item.team.map((img, i) => (
+                        <img
+                          key={i}
+                          src={'./man.jpg'}
+                          alt="team member"
+
+                          className="rounded-full w-10 h-10"
+                        />
+                      ))}
+                    </div>
+                    <div className="text-sm bg-gradient-to-br border inline-block px-3 py-1  rounded-full mb-4">
+                      {item.category}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+
+                  <p className="text-gray-600 text-sm">{item.description}</p>
+                </div>
+                <a href="#" className="text-blue-600 text-sm mt-4 font-medium">
+                  Read more
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  )
+}
 
 
 

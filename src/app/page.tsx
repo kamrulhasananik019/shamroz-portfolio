@@ -5,15 +5,15 @@ import { useState } from "react";
 
 
 
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// // Import Swiper styles
-// import 'swiper/css';
-// import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 
 
-// // import required modules
-// import { Pagination } from 'swiper/modules';
+// import required modules
+import { Pagination } from 'swiper/modules';
 
 
 export default function HomePage() {
@@ -26,7 +26,7 @@ export default function HomePage() {
       </div>
       <Expertise />
       <OurWork />
-      {/* <Reviews /> */}
+      <Reviews />
       <Contacts />
       <Footer />
     </div>
@@ -405,70 +405,91 @@ const OurWork = () => {
 }
 
 
-// const Reviews = () => {
-//   return (
-//     <div className="max-w-7xl mx-auto ">
-//       <div>
+const Reviews = () => {
+  const reviews = [
+    {
+      img: '/man-review.png',
+      text: "Choosing Legal Experts was the best decision I made for my legal needs; their team’s proficiency and attention to detail ensured a smooth and successful resolution.",
+      name: "Christian Adams",
+      position: "CTO of Research and Development",
+      date: "March 2024"
+    },
+    {
+      img: '/man-review.png',
+      text: "I am delighted to share my experience with 'Law.' Their professionalism, personalized approach, and commitment to excellence truly set them apart. I recommend their services to anyone in need of top-notch legal assistance.",
+      name: "Andy Petter",
+      position: "CFO of International Markets",
+      date: "April 2024"
+    },
+    {
+      img: '/man-review.png',
+      text: "Experts exceeded my expectations with impeccable legal expertise and dedication to client satisfaction. Highly recommended.",
+      name: "Sarah Johnson",
+      position: "CEO of XYZ Company",
+      date: "April 2024"
+    }, {
+      img: '/man-review.png',
+      text: "Choosing Legal Experts was the best decision I made for my legal needs; their team’s proficiency and attention to detail ensured a smooth and successful resolution.",
+      name: "Christian Adams",
+      position: "CTO of Research and Development",
+      date: "March 2024"
+    },
+    {
+      img: '/man-review.png',
+      text: "I am delighted to share my experience with 'Law.' Their professionalism, personalized approach, and commitment to excellence truly set them apart. I recommend their services to anyone in need of top-notch legal assistance.",
+      name: "Andy Petter",
+      position: "CFO of International Markets",
+      date: "April 2024"
+    },
+  ];
 
-//         <div className="flex justify-between items-center mb-10 ">
-//           <div className="flex items-center text-blue-700">
-//             <Dot size={50} />
-//             <p className="font-medium">Reviews</p>
-//           </div>
-//           <div>
-//             <button className="text-blue-600 border border-blue-600 rounded-full px-4 py-1 text-sm font-medium hover:bg-blue-50 transition-colors">
-//               Show All
-//             </button>
-//           </div>
-//         </div>
+  return (
+    <div className="max-w-7xl mx-auto p-4">
+      <div className="flex justify-between items-center mb-10">
+        <div className="flex items-center text-blue-700">
+          <Dot size={40} />
+          <p className="font-medium text-lg ml-2">Reviews</p>
+        </div>
+        <button className="text-blue-600 border border-blue-600 rounded-full px-4 py-1 text-sm font-medium hover:bg-blue-50 transition-colors">
+          Show All
+        </button>
+      </div>
 
-//         <div>
-//           <Swiper
-//             slidesPerView={1}
-//             spaceBetween={20}
-//             pagination={{ clickable: true }}
-//             breakpoints={{
-//               640: {
-//                 slidesPerView: 1,
-//               },
-//               768: {
-//                 slidesPerView: 2,
-//               },
-//               1024: {
-//                 slidesPerView: 3,
-//               },
-//             }}
-//             modules={[Pagination]}
-//             className="mySwiper"
-//           >
-//             <SwiperSlide>
-//               <div className="bg-white rounded-xl shadow-md p-6">
-//                 Slide 1
-//               </div>
-//             </SwiperSlide>
-//             <SwiperSlide>
-//               <div className="bg-white rounded-xl shadow-md p-6">
-//                 Slide 2
-//               </div>
-//             </SwiperSlide>
-//             <SwiperSlide>
-//               <div className="bg-white rounded-xl shadow-md p-6">
-//                 Slide 3
-//               </div>
-//             </SwiperSlide>
-//             <SwiperSlide>
-//               <div className="bg-white rounded-xl shadow-md p-6">
-//                 Slide 4
-//               </div>
-//             </SwiperSlide>
-//             {/* Add more slides as needed */}
-//           </Swiper>
-//         </div>
-
-//       </div>
-//     </div>
-//   )
-// }
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={20}
+        pagination={{ clickable: true }}
+        breakpoints={{
+          640: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+        }}
+        modules={[Pagination]}
+        className="mySwiper"
+      >
+        {reviews.map((review, index) => (
+          <SwiperSlide key={index}>
+            <div className="bg-white rounded-xl border shadow-md p-6 flex flex-col justify-between h-[250px]">
+              <p className="text-gray-600 italic mb-6">“{review.text}”</p>
+              <div className="flex items-center space-x-4">
+                <img
+                  src={review.img}
+                  alt={review.name}
+                  className="w-16 h-16 rounded-full object-cover"
+                />
+                <div>
+                  <p className="font-semibold text-gray-800">{review.name}</p>
+                  <p className="text-sm text-gray-500">{review.position}</p>
+                  <p className="text-xs text-gray-400 mt-1">{review.date}</p>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  )
+}
 
 
 

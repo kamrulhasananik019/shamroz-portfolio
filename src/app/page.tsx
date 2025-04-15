@@ -1,4 +1,20 @@
-import { ArrowRight, Dot, Facebook, Instagram, Linkedin } from "lucide-react";
+"use client"
+
+import { ArrowRight, Dot, Facebook, Instagram, Linkedin, Menu, X } from "lucide-react";
+import { useState } from "react";
+
+
+
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// // Import Swiper styles
+// import 'swiper/css';
+// import 'swiper/css/pagination';
+
+
+
+// // import required modules
+// import { Pagination } from 'swiper/modules';
+
 
 export default function HomePage() {
   return (
@@ -10,11 +26,80 @@ export default function HomePage() {
       </div>
       <Expertise />
       <OurWork />
+      {/* <Reviews /> */}
       <Contacts />
       <Footer />
     </div>
   );
 }
+
+
+const Reviews = () => {
+  return (
+    <div className="max-w-7xl mx-auto ">
+      <div>
+
+        <div className="flex justify-between items-center mb-10 ">
+          <div className="flex items-center text-blue-700">
+            <Dot size={50} />
+            <p className="font-medium">Reviews</p>
+          </div>
+          <div>
+            <button className="text-blue-600 border border-blue-600 rounded-full px-4 py-1 text-sm font-medium hover:bg-blue-50 transition-colors">
+              Show All
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={20}
+            pagination={{ clickable: true }}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+              },
+              768: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+            modules={[Pagination]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <div className="bg-white rounded-xl shadow-md p-6">
+                Slide 1
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="bg-white rounded-xl shadow-md p-6">
+                Slide 2
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="bg-white rounded-xl shadow-md p-6">
+                Slide 3
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="bg-white rounded-xl shadow-md p-6">
+                Slide 4
+              </div>
+            </SwiperSlide>
+            {/* Add more slides as needed */}
+          </Swiper>
+        </div>
+
+      </div>
+    </div>
+  )
+}
+
+
 
 
 interface Case {
@@ -204,7 +289,9 @@ const Expertise = () => {
   );
 };
 
+
 const NavBar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const menuItems = [
     "Expertise",
     "About",
@@ -215,8 +302,9 @@ const NavBar = () => {
   ];
 
   return (
-    <div className="w-full bg-transparent absolute">
-      <div className="container mx-auto grid grid-cols-2 py-4 px-6 pb-5">
+    <nav className="w-full bg-transparent absolute z-50">
+      <div className="container mx-auto flex items-center justify-between py-4 px-6">
+        {/* Logo */}
         <div>
           <img
             width={70}
@@ -225,15 +313,46 @@ const NavBar = () => {
             alt="Logo"
           />
         </div>
-        <div className="text-white flex items-center justify-around">
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex space-x-6 text-white items-center">
           {menuItems.map((item, index) => (
-            <button key={index}>{item}</button>
+            <button key={index} className="hover:text-blue-300 transition">
+              {item}
+            </button>
           ))}
         </div>
+
+        {/* Mobile Hamburger */}
+        <div className="md:hidden">
+          <button onClick={() => setIsOpen(!isOpen)} className="text-white">
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
-    </div>
+
+      {/* Mobile Dropdown Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-black/80 backdrop-blur-sm px-6 pb-4">
+          <div className="flex flex-col space-y-4 text-white">
+            {menuItems.map((item, index) => (
+              <button
+                key={index}
+                onClick={() => setIsOpen(false)}
+                className="hover:text-blue-300 transition text-left"
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </nav>
   );
 };
+
+
+
 
 const Footer = () => {
   const menuItems = [
@@ -414,7 +533,7 @@ const Hero = () => {
   return (
     <div className="flex items-center h-[90vh]  text-white bg-[url('/hero.jpg')] bg-cover bg-center bg-no-repeat">
       <div className="container mx-auto">
-        <h1 className="text-7xl font-semibold w-5/12">
+        <h1 className="md:text-6xl lg:text-7xl sm:text-5xl  font-semibold w-5/12">
           The power of legal protection
         </h1>
         <div className="grid grid-cols-2">

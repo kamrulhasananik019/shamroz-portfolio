@@ -99,13 +99,13 @@ const NavBar = () => {
 
 const Hero = () => {
   return (
-    <div className="flex items-center h-[90vh]  text-white bg-[url('/hero.jpg')] bg-cover bg-center bg-no-repeat">
-      <div className="container mx-auto px-5">
-        <h1 className="md:text-6xl lg:text-7xl sm:text-5xl text-4xl  font-semibold w-5/12">
+    <div className="flex items-center md:h-[90vh] h-[100vh] text-white bg-[url('/hero.jpg')] bg-cover bg-center bg-no-repeat">
+      <div className="container mx-auto px-5 md:text-start text-center md:block flex flex-col justify-center items-center">
+        <h1 className="md:text-6xl lg:text-7xl sm:text-5xl text-4xl  font-semibold md:w-5/12">
           The power of legal protection
         </h1>
-        <div className="grid grid-cols-2">
-          <div>
+        <div className="md:text-start text-center flex flex-col justify-center items-center md:grid grid-cols-2">
+          <div >
             <p className="py-10">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam
               quae quaerat dolor! Quisquam possimus alias odio, voluptatum
@@ -115,7 +115,7 @@ const Hero = () => {
             <button className=" bg-white text-black py-3 px-7 rounded-3xl">
               Get a Consultation
             </button>
-            <div className="flex gap-5 pt-10">
+            <div className="flex gap-5 pt-10 md:justify-start justify-center ">
               <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
                 <Facebook width={30} />
               </div>

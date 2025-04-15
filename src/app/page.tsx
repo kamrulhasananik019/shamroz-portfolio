@@ -475,9 +475,9 @@ const OurWork = () => {
 const Contacts = () => {
   return (
     <div className="bg-[url('/hero.jpg')] m-1 rounded-3xl py-28 my-5">
-      <div className="container mx-auto flex justify-center items-center gap-5">
-        <div>
-          <h2 className="text-7xl font-medium text-white w-7/12">
+      <div className="container mx-auto flex flex-col md:flex-row justify-center items-center gap-5">
+        <div className="flex justify-center text-center md:block md:text-start">
+          <h2 className="lg:text-7xl md:text-5xl text-4xl  font-medium text-white w-7/12">
             Lets make an action plan!
           </h2>
         </div>
@@ -505,7 +505,8 @@ const Footer = () => {
     <div className="bg-[#d9dce4] text-gray-800">
       <div className="container mx-auto px-4 pt-12 pb-6">
         <div className="grid grid-cols-12 gap-5 items-start">
-          <div className="col-span-12 md:col-span-3 flex flex-col items-start gap-4">
+
+          <div className="col-span-12 md:col-span-3 flex flex-col md:items-start items-center gap-4">
             <img width={70} src="./lawyerlogo.png" alt="Logo" />
             <div className="flex gap-4">
               <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow">
@@ -530,16 +531,16 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="col-span-12 md:col-span-3 text-sm space-y-4">
-            <div>
+          <div className="col-span-12 md:col-span-3 flex flex-col md:items-start items-center text-sm space-y-4">
+            <div className="flex gap-5 md:block">
               <p className="font-semibold">Phone</p>
               <p>+44 20 482 705 41</p>
             </div>
-            <div>
+            <div className="flex gap-5 md:block">
               <p className="font-semibold">Address</p>
               <p>6 Murray Glens lake</p>
             </div>
-            <div>
+            <div className="flex gap-5 md:block">
               <p className="font-semibold">Email</p>
               <p>lawcompany@gmail.com</p>
             </div>

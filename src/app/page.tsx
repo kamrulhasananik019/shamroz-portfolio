@@ -11,10 +11,10 @@ import {
   Menu,
   X,
 } from "lucide-react";
-// Import Swiper styles
+
 import "swiper/css";
 import "swiper/css/pagination";
-// import required modules
+
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -93,127 +93,76 @@ const NavBar = () => {
   );
 };
 
+
+
 const Hero = () => {
+  const slides = [
+    {
+      id: 1,
+      title: "Supplying Premium Textiles for the Hospitality Sector Across Europe",
+      description:
+        "With over 40 years of family expertise in textile manufacturing and a solid foundation in legal and commercial operations, we provide premium bed linens, towels, and customized textile solutions tailored to the needs of hotels, laundries, and hospitality professionals.",
+      image: "/hero.jpg",
+    },
+    {
+      id: 2,
+      title: "Tailored Textile Solutions for Hotels, Spas, and Laundries",
+      description:
+        "Our products are designed to meet the rigorous standards of the hospitality industry. From durability to elegance, we ensure your guests enjoy luxurious comfort while maintaining cost-effectiveness for your business.",
+      image: "/hero-2.jpg",
+    },
+    {
+      id: 3,
+      title: "Elevate Guest Experience with European-Quality Linens",
+      description:
+        "We specialize in premium-quality linens and towels sourced and crafted in Europe. Whether you run a boutique hotel or a large-scale laundry service, we deliver consistency and quality with every thread.",
+      image: "/hero-1.jpg",
+    },
+  ];
 
   return (
     <div>
-
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
-        <SwiperSlide>
-          <div className="flex items-center md:h-[90vh] h-[100vh] text-white bg-[url('/hero.jpg')] bg-cover bg-center bg-no-repeat">
-            <div className="container mx-auto px-5 md:text-start text-center md:block flex flex-col justify-center items-center">
-              <h1 className="md:text-5xl lg:text-6xl sm:text-4xl text-3xl  font-semibold md:w-5/12">
-                Supplying Premium Textiles for the Hospitality Sector Across Europe
-              </h1>
-              <div className="md:text-start text-center flex flex-col justify-center items-center md:grid grid-cols-2">
-                <div>
-                  <p className="py-10">
-                    With over 40 years of family expertise in textile manufacturing
-                    and a solid foundation in legal and commercial operations, we
-                    provide premium bed linens, towels, and customized textile
-                    solutions tailored to the needs of hotels, laundries, and
-                    hospitality professionals.
-                  </p>
-                  <button className=" bg-white text-black py-3 px-7 rounded-3xl">
-                    Explore Our Products
-                  </button>
-                  <div className="flex gap-5 pt-10 md:justify-start justify-center ">
-                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
-                      <Facebook width={30} />
-                    </div>
-                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
-                      <Linkedin />
-                    </div>
-                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
-                      <Instagram />
+        {slides.map((slide) => (
+          <SwiperSlide key={slide.id}>
+            <div
+              className="relative flex items-center md:h-[90vh] h-[100vh] text-white bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${slide.image})` }}
+            >
+
+              <div className="absolute inset-0 bg-black opacity-60 z-0" />
+              <div className="relative z-10 container mx-auto px-5 md:text-start text-center md:block flex flex-col justify-center items-center">
+                <h1 className="md:text-5xl lg:text-6xl sm:text-4xl text-3xl font-semibold md:w-5/12">
+                  {slide.title}
+                </h1>
+                <div className="md:text-start text-center flex flex-col justify-center items-center md:grid grid-cols-2">
+                  <div>
+                    <p className="py-10">{slide.description}</p>
+                    <button className=" bg-white text-black py-3 px-7 rounded-3xl">
+                      Explore Our Products
+                    </button>
+                    <div className="flex gap-5 pt-10 md:justify-start justify-center">
+                      <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center">
+                        <Facebook width={30} />
+                      </div>
+                      <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center">
+                        <Linkedin />
+                      </div>
+                      <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center">
+                        <Instagram />
+                      </div>
                     </div>
                   </div>
                 </div>
-                {/* <div>video</div> */}
               </div>
-              <div></div>
             </div>
-          </div>
-
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex items-center md:h-[90vh] h-[100vh] text-white bg-[url('/hero-2.jpg')] bg-cover bg-center bg-no-repeat">
-            <div className="container mx-auto px-5 md:text-start text-center md:block flex flex-col justify-center items-center">
-              <h1 className="md:text-5xl lg:text-6xl sm:text-4xl text-3xl  font-semibold md:w-5/12">
-                Supplying Premium Textiles for the Hospitality Sector Across Europe
-              </h1>
-              <div className="md:text-start text-center flex flex-col justify-center items-center md:grid grid-cols-2">
-                <div>
-                  <p className="py-10">
-                    With over 40 years of family expertise in textile manufacturing
-                    and a solid foundation in legal and commercial operations, we
-                    provide premium bed linens, towels, and customized textile
-                    solutions tailored to the needs of hotels, laundries, and
-                    hospitality professionals.
-                  </p>
-                  <button className=" bg-white text-black py-3 px-7 rounded-3xl">
-                    Explore Our Products
-                  </button>
-                  <div className="flex gap-5 pt-10 md:justify-start justify-center ">
-                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
-                      <Facebook width={30} />
-                    </div>
-                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
-                      <Linkedin />
-                    </div>
-                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
-                      <Instagram />
-                    </div>
-                  </div>
-                </div>
-                {/* <div>video</div> */}
-              </div>
-              <div></div>
-            </div>
-          </div>
-
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex items-center md:h-[90vh] h-[100vh] text-white bg-[url('/hero-1.jpg')]  bg-cover bg-center bg-no-repeat">
-            <div className="container mx-auto px-5 md:text-start text-center md:block flex flex-col justify-center items-center">
-              <h1 className="md:text-5xl lg:text-6xl sm:text-4xl text-3xl  font-semibold md:w-5/12">
-                Supplying Premium Textiles for the Hospitality Sector Across Europe
-              </h1>
-              <div className="md:text-start text-center flex flex-col justify-center items-center md:grid grid-cols-2">
-                <div>
-                  <p className="py-10">
-                    With over 40 years of family expertise in textile manufacturing
-                    and a solid foundation in legal and commercial operations, we
-                    provide premium bed linens, towels, and customized textile
-                    solutions tailored to the needs of hotels, laundries, and
-                    hospitality professionals.
-                  </p>
-                  <button className=" bg-white text-black py-3 px-7 rounded-3xl">
-                    Explore Our Products
-                  </button>
-                  <div className="flex gap-5 pt-10 md:justify-start justify-center ">
-                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
-                      <Facebook width={30} />
-                    </div>
-                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
-                      <Linkedin />
-                    </div>
-                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
-                      <Instagram />
-                    </div>
-                  </div>
-                </div>
-                {/* <div>video</div> */}
-              </div>
-              <div></div>
-            </div>
-          </div>
-
-        </SwiperSlide>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );
 };
+
 
 const Skills = () => {
   const statsData = [
@@ -547,9 +496,7 @@ const Reviews = () => {
           <Dot size={40} />
           <p className="font-medium text-lg ml-2">Client Feedback</p>
         </div>
-        <button className="text-pink-600 border border-pink-600 rounded-full px-4 py-1 text-sm font-medium hover:bg-blue-50 transition-colors">
-          Show All
-        </button>
+
       </div>
 
       <Swiper

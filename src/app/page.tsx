@@ -174,7 +174,7 @@ const Hero = () => {
 
         </SwiperSlide>
         <SwiperSlide>
-          <div className="flex items-center md:h-[90vh] h-[100vh] text-white bg-[url('/hero.jpg')] bg-cover bg-center bg-no-repeat">
+          <div className="flex items-center md:h-[90vh] h-[100vh] text-white bg-[url('/hero-1.jpg')]  bg-cover bg-center bg-no-repeat">
             <div className="container mx-auto px-5 md:text-start text-center md:block flex flex-col justify-center items-center">
               <h1 className="md:text-5xl lg:text-6xl sm:text-4xl text-3xl  font-semibold md:w-5/12">
                 Supplying Premium Textiles for the Hospitality Sector Across Europe
@@ -261,7 +261,7 @@ const Skills = () => {
         <div className="md:pt-36 px-5">
           <div className="grid md:grid-cols-2 gap-5">
             <div>
-              <div className="flex items-center text-blue-700">
+              <div className="flex items-center text-pink-600">
                 <Dot size={50} />
                 <p className="font-medium">Introduction</p>
               </div>
@@ -269,7 +269,7 @@ const Skills = () => {
             <div>
               <h2 className="text-4xl font-medium">
                 We are a trusted textile supplier delivering solutions{" "}
-                <span className="text-blue-700">
+                <span className="text-pink-600">
                   tailored to the highest standards of the hospitality industry
                 </span>
               </h2>
@@ -278,7 +278,7 @@ const Skills = () => {
           </div>
 
           <div>
-            <div className="flex items-center py-10 text-blue-700">
+            <div className="flex items-center py-10 text-pink-600">
               <Dot size={50} />
               <p className="font-medium ">why Choose Us</p>
             </div>
@@ -287,7 +287,7 @@ const Skills = () => {
               {statsData.map((item, index) => (
                 <div key={index} className="p-5 bg-white rounded-md">
                   <div className="pt-20">
-                    <p className="text-5xl py-2 text-blue-700">
+                    <p className="text-5xl py-2 text-pink-600">
                       {item.value}{" "}
                       {item.label && (
                         <span className="text-2xl">{item.label}</span>
@@ -342,11 +342,11 @@ const Expertise = () => {
     <div>
       <div className="max-w-7xl mx-auto  py-8 pb-16 p-5">
         <div className="flex justify-between items-center mb-8">
-          <div className="flex items-center text-blue-600 ">
+          <div className="flex items-center text-pink-600">
             <Dot size={50} />
             <h2 className="font-medium">Our Expertise</h2>
           </div>
-          <button className="text-blue-600 border border-blue-600 rounded-full px-4 py-1 text-sm font-medium hover:bg-blue-50 transition-colors">
+          <button className="text-pink-600 border border-pink-600 rounded-full px-4 py-1 text-sm font-medium hover:bg-blue-50 transition-colors">
             View All Products
           </button>
         </div>
@@ -361,10 +361,10 @@ const Expertise = () => {
                 {category.items.map((item) => (
                   <div
                     key={item.title}
-                    className="flex justify-between items-center border-t border-gray-200 hover:border-blue-700 py-4 px-4 cursor-pointer hover:bg-gray-50  hover:text-blue-700 transition-colors"
+                    className="flex justify-between items-center border-t border-gray-200 hover:border-pink-600 py-4 px-4 cursor-pointer hover:bg-gray-50  hover:text-pink-600 transition-colors"
                   >
                     <span className="font-medium">/ {item.title}</span>
-                    <div className="w-10 h-10 rounded-full bg-gray-100 hover:bg-blue-700 flex items-center justify-center  text-blue-700 hover:text-white ">
+                    <div className="w-10 h-10 rounded-full bg-gray-100  flex items-center justify-center  text-pink-600 ">
                       <ArrowRight className="h-5 w-5 " />
                     </div>
                   </div>
@@ -377,7 +377,7 @@ const Expertise = () => {
         <div className="mt-32">
           <div className="grid md:grid-cols-2 gap-5 ">
             <div>
-              <div className="flex items-center text-blue-700">
+              <div className="flex items-center text-pink-600">
                 <Dot size={50} />
                 <p className="font-medium">Mission</p>
               </div>
@@ -385,7 +385,7 @@ const Expertise = () => {
             <div>
               <h2 className="text-4xl font-medium">
                 We combine decades of textile expertise with a client-first mindset to deliver
-                <span className="text-blue-700">
+                <span className="text-pink-600">
                   {" "}
                   tailored, high-quality products that meet the demands of the hospitality industry.
                 </span>
@@ -407,84 +407,98 @@ interface Case {
 }
 
 const OurWork = () => {
-  const cases: Case[] = [
+  const cases = [
     {
       category: "Hotels & Resorts",
       title: "Luxury Hotel Linen Upgrade",
       description:
         "Partnered with a 5-star hotel chain in Paris to supply premium bed linens and towels, enhancing guest comfort and sustainability…",
-      team: ["/team1.jpg", "/team2.jpg", "/team3.jpg"],
+      img: "./card-1.jpg",
     },
     {
       category: "Spa & Wellness",
       title: "Tailored Spa Textiles",
       description:
         "Delivered custom-made soft cotton robes and treatment bed covers for a luxury wellness resort in the South of France…",
-      team: ["/team2.jpg", "/team3.jpg"],
+      img: "./card-2.jpg",
     },
     {
       category: "Laundries",
       title: "Bulk Supply for Industrial Laundry",
       description:
         "Supported a commercial laundry service in Belgium with durable, easy-to-maintain textiles for hotels and restaurants…",
-      team: ["/team1.jpg", "/team3.jpg"],
+      img: "./card-3.jpg",
+    },
+    {
+      category: "Boutique Hotels",
+      title: "Elegant Bedding for Boutique Suites",
+      description:
+        "Collaborated with a boutique hotel in Lyon to design elegant, hypoallergenic bedding sets for premium guest experiences…",
+      img: "./card-4.jpg",
+    },
+    {
+      category: "Restaurants",
+      title: "Custom Table Linen Collection",
+      description:
+        "Supplied a chain of fine-dining restaurants in Marseille with stain-resistant, stylish tablecloths and napkins…",
+      img: "./card-5.jpg",
+    },
+    {
+      category: "Healthcare & Wellness",
+      title: "Sanitary Textiles for Clinics",
+      description:
+        "Delivered anti-bacterial, high-durability towels and sheets to a private wellness clinic in Geneva…",
+      img: "./hero.jpg",
     },
   ];
 
-
   return (
     <div className="bg-gray-100 py-10 md:py-20">
-      <div className="max-w-7xl mx-auto  py-8 p-5">
-        <div className="flex justify-between items-center mb-10 ">
-          <div className="flex items-center text-blue-700">
+      <div className="max-w-7xl mx-auto py-8 p-5">
+        <div className="flex justify-between items-center mb-10">
+          <div className="flex items-center text-pink-600">
             <Dot size={50} />
             <p className="font-medium">Our Projects</p>
           </div>
-
-          <div>
-            <button className="text-blue-600 border border-blue-600 rounded-full px-4 py-1 text-sm font-medium hover:bg-blue-50 transition-colors">
-              Show All
-            </button>
-          </div>
+          <button className="text-pink-600 border border-pink-600 rounded-full px-4 py-1 text-sm font-medium hover:bg-blue-50 transition-colors">
+            Show All
+          </button>
         </div>
-        <div>
-          <div className=" grid sm:grid-cols-2 md:grid-cols-3 gap-6 ">
-            {cases.map((item, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl shadow-md p-6 flex flex-col justify-between pt-16"
-              >
-                <div>
-                  <div className="flex justify-between">
-                    <div className="flex items-center space-x-2 mb-2">
-                      {item.team.map((img, i) => (
-                        <img
-                          key={i}
-                          src={"./man.jpg"}
-                          alt="team member"
-                          className="rounded-full w-10 h-10"
-                        />
-                      ))}
-                    </div>
-                    <div className="text-sm bg-gradient-to-br border inline-block px-3 py-1  rounded-full mb-4">
-                      {item.category}
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
 
-                  <p className="text-gray-600 text-sm">{item.description}</p>
-                </div>
-                <a href="#" className="text-blue-600 text-sm mt-4 font-medium">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {cases.map((item, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl shadow-md flex flex-col justify-between overflow-hidden"
+            >
+              <div className="h-60 w-full overflow-hidden">
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <p className="text-sm text-pink-600 font-medium py-1">
+                  {item.category}
+                </p>
+                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                <p className="text-gray-600 text-sm">{item.description}</p>
+                <a
+                  href="#"
+                  className="text-pink-600 text-sm mt-4 font-medium hover:underline inline-block"
+                >
                   Read more
                 </a>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   );
 };
+
 
 const Reviews = () => {
   const reviews = [
@@ -529,11 +543,11 @@ const Reviews = () => {
   return (
     <div className="max-w-7xl mx-auto p-4">
       <div className="flex justify-between items-center mb-10">
-        <div className="flex items-center text-blue-700">
+        <div className="flex items-center text-pink-600">
           <Dot size={40} />
           <p className="font-medium text-lg ml-2">Client Feedback</p>
         </div>
-        <button className="text-blue-600 border border-blue-600 rounded-full px-4 py-1 text-sm font-medium hover:bg-blue-50 transition-colors">
+        <button className="text-pink-600 border border-pink-600 rounded-full px-4 py-1 text-sm font-medium hover:bg-blue-50 transition-colors">
           Show All
         </button>
       </div>

@@ -94,40 +94,123 @@ const NavBar = () => {
 };
 
 const Hero = () => {
+
   return (
-    <div className="flex items-center md:h-[90vh] h-[100vh] text-white bg-[url('/hero.jpg')] bg-cover bg-center bg-no-repeat">
-      <div className="container mx-auto px-5 md:text-start text-center md:block flex flex-col justify-center items-center">
-        <h1 className="md:text-5xl lg:text-6xl sm:text-4xl text-3xl  font-semibold md:w-5/12">
-          Supplying Premium Textiles for the Hospitality Sector Across Europe
-        </h1>
-        <div className="md:text-start text-center flex flex-col justify-center items-center md:grid grid-cols-2">
-          <div>
-            <p className="py-10">
-              With over 40 years of family expertise in textile manufacturing
-              and a solid foundation in legal and commercial operations, we
-              provide premium bed linens, towels, and customized textile
-              solutions tailored to the needs of hotels, laundries, and
-              hospitality professionals.
-            </p>
-            <button className=" bg-white text-black py-3 px-7 rounded-3xl">
-              Explore Our Products
-            </button>
-            <div className="flex gap-5 pt-10 md:justify-start justify-center ">
-              <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
-                <Facebook width={30} />
+    <div>
+
+      <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+        <SwiperSlide>
+          <div className="flex items-center md:h-[90vh] h-[100vh] text-white bg-[url('/hero.jpg')] bg-cover bg-center bg-no-repeat">
+            <div className="container mx-auto px-5 md:text-start text-center md:block flex flex-col justify-center items-center">
+              <h1 className="md:text-5xl lg:text-6xl sm:text-4xl text-3xl  font-semibold md:w-5/12">
+                Supplying Premium Textiles for the Hospitality Sector Across Europe
+              </h1>
+              <div className="md:text-start text-center flex flex-col justify-center items-center md:grid grid-cols-2">
+                <div>
+                  <p className="py-10">
+                    With over 40 years of family expertise in textile manufacturing
+                    and a solid foundation in legal and commercial operations, we
+                    provide premium bed linens, towels, and customized textile
+                    solutions tailored to the needs of hotels, laundries, and
+                    hospitality professionals.
+                  </p>
+                  <button className=" bg-white text-black py-3 px-7 rounded-3xl">
+                    Explore Our Products
+                  </button>
+                  <div className="flex gap-5 pt-10 md:justify-start justify-center ">
+                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
+                      <Facebook width={30} />
+                    </div>
+                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
+                      <Linkedin />
+                    </div>
+                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
+                      <Instagram />
+                    </div>
+                  </div>
+                </div>
+                {/* <div>video</div> */}
               </div>
-              <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
-                <Linkedin />
-              </div>
-              <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
-                <Instagram />
-              </div>
+              <div></div>
             </div>
           </div>
-          {/* <div>video</div> */}
-        </div>
-        <div></div>
-      </div>
+
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="flex items-center md:h-[90vh] h-[100vh] text-white bg-[url('/hero-2.jpg')] bg-cover bg-center bg-no-repeat">
+            <div className="container mx-auto px-5 md:text-start text-center md:block flex flex-col justify-center items-center">
+              <h1 className="md:text-5xl lg:text-6xl sm:text-4xl text-3xl  font-semibold md:w-5/12">
+                Supplying Premium Textiles for the Hospitality Sector Across Europe
+              </h1>
+              <div className="md:text-start text-center flex flex-col justify-center items-center md:grid grid-cols-2">
+                <div>
+                  <p className="py-10">
+                    With over 40 years of family expertise in textile manufacturing
+                    and a solid foundation in legal and commercial operations, we
+                    provide premium bed linens, towels, and customized textile
+                    solutions tailored to the needs of hotels, laundries, and
+                    hospitality professionals.
+                  </p>
+                  <button className=" bg-white text-black py-3 px-7 rounded-3xl">
+                    Explore Our Products
+                  </button>
+                  <div className="flex gap-5 pt-10 md:justify-start justify-center ">
+                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
+                      <Facebook width={30} />
+                    </div>
+                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
+                      <Linkedin />
+                    </div>
+                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
+                      <Instagram />
+                    </div>
+                  </div>
+                </div>
+                {/* <div>video</div> */}
+              </div>
+              <div></div>
+            </div>
+          </div>
+
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="flex items-center md:h-[90vh] h-[100vh] text-white bg-[url('/hero.jpg')] bg-cover bg-center bg-no-repeat">
+            <div className="container mx-auto px-5 md:text-start text-center md:block flex flex-col justify-center items-center">
+              <h1 className="md:text-5xl lg:text-6xl sm:text-4xl text-3xl  font-semibold md:w-5/12">
+                Supplying Premium Textiles for the Hospitality Sector Across Europe
+              </h1>
+              <div className="md:text-start text-center flex flex-col justify-center items-center md:grid grid-cols-2">
+                <div>
+                  <p className="py-10">
+                    With over 40 years of family expertise in textile manufacturing
+                    and a solid foundation in legal and commercial operations, we
+                    provide premium bed linens, towels, and customized textile
+                    solutions tailored to the needs of hotels, laundries, and
+                    hospitality professionals.
+                  </p>
+                  <button className=" bg-white text-black py-3 px-7 rounded-3xl">
+                    Explore Our Products
+                  </button>
+                  <div className="flex gap-5 pt-10 md:justify-start justify-center ">
+                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
+                      <Facebook width={30} />
+                    </div>
+                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
+                      <Linkedin />
+                    </div>
+                    <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
+                      <Instagram />
+                    </div>
+                  </div>
+                </div>
+                {/* <div>video</div> */}
+              </div>
+              <div></div>
+            </div>
+          </div>
+
+        </SwiperSlide>
+      </Swiper>
     </div>
   );
 };
@@ -517,57 +600,63 @@ const Footer = () => {
     "Our Work",
     "Team",
     "Blog",
-    "Contacts",
+    "Contact",
   ];
+
   return (
     <div className="bg-[#d9dce4] text-gray-800">
       <div className="container mx-auto px-4 pt-12 pb-6">
-        <div className="grid grid-cols-12 gap-5 items-start">
-          <div className="col-span-12 md:col-span-3 flex flex-col md:items-start items-center gap-4">
+        <div className="grid grid-cols-12 gap-6 items-start">
+          {/* Logo + Socials */}
+          <div className="col-span-12 md:col-span-3 flex flex-col items-center md:items-start gap-4 text-center md:text-left">
             <img width={70} src="./lawyerlogo.png" alt="Logo" />
             <div className="flex gap-4">
-              <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow">
+              <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition">
                 <Facebook size={18} />
               </div>
-              <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow">
+              <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition">
                 <Linkedin size={18} />
               </div>
-              <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow">
+              <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition">
                 <Instagram size={18} />
               </div>
             </div>
           </div>
 
+          {/* Navigation Menu */}
           <div className="col-span-12 md:col-span-6 flex justify-center items-start mt-6 md:mt-0">
             <div className="flex flex-wrap justify-center gap-6 text-sm font-medium">
               {menuItems.map((item, index) => (
-                <button key={index} className="hover:underline">
+                <button key={index} className="hover:underline transition">
                   {item}
                 </button>
               ))}
             </div>
           </div>
 
-          <div className="col-span-12 md:col-span-3 flex flex-col md:items-start items-center text-sm space-y-4">
-            <div className="flex gap-5 md:block">
+          {/* Contact Info */}
+          <div className="col-span-12 md:col-span-3 flex flex-col items-center md:items-start text-sm space-y-4 mt-6 md:mt-0">
+            <div className="text-center md:text-left">
               <p className="font-semibold">Phone</p>
               <p>+44 20 482 705 41</p>
             </div>
-            <div className="flex gap-5 md:block">
+            <div className="text-center md:text-left">
               <p className="font-semibold">Address</p>
-              <p>6 Murray Glens lake</p>
+              <p>6 Murray Glens Lake, France</p>
             </div>
-            <div className="flex gap-5 md:block">
+            <div className="text-center md:text-left">
               <p className="font-semibold">Email</p>
-              <p>lawcompany@gmail.com</p>
+              <p>contact@textileexperts.fr</p>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-300 my-6"></div>
+        {/* Divider */}
+        <div className="border-t border-gray-300 my-6" />
 
+        {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 gap-3">
-          <p>Company © 2024. All rights reserved.</p>
+          <p>Textile Experts © 2024. All rights reserved.</p>
           <div className="flex gap-4">
             <a href="#" className="hover:underline">
               Cookies Policy
@@ -576,7 +665,7 @@ const Footer = () => {
               Privacy Policy
             </a>
             <a href="#" className="hover:underline">
-              Terms and Conditions
+              Terms & Conditions
             </a>
           </div>
         </div>
@@ -584,3 +673,4 @@ const Footer = () => {
     </div>
   );
 };
+

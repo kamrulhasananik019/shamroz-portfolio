@@ -1,20 +1,22 @@
-"use client"
+"use client";
 
-import { ArrowRight, Dot, Facebook, Instagram, Linkedin, Menu, X } from "lucide-react";
 import { useState } from "react";
 
-
-
-import { Swiper, SwiperSlide } from 'swiper/react';
+import {
+  ArrowRight,
+  Dot,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Menu,
+  X,
+} from "lucide-react";
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-
-
-
+import "swiper/css";
+import "swiper/css/pagination";
 // import required modules
-import { Pagination } from 'swiper/modules';
-
+import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function HomePage() {
   return (
@@ -32,8 +34,6 @@ export default function HomePage() {
     </div>
   );
 }
-
-
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,7 +59,6 @@ const NavBar = () => {
           />
         </div>
 
-
         <div className="hidden md:flex space-x-6 text-white items-center">
           {menuItems.map((item, index) => (
             <button key={index} className="hover:text-blue-300 transition">
@@ -68,14 +67,12 @@ const NavBar = () => {
           ))}
         </div>
 
-
         <div className="md:hidden">
           <button onClick={() => setIsOpen(!isOpen)} className="text-white">
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
-
 
       {isOpen && (
         <div className="md:hidden bg-black/80 backdrop-blur-sm px-6 pb-4">
@@ -96,24 +93,24 @@ const NavBar = () => {
   );
 };
 
-
 const Hero = () => {
   return (
     <div className="flex items-center md:h-[90vh] h-[100vh] text-white bg-[url('/hero.jpg')] bg-cover bg-center bg-no-repeat">
       <div className="container mx-auto px-5 md:text-start text-center md:block flex flex-col justify-center items-center">
-        <h1 className="md:text-6xl lg:text-7xl sm:text-5xl text-4xl  font-semibold md:w-5/12">
-          The power of legal protection
+        <h1 className="md:text-5xl lg:text-6xl sm:text-4xl text-3xl  font-semibold md:w-5/12">
+          Supplying Premium Textiles for the Hospitality Sector Across Europe
         </h1>
         <div className="md:text-start text-center flex flex-col justify-center items-center md:grid grid-cols-2">
-          <div >
+          <div>
             <p className="py-10">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam
-              quae quaerat dolor! Quisquam possimus alias odio, voluptatum
-              impedit molestias? Exercitationem dicta nemo ipsa harum!
-              Perferendis aliquam ullam optio autem iste.
+              With over 40 years of family expertise in textile manufacturing
+              and a solid foundation in legal and commercial operations, we
+              provide premium bed linens, towels, and customized textile
+              solutions tailored to the needs of hotels, laundries, and
+              hospitality professionals.
             </p>
             <button className=" bg-white text-black py-3 px-7 rounded-3xl">
-              Get a Consultation
+              Explore Our Products
             </button>
             <div className="flex gap-5 pt-10 md:justify-start justify-center ">
               <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center ">
@@ -135,39 +132,46 @@ const Hero = () => {
   );
 };
 
-
 const Skills = () => {
   const statsData = [
     {
-      value: "600+",
-      label: "",
+      value: "40+",
+      label: "years",
       description:
-        "of consultation conducted for the entire work of the company",
+        "of family heritage in textile manufacturing, delivering consistent quality and reliability",
     },
     {
       value: "12",
-      label: "barristers",
+      label: "countries",
       description:
-        "highly qualified and experienced lawyers with international recognition",
+        "served across Europe, with a strong focus on the French hospitality sector",
     },
     {
-      value: "32",
-      label: "partners",
+      value: "100+",
+      label: "clients",
       description:
-        "of consultation conducted for the entire work of the company",
+        "including hotels, laundries, and other hospitality businesses who trust our quality",
     },
     {
-      value: "26",
-      label: "times",
+      value: "98%",
+      label: "satisfaction",
       description:
-        'recognized as the "Best Law firm in England " by the professional ratings',
+        "customer satisfaction rate based on feedback and long-term partnerships",
     },
     {
-      value: "40",
-      label: "times",
-      description: "attracted to England as investments, thanks to our work",
+      value: "24/7",
+      label: "support",
+      description:
+        "dedicated service to ensure smooth communication and on-time delivery",
+    },
+    {
+      value: "100%",
+      label: "customizable",
+      description:
+        "textile solutions tailored to the unique requirements of your business",
     },
   ];
+
   return (
     <div className="flex justify-center ">
       <div className="max-w-7xl  ">
@@ -181,12 +185,13 @@ const Skills = () => {
             </div>
             <div>
               <h2 className="text-4xl font-medium">
-                We are a leading English law firm operating in accordance{" "}
+                We are a trusted textile supplier delivering solutions{" "}
                 <span className="text-blue-700">
-                  with international standards of legal services
+                  tailored to the highest standards of the hospitality industry
                 </span>
               </h2>
             </div>
+
           </div>
 
           <div>
@@ -217,7 +222,6 @@ const Skills = () => {
   );
 };
 
-
 interface ExpertiseItem {
   title: string;
   active?: boolean;
@@ -231,23 +235,23 @@ interface ExpertiseCategory {
 const Expertise = () => {
   const categories: ExpertiseCategory[] = [
     {
-      title: "Practices",
+      title: "Product Categories",
       items: [
-        { title: "Corporate Law" },
-        { title: "Criminal Law" },
-        { title: "Commercial Law" },
-        { title: "Accounting Services" },
-        { title: "Migration Law" },
-        { title: "Insurance" },
+        { title: "Bed Linens" },
+        { title: "Bath Towels" },
+        { title: "Table Linens" },
+        { title: "Kitchen Textiles" },
+        { title: "Spa & Wellness Fabrics" },
+        { title: "Custom-Made Orders" },
       ],
     },
     {
-      title: "Industries",
+      title: "Industries We Serve",
       items: [
-        { title: "Private Equity" },
-        { title: "Information Technology" },
-        { title: "Estate & Construction" },
-        { title: "Automotive Aviation" },
+        { title: "Hotels & Resorts" },
+        { title: "Laundries" },
+        { title: "Restaurants & Catering" },
+        { title: "Wellness & Spa Centers" },
       ],
     },
   ];
@@ -257,10 +261,10 @@ const Expertise = () => {
         <div className="flex justify-between items-center mb-8">
           <div className="flex items-center text-blue-600 ">
             <Dot size={50} />
-            <h2 className="font-medium">Expertise</h2>
+            <h2 className="font-medium">Our Expertise</h2>
           </div>
           <button className="text-blue-600 border border-blue-600 rounded-full px-4 py-1 text-sm font-medium hover:bg-blue-50 transition-colors">
-            Show All
+            View All Products
           </button>
         </div>
 
@@ -297,12 +301,13 @@ const Expertise = () => {
             </div>
             <div>
               <h2 className="text-4xl font-medium">
-                Prioritizing client needs and providing swift responses are
+                We combine decades of textile expertise with a client-first mindset to deliver
                 <span className="text-blue-700">
                   {" "}
-                  fundamental principles ensuring efficient legal solutions.
+                  tailored, high-quality products that meet the demands of the hospitality industry.
                 </span>
               </h2>
+
             </div>
           </div>
         </div>
@@ -310,8 +315,6 @@ const Expertise = () => {
     </div>
   );
 };
-
-
 
 interface Case {
   category: string;
@@ -321,39 +324,38 @@ interface Case {
 }
 
 const OurWork = () => {
-
   const cases: Case[] = [
     {
-      category: 'Commercial Law',
-      title: 'Airport Litigation',
+      category: "Hotels & Resorts",
+      title: "Luxury Hotel Linen Upgrade",
       description:
-        'Paris airport faced a legal challenge when neighboring residents filed a lawsuit against noise pollution caused by increas...',
-      team: ['./man.jpg', './man.jpg', './man.jpg'],
+        "Partnered with a 5-star hotel chain in Paris to supply premium bed linens and towels, enhancing guest comfort and sustainability…",
+      team: ["/team1.jpg", "/team2.jpg", "/team3.jpg"],
     },
     {
-      category: 'Corporate Law',
-      title: 'Patent Defense',
+      category: "Spa & Wellness",
+      title: "Tailored Spa Textiles",
       description:
-        'Client, a young tech company, faced patent infringements from competitors attempting to replicate their innovative developments…',
-      team: ['/team2.jpg', '/team3.jpg'],
+        "Delivered custom-made soft cotton robes and treatment bed covers for a luxury wellness resort in the South of France…",
+      team: ["/team2.jpg", "/team3.jpg"],
     },
     {
-      category: 'Migration Law',
-      title: 'Migration Legal Case',
+      category: "Laundries",
+      title: "Bulk Supply for Industrial Laundry",
       description:
-        'A multinational corporation faced a complex legal challenge regarding immigration laws when several of its key...',
-      team: ['/team1.jpg', '/team3.jpg'],
+        "Supported a commercial laundry service in Belgium with durable, easy-to-maintain textiles for hotels and restaurants…",
+      team: ["/team1.jpg", "/team3.jpg"],
     },
   ];
+
 
   return (
     <div className="bg-gray-100 py-10 md:py-20">
       <div className="max-w-7xl mx-auto  py-8 p-5">
         <div className="flex justify-between items-center mb-10 ">
-
           <div className="flex items-center text-blue-700">
             <Dot size={50} />
-            <p className="font-medium">Our Work</p>
+            <p className="font-medium">Our Projects</p>
           </div>
 
           <div>
@@ -370,15 +372,13 @@ const OurWork = () => {
                 className="bg-white rounded-xl shadow-md p-6 flex flex-col justify-between pt-16"
               >
                 <div>
-
                   <div className="flex justify-between">
                     <div className="flex items-center space-x-2 mb-2">
                       {item.team.map((img, i) => (
                         <img
                           key={i}
-                          src={'./man.jpg'}
+                          src={"./man.jpg"}
                           alt="team member"
-
                           className="rounded-full w-10 h-10"
                         />
                       ))}
@@ -398,57 +398,57 @@ const OurWork = () => {
             ))}
           </div>
         </div>
-
       </div>
     </div>
-  )
-}
-
+  );
+};
 
 const Reviews = () => {
   const reviews = [
     {
-      img: '/man-review.png',
-      text: "Choosing Legal Experts was the best decision I made for my legal needs; their team’s proficiency and attention to detail ensured a smooth and successful resolution.",
-      name: "Christian Adams",
-      position: "CTO of Research and Development",
-      date: "March 2024"
+      img: "/man-review.png",
+      text: "Working with this textile supplier transformed our guest experience. The linens are luxurious, durable, and our clients instantly noticed the upgrade.",
+      name: "Elise Moreau",
+      position: "Hotel Manager, Le Grand Hôtel Paris",
+      date: "January 2024",
     },
     {
-      img: '/man-review.png',
-      text: "I am delighted to share my experience with 'Law.' Their professionalism, personalized approach, and commitment to excellence truly set them apart. I recommend their services to anyone in need of top-notch legal assistance.",
-      name: "Andy Petter",
-      position: "CFO of International Markets",
-      date: "April 2024"
+      img: "/man-review.png",
+      text: "The bathrobes and spa towels were of exceptional quality. Our customers frequently compliment their softness and comfort. Fast delivery too!",
+      name: "Marc Lefevre",
+      position: "Spa Director, Bleu Ciel Wellness",
+      date: "February 2024",
     },
     {
-      img: '/man-review.png',
-      text: "Experts exceeded my expectations with impeccable legal expertise and dedication to client satisfaction. Highly recommended.",
-      name: "Sarah Johnson",
-      position: "CEO of XYZ Company",
-      date: "April 2024"
-    }, {
-      img: '/man-review.png',
-      text: "Choosing Legal Experts was the best decision I made for my legal needs; their team’s proficiency and attention to detail ensured a smooth and successful resolution.",
-      name: "Christian Adams",
-      position: "CTO of Research and Development",
-      date: "March 2024"
+      img: "/man-review.png",
+      text: "We've partnered for bulk linen supply for over a year now. Their textiles hold up extremely well to industrial washing. Highly reliable.",
+      name: "Isabelle Dumas",
+      position: "Operations Manager, Lavandis Pro",
+      date: "March 2024",
     },
     {
-      img: '/man-review.png',
-      text: "I am delighted to share my experience with 'Law.' Their professionalism, personalized approach, and commitment to excellence truly set them apart. I recommend their services to anyone in need of top-notch legal assistance.",
-      name: "Andy Petter",
-      position: "CFO of International Markets",
-      date: "April 2024"
+      img: "/man-review.png",
+      text: "Table linens and aprons were customized exactly to our branding. High-quality fabric, beautiful stitching, and delivered on time.",
+      name: "Thomas Garnier",
+      position: "Owner, Maison Garnier",
+      date: "March 2024",
+    },
+    {
+      img: "/man-review.png",
+      text: "They understood our needs perfectly. Everything from pillowcases to duvet covers feels premium. Our guests have never been more satisfied.",
+      name: "Claire Fontaine",
+      position: "Director, Hôtel Lumière",
+      date: "April 2024",
     },
   ];
+
 
   return (
     <div className="max-w-7xl mx-auto p-4">
       <div className="flex justify-between items-center mb-10">
         <div className="flex items-center text-blue-700">
           <Dot size={40} />
-          <p className="font-medium text-lg ml-2">Reviews</p>
+          <p className="font-medium text-lg ml-2">Client Feedback</p>
         </div>
         <button className="text-blue-600 border border-blue-600 rounded-full px-4 py-1 text-sm font-medium hover:bg-blue-50 transition-colors">
           Show All
@@ -488,10 +488,8 @@ const Reviews = () => {
         ))}
       </Swiper>
     </div>
-  )
-}
-
-
+  );
+};
 
 const Contacts = () => {
   return (
@@ -499,19 +497,18 @@ const Contacts = () => {
       <div className="container mx-auto flex flex-col md:flex-row justify-center items-center gap-5">
         <div className="flex justify-center text-center md:block md:text-start">
           <h2 className="lg:text-7xl md:text-5xl text-4xl  font-medium text-white w-7/12">
-            Lets make an action plan!
+            Let’s plan your textile solution.
           </h2>
         </div>
         <div>
           <button className=" bg-white text-black py-3 px-7 rounded-3xl">
-            Get a Consultation
+            Request a Consultation
           </button>
         </div>
       </div>
     </div>
   );
 };
-
 
 const Footer = () => {
   const menuItems = [
@@ -526,7 +523,6 @@ const Footer = () => {
     <div className="bg-[#d9dce4] text-gray-800">
       <div className="container mx-auto px-4 pt-12 pb-6">
         <div className="grid grid-cols-12 gap-5 items-start">
-
           <div className="col-span-12 md:col-span-3 flex flex-col md:items-start items-center gap-4">
             <img width={70} src="./lawyerlogo.png" alt="Logo" />
             <div className="flex gap-4">

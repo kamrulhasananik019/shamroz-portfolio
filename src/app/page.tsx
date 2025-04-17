@@ -51,14 +51,8 @@ const NavBar = () => {
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
         <div>
-          <img
-            width={70}
-            className="invert"
-            src="./lawyerlogo.png"
-            alt="Logo"
-          />
+          <p className="text-2xl font-medium text-white">KSK TEXTILES</p>
         </div>
-
         <div className="hidden md:flex space-x-6 text-white items-center">
           {menuItems.map((item, index) => (
             <button key={index} className="hover:text-blue-300 transition">
@@ -570,7 +564,8 @@ const Footer = () => {
         <div className="grid grid-cols-12 gap-6 items-start">
           {/* Logo + Socials */}
           <div className="col-span-12 md:col-span-3 flex flex-col items-center md:items-start gap-4 text-center md:text-left">
-            <img width={70} src="./lawyerlogo.png" alt="Logo" />
+
+            <p className="text-2xl font-medium ">KSK TEXTILES</p>
             <div className="flex gap-4">
               <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition">
                 <Facebook size={18} />

@@ -138,9 +138,9 @@ const Hero = () => {
                 <div className="md:text-start text-center flex flex-col justify-center items-center md:grid grid-cols-2">
                   <div>
                     <p className="py-10">{slide.description}</p>
-                    <button className=" bg-white text-black py-3 px-7 rounded-3xl">
+                    <a href="#our-work" className=" bg-white text-black py-3 px-7 rounded-3xl">
                       Explore Our Products
-                    </button>
+                    </a>
                     <div className="flex gap-5 pt-10 md:justify-start justify-center">
                       <Link href="https://www.linkedin.com/in/ksk-textile-quality-textile-solutions-9a5288361/" className="h-10 w-10 text-black bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition">
                         <Linkedin size={18} />
@@ -284,14 +284,11 @@ const Expertise = () => {
   return (
     <div id="expertise">
       <div className="max-w-7xl mx-auto  py-8 pb-16 p-5">
-        <div className="flex justify-between items-center mb-8">
+        <div className=" mb-8">
           <div className="flex items-center text-pink-600">
             <Dot size={50} />
             <h2 className="font-medium">Our Expertise</h2>
           </div>
-          <button className="text-pink-600 border border-pink-600 rounded-full px-4 py-1 text-sm font-medium hover:bg-blue-50 transition-colors">
-            View All Products
-          </button>
         </div>
 
         <div className="space-y-12">
@@ -398,14 +395,12 @@ const OurWork = () => {
   return (
     <div id="our-work" className="bg-gray-100 py-10 md:py-20">
       <div className="max-w-7xl mx-auto py-8 p-5">
-        <div className="flex justify-between items-center mb-10">
+        <div className=" mb-10">
           <div className="flex items-center text-pink-600">
             <Dot size={50} />
             <p className="font-medium">Our Projects</p>
           </div>
-          <button className="text-pink-600 border border-pink-600 rounded-full px-4 py-1 text-sm font-medium hover:bg-blue-50 transition-colors">
-            Show All
-          </button>
+
         </div>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -539,9 +534,9 @@ const Contacts = () => {
           </h2>
         </div>
         <div>
-          <button className=" bg-white text-black py-3 px-7 rounded-3xl">
+          <Link href="https://www.linkedin.com/in/ksk-textile-quality-textile-solutions-9a5288361/" className=" bg-white text-black py-3 px-7 rounded-3xl">
             Request a Consultation
-          </button>
+          </Link>
         </div>
       </div>
     </div>

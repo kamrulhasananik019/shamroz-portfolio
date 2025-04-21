@@ -15,8 +15,9 @@ import {
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 
 export default function HomePage() {
   return (
@@ -116,17 +117,22 @@ const Hero = () => {
 
   return (
     <div>
-      <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+      <Swiper pagination={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        modules={[Pagination, Autoplay]} className="mySwiper">
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div
-              className="relative flex items-center md:h-[90vh] h-[100vh] text-white bg-cover bg-center bg-no-repeat"
+              className="relative flex items-center py-10 h-screen  text-white bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${slide.image})` }}
             >
 
               <div className="absolute inset-0 bg-black opacity-60 z-0" />
               <div className="relative z-10 container mx-auto px-5 md:text-start text-center md:block flex flex-col justify-center items-center">
-                <h1 className="md:text-5xl lg:text-6xl sm:text-4xl text-3xl font-semibold md:w-5/12">
+                <h1 className="md:text-4xl lg:text-5xl pt-5  sm:text-4xl text-3xl xl:text-6xl font-semibold md:w-5/12">
                   {slide.title}
                 </h1>
                 <div className="md:text-start text-center flex flex-col justify-center items-center md:grid grid-cols-2">

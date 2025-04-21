@@ -4,17 +4,15 @@ import { useState } from "react";
 
 import {
   ArrowRight,
-  Dot,
-  Facebook,
-  Instagram,
-  Linkedin,
+  Dot, Linkedin,
   Menu,
-  X,
+  X
 } from "lucide-react";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
+import Link from "next/link";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -39,12 +37,10 @@ export default function HomePage() {
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuItems = [
-    "Expertise",
-    "About",
-    "Our Work",
-    "Team",
-    "Blog",
-    "Contacts",
+    { label: "About", id: "about" },
+    { label: "Expertise", id: "expertise" },
+    { label: "Our Work", id: "our-work" },
+    { label: "Reviews", id: "reviews" },
   ];
 
   return (
@@ -52,13 +48,17 @@ const NavBar = () => {
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
         <div>
-          <p className="text-2xl font-medium text-white">KSK TEXTILES</p>
+          <p className="text-2xl font-medium text-white">KSK TEXTILE</p>
         </div>
         <div className="hidden md:flex space-x-6 text-white items-center">
           {menuItems.map((item, index) => (
-            <button key={index} className="hover:text-blue-300 transition">
-              {item}
-            </button>
+            <a
+              key={index}
+              href={`#${item.id}`}
+              className="hover:text-blue-300 transition"
+            >
+              {item.label}
+            </a>
           ))}
         </div>
 
@@ -73,13 +73,13 @@ const NavBar = () => {
         <div className="md:hidden bg-black/80 backdrop-blur-sm px-6 pb-4">
           <div className="flex flex-col space-y-4 text-white">
             {menuItems.map((item, index) => (
-              <button
+              <a
                 key={index}
-                onClick={() => setIsOpen(false)}
-                className="hover:text-blue-300 transition text-left"
+                href={`#${item.id}`}
+                className="hover:text-blue-300 transition"
               >
-                {item}
-              </button>
+                {item.label}
+              </a>
             ))}
           </div>
         </div>
@@ -142,15 +142,9 @@ const Hero = () => {
                       Explore Our Products
                     </button>
                     <div className="flex gap-5 pt-10 md:justify-start justify-center">
-                      <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center">
-                        <Facebook width={30} />
-                      </div>
-                      <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center">
-                        <Linkedin />
-                      </div>
-                      <div className="h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center">
-                        <Instagram />
-                      </div>
+                      <Link href="https://www.linkedin.com/in/ksk-textile-quality-textile-solutions-9a5288361/" className="h-10 w-10 text-black bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition">
+                        <Linkedin size={18} />
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -205,7 +199,7 @@ const Skills = () => {
   ];
 
   return (
-    <div className="flex justify-center ">
+    <div id="about" className="flex justify-center ">
       <div className="max-w-7xl  ">
         <div className="md:pt-36 px-5">
           <div className="grid md:grid-cols-2 gap-5">
@@ -288,7 +282,7 @@ const Expertise = () => {
     },
   ];
   return (
-    <div>
+    <div id="expertise">
       <div className="max-w-7xl mx-auto  py-8 pb-16 p-5">
         <div className="flex justify-between items-center mb-8">
           <div className="flex items-center text-pink-600">
@@ -402,7 +396,7 @@ const OurWork = () => {
   ];
 
   return (
-    <div className="bg-gray-100 py-10 md:py-20">
+    <div id="our-work" className="bg-gray-100 py-10 md:py-20">
       <div className="max-w-7xl mx-auto py-8 p-5">
         <div className="flex justify-between items-center mb-10">
           <div className="flex items-center text-pink-600">
@@ -490,7 +484,7 @@ const Reviews = () => {
 
 
   return (
-    <div className="max-w-7xl mx-auto p-4">
+    <div id="reviews" className="max-w-7xl mx-auto p-4">
       <div className="flex justify-between items-center mb-10">
         <div className="flex items-center text-pink-600">
           <Dot size={40} />
@@ -571,17 +565,11 @@ const Footer = () => {
           {/* Logo + Socials */}
           <div className="col-span-12 md:col-span-3 flex flex-col items-center md:items-start gap-4 text-center md:text-left">
 
-            <p className="text-2xl font-medium ">KSK TEXTILES</p>
+            <p className="text-2xl font-medium ">KSK TEXTILE</p>
             <div className="flex gap-4">
-              <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition">
-                <Facebook size={18} />
-              </div>
-              <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition">
+              <Link href="https://www.linkedin.com/in/ksk-textile-quality-textile-solutions-9a5288361/" className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition">
                 <Linkedin size={18} />
-              </div>
-              <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition">
-                <Instagram size={18} />
-              </div>
+              </Link>
             </div>
           </div>
 

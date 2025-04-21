@@ -6,7 +6,7 @@ import "~/styles/globals.css";
 import { TRPCReactProvider } from "~/trpc/react";
 
 export const metadata: Metadata = {
-  title: "Shamroz",
+  title: "KSK TEXTILE",
   description: "",
 };
 

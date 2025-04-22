@@ -66,7 +66,7 @@ const NavBar = () => {
   const [lang, setLang] = useState("EN");
   const [showLangDropdown, setShowLangDropdown] = useState(false);
 
-  const toggleLang = (language) => {
+  const toggleLang = (language: any) => {
     setLang(language);
     setShowLangDropdown(false);
   };

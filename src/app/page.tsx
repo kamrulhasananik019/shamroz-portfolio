@@ -765,7 +765,7 @@ const Reviews = () => {
 
 const CtaBar = () => {
   return (
-    <div className="bg-[url('/hero.jpg')] m-1 rounded-3xl py-28 my-5">
+    <div className="bg-[url('/hero.jpg')] m-1 rounded-3xl py-28 mt-5">
       <div className="container mx-auto flex flex-col md:flex-row justify-center items-center gap-5">
         <div className="flex justify-center text-center md:block md:text-start">
           <h2 className="lg:text-7xl md:text-5xl text-4xl  font-medium text-white w-7/12">
@@ -784,8 +784,8 @@ const CtaBar = () => {
 
 const ContactUs = () => {
   return (
-    <div className="w-full min-h-screen bg-white" id="contact-us">
-      <div className="container mx-auto px-4 py-12">
+    <div className="w-full min-h-screen bg-white mb-5 pt-10" id="contact-us">
+      <div className="container mx-auto px-4 " >
 
         <div className="flex flex-col items-center justify-center mb-12">
 

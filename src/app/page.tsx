@@ -3,9 +3,13 @@
 import { useState } from "react";
 
 import {
+  Award,
   Bed,
+  CheckCircle,
   Dot, Linkedin,
   Menu,
+  RefreshCw,
+  Shield,
   Shirt,
   Sparkles,
   Waves,
@@ -31,8 +35,10 @@ export default function HomePage() {
       </div>
       <Expertise />
       <OurWork />
+      <QualityAssurance />
       <Reviews />
-      <Contacts />
+      <CtaBar />
+      <ContactUs />
       <Footer />
     </div>
   );
@@ -65,7 +71,7 @@ const NavBar = () => {
         <p className="text-2xl font-medium text-white">KSK TEXTILE</p>
         <div className="hidden md:flex flex-1 justify-center space-x-6 text-white font-medium">
           {menuItems.map((item, index) => (
-            <a key={index} href={`#${item.id}`} className="hover:text-blue-300 transition">
+            <a key={index} href={`#${item.id}`} className="hover:text-pink-300 transition">
               {item.label}
             </a>
           ))}
@@ -96,7 +102,7 @@ const NavBar = () => {
         <div className="md:hidden bg-black/80 backdrop-blur-sm px-6 pb-6 flex justify-center">
           <div className="flex flex-col items-center space-y-4 text-white font-medium mt-4 w-full">
             {menuItems.map((item, index) => (
-              <a key={index} href={`#${item.id}`} className="hover:text-blue-300 transition">
+              <a key={index} href={`#${item.id}`} className="hover:text-pink-300 transition">
                 {item.label}
               </a>
             ))}
@@ -572,6 +578,98 @@ const OurWork = () => {
   );
 };
 
+const QualityAssurance = () => {
+  return (
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-pink-50">
+      <div className="max-w-7xl mx-auto">
+
+        <div className="flex flex-col md:flex-row items-center mb-12">
+          <div className="md:w-1/3 mb-6 md:mb-0 flex justify-center">
+            <div className="relative">
+              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-pink-400 to-pink-600 opacity-75 blur"></div>
+              <div className="relative bg-white p-6 rounded-full">
+                <Award className="w-20 h-20 text-pink-600" />
+              </div>
+            </div>
+          </div>
+          <div className="md:w-2/3 md:pl-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-pink-600 mb-4">Quality Assurance</h2>
+            <p className="text-gray-700 text-lg leading-relaxed">
+              At <span className="font-semibold text-pink-600">KSK Textile</span>, we know that our clients rely on
+              textile products that are not only professional-grade but consistently reliable and durable. That's why we
+              maintain strict quality control measures from sourcing to final delivery.
+            </p>
+          </div>
+        </div>
+
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <div className="border border-pink-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6">
+            <div className="flex items-start mb-4">
+              <CheckCircle className="w-6 h-6 text-pink-600 mr-3 flex-shrink-0" />
+              <h3 className="font-semibold text-pink-600 text-xl">Rigorous Standards</h3>
+            </div>
+            <p className="text-gray-700">
+              Our commitment is simple: every product we deliver must meet or exceed industry standards. From raw
+              material selection to the final stitch, each production batch is carefully inspected for texture,
+              strength, color consistency, and finish.
+            </p>
+          </div>
+
+          <div className="border border-pink-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6">
+            <div className="flex items-start mb-4">
+              <Shield className="w-6 h-6 text-pink-600 mr-3 flex-shrink-0" />
+              <h3 className="font-semibold text-pink-600 text-xl">Certified Partners</h3>
+            </div>
+            <p className="text-gray-700">
+              We partner exclusively with vetted manufacturers who comply with internationally recognized quality
+              benchmarks and ethical production practices. All our partner facilities hold essential certifications,
+              including <span className="font-medium text-pink-600">OEKO-TEX Standard 100</span>, guaranteeing safety
+              and sustainability.
+            </p>
+          </div>
+
+          <div className="border border-pink-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6">
+            <div className="flex items-start mb-4">
+              <Sparkles className="w-6 h-6 text-pink-600 mr-3 flex-shrink-0" />
+              <h3 className="font-semibold text-pink-600 text-xl">Performance Testing</h3>
+            </div>
+            <p className="text-gray-700">
+              Our textiles are rigorously tested to meet the demands of professional use — including washing durability,
+              colorfastness, shrinkage resistance, and comfort under intensive conditions.
+            </p>
+          </div>
+
+          <div className="border border-pink-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6">
+            <div className="flex items-start mb-4">
+              <RefreshCw className="w-6 h-6 text-pink-600 mr-3 flex-shrink-0" />
+              <h3 className="font-semibold text-pink-600 text-xl">Continuous Improvement</h3>
+            </div>
+            <p className="text-gray-700">
+              We believe in continuous improvement. By actively monitoring client feedback and market trends, we adapt
+              our sourcing and production strategies to stay ahead of evolving needs.
+            </p>
+          </div>
+        </div>
+
+
+        <div className="bg-white border border-pink-200 rounded-lg p-8 text-center shadow-sm">
+          <p className="text-xl font-medium text-pink-600 mb-4">
+            <span className="font-semibold">Trust KSK Textile</span> to deliver quality you can feel — and rely on.
+          </p>
+          <div className="inline-flex items-center justify-center mt-2">
+            <a
+              href="#contact-us"
+              className="inline-block mt-4 bg-pink-600 hover:bg-pink-700 text-white font-semibold py-3 px-8 rounded-full shadow-md transition duration-300 ease-in-out"
+            >
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 const Reviews = () => {
   const reviews = [
@@ -614,7 +712,7 @@ const Reviews = () => {
 
 
   return (
-    <div id="reviews" className="max-w-7xl mx-auto p-4">
+    <div id="reviews" className="max-w-7xl mx-auto p-4 md:my-28 my-10">
       <div className="flex justify-between items-center mb-10">
         <div className="flex items-center text-pink-600">
           <Dot size={40} />
@@ -659,13 +757,13 @@ const Reviews = () => {
   );
 };
 
-const Contacts = () => {
+const CtaBar = () => {
   return (
     <div className="bg-[url('/hero.jpg')] m-1 rounded-3xl py-28 my-5">
       <div className="container mx-auto flex flex-col md:flex-row justify-center items-center gap-5">
         <div className="flex justify-center text-center md:block md:text-start">
           <h2 className="lg:text-7xl md:text-5xl text-4xl  font-medium text-white w-7/12">
-            Let’s plan your textile solution.
+            Let’s plan your textile solution
           </h2>
         </div>
         <div>
@@ -677,6 +775,16 @@ const Contacts = () => {
     </div>
   );
 };
+
+const ContactUs = () => {
+  return (
+    <div>
+      <div className="max-w-7xl mx-auto">
+        contuct us
+      </div>
+    </div>
+  )
+}
 
 const Footer = () => {
 

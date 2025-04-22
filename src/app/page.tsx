@@ -3,11 +3,17 @@
 import { useState } from "react";
 
 import {
+  ArrowUp,
   Award,
   Bed,
+  Building,
   CheckCircle,
-  Dot, Linkedin,
+  Dot,
+  Factory,
+  Linkedin,
+  Mail,
   Menu,
+  Phone,
   RefreshCw,
   Shield,
   Shirt,
@@ -778,9 +784,116 @@ const CtaBar = () => {
 
 const ContactUs = () => {
   return (
-    <div>
-      <div className="max-w-7xl mx-auto">
-        contuct us
+    <div className="w-full min-h-screen bg-white" id="contact-us">
+      <div className="container mx-auto px-4 py-12">
+
+        <div className="flex flex-col items-center justify-center mb-12">
+
+          <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">Contact Us</h1>
+          <p className=" text-gray-600 text-center max-w-3xl">
+            We're here to support you with all your textile needs — whether you're looking for product
+            information, placing an order, or exploring a partnership.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl mx-auto">
+
+          <div className="lg:col-span-6 bg-white p-6 rounded-lg">
+            <h2 className="text-2xl font-bold mb-4">Send Us A Message</h2>
+            <p className="text-gray-600 mb-6">
+              Reach out to us for inquiries, quotes, or collaborations, and our team will be happy to
+              provide tailored solutions with prompt and professional service
+            </p>
+
+            <form className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" placeholder="First Name" className="w-full p-4 border rounded-md" />
+                <input type="text" placeholder="Last Name" className="w-full p-4 border rounded-md" />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="tel" placeholder="Phone Number" className="w-full p-4 border rounded-md" />
+                <input type="email" placeholder="Email Address" className="w-full p-4 border rounded-md" />
+              </div>
+
+              <textarea placeholder="Message" className="w-full p-4 border rounded-md h-40"></textarea>
+
+              <button
+                type="submit"
+                className="bg-pink-600 hover:bg-pink-700 text-white px-8 py-3 rounded-full flex items-center"
+              >
+                Send Message
+                <ArrowUp className="ml-2 h-4 w-4 rotate-45" />
+              </button>
+            </form>
+          </div>
+
+
+          <div className="lg:col-span-6 space-y-6">
+
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+              <div className="flex items-start gap-4">
+                <div className="bg-gray-100 p-4 rounded-full">
+                  <Building className="h-6 w-6 text-pink-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">Head Office</h3>
+                  <p className="text-gray-600">132 Regency Arcade, Mall Road, Faisalabad - Pakistan.</p>
+                </div>
+              </div>
+            </div>
+
+
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+              <div className="flex items-start gap-4">
+                <div className="bg-gray-100 p-4 rounded-full">
+                  <Factory className="h-6 w-6 text-pink-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">Factory</h3>
+                  <p className="text-gray-600">
+                    Bawa Chak Main Stop, Masjid Wali Gali, Opp. Sultan Chemicals
+                    <br />
+                    Sargodha Road, Faisalabad - Pakistan
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+              <div className="flex items-start gap-4">
+                <div className="bg-gray-100 p-4 rounded-full">
+                  <Phone className="h-6 w-6 text-pink-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">Call or Text</h3>
+                  <p className="text-gray-600">+33 7 82 86 55 18</p>
+                </div>
+              </div>
+            </div>
+
+
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+              <div className="flex items-start gap-4">
+                <div className="bg-gray-100 p-4 rounded-full">
+                  <Mail className="h-6 w-6 text-pink-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">Send Email</h3>
+                  <p className="text-gray-600">info@neelumfabrics.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div className="fixed bottom-6 right-6">
+        <button className="bg-pink-600 hover:bg-pink-700 text-white p-3 rounded-sm shadow-lg" aria-label="Scroll to top">
+          <ArrowUp className="h-5 w-5" />
+        </button>
       </div>
     </div>
   )

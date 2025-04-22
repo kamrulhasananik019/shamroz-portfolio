@@ -12,6 +12,7 @@ import {
 import "swiper/css";
 import "swiper/css/pagination";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -23,7 +24,7 @@ export default function HomePage() {
       <NavBar />
       <Hero />
       <div className="bg-gray-100 py-10">
-        <Skills />
+        <AboutUs />
       </div>
       <Expertise />
       <OurWork />
@@ -158,7 +159,7 @@ const Hero = () => {
 };
 
 
-const Skills = () => {
+const AboutUs = () => {
   const statsData = [
     {
       value: "40+",
@@ -199,36 +200,78 @@ const Skills = () => {
   ];
 
   return (
-    <div id="about" className="flex justify-center ">
-      <div className="max-w-7xl  ">
-        <div className="md:pt-36 px-5">
-          <div className="grid md:grid-cols-2 gap-5">
-            <div>
-              <div className="flex items-center text-pink-600">
-                <Dot size={50} />
-                <p className="font-medium">Introduction</p>
+    <section id="about" className="flex justify-center" lang="en" title="About KSK Textile - European Textile Supplier">
+      <div className="max-w-7xl w-full">
+        <div className="md:pt-16 px-5">
+          <article className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 items-center">
+            <figure className="relative mx-auto max-w-md lg:max-w-none mb-8 lg:mb-0 order-1 lg:order-1">
+              <div className="relative">
+                <Image
+                  src="/about.png"
+                  alt="Main textile display"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto rounded-xl shadow-lg"
+                />
+                <div className="absolute -bottom-6 -right-4 sm:-bottom-8 sm:-right-6 md:-bottom-10 md:-right-8 lg:-bottom-12 lg:right-0">
+                  <Image
+                    src="/about-2.png"
+                    alt="Secondary textile display"
+                    width={200}
+                    height={150}
+                    className="w-24 sm:w-32 md:w-36 lg:w-44 border-4 border-white rounded-xl shadow-xl"
+                  />
+                </div>
               </div>
+            </figure>
+
+            <div className="text-gray-800 order-2 lg:order-2">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-pink-600">About KSK Textile</h2>
+              <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-3 sm:mb-4">
+                <span className="font-semibold text-pink-600">KSK Textile</span> is your dedicated partner in high-quality
+                textile supply, proudly serving hospitality professionals, laundries, and cleaning companies across Europe.
+              </p>
+              <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-3 sm:mb-4">
+                We specialize in delivering a{" "}
+                <span className="font-semibold text-pink-600">wide range of textile solutions</span>, including hotel and
+                hospital linens, home textiles, and more — combining competitive pricing, durable quality, and reliable
+                service.
+              </p>
+              <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-3 sm:mb-4">
+                We understand the unique needs of businesses that rely on textile products daily. That's why we focus on
+                consistency, flexibility, and quick response — ensuring you always have what you need, when you need it.
+              </p>
+              <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                Whether you're managing a boutique hotel, running an industrial laundry, or sourcing for a large operation,
+                we work with trusted manufacturers to offer tailored solutions to match your standards and budget.
+              </p>
+            </div>
+          </article>
+
+          <section aria-labelledby="why-intro" className="grid md:grid-cols-2 gap-5 pt-16 md:pt-32">
+            <div className="flex items-center text-pink-600">
+              <Dot size={50} />
+              <h2 id="why-intro" className="font-medium">Introduction</h2>
             </div>
             <div>
-              <h2 className="text-4xl font-medium">
+              <h3 className="text-4xl font-medium">
                 We are a trusted textile supplier delivering solutions{" "}
                 <span className="text-pink-600">
                   tailored to the highest standards of the hospitality industry
                 </span>
-              </h2>
+              </h3>
             </div>
+          </section>
 
-          </div>
-
-          <div>
+          <section aria-labelledby="why-choose-us">
             <div className="flex items-center py-10 text-pink-600">
               <Dot size={50} />
-              <p className="font-medium ">why Choose Us</p>
+              <h2 id="why-choose-us" className="font-medium">Why Choose Us</h2>
             </div>
 
-            <div className="grid sm:grid-cols-2  md:grid-cols-3 gap-10">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
               {statsData.map((item, index) => (
-                <div key={index} className="p-5 bg-white rounded-md">
+                <article key={index} className="p-5 bg-white rounded-md" aria-label={item.label}>
                   <div className="pt-20">
                     <p className="text-5xl py-2 text-pink-600">
                       {item.value}{" "}
@@ -238,13 +281,13 @@ const Skills = () => {
                     </p>
                     <p className="text-sm w-9/12">{item.description}</p>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
-          </div>
+          </section>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

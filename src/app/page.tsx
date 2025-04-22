@@ -3,9 +3,12 @@
 import { useState } from "react";
 
 import {
-  ArrowRight,
+  Bed,
   Dot, Linkedin,
   Menu,
+  Shirt,
+  Sparkles,
+  Waves,
   X
 } from "lucide-react";
 
@@ -35,34 +38,53 @@ export default function HomePage() {
   );
 }
 
+const menuItems = [
+  { label: "Home", id: "home" },
+  { label: "About", id: "about" },
+  { label: "Expertise", id: "expertise" },
+  { label: "Our Work", id: "our-work" },
+  { label: "Reviews", id: "reviews" },
+  { label: "Contact Us", id: "contact-us" },
+
+];
+
+
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const menuItems = [
-    { label: "About", id: "about" },
-    { label: "Expertise", id: "expertise" },
-    { label: "Our Work", id: "our-work" },
-    { label: "Reviews", id: "reviews" },
-  ];
+  const [lang, setLang] = useState("EN");
+  const [showLangDropdown, setShowLangDropdown] = useState(false);
+
+  const toggleLang = (language) => {
+    setLang(language);
+    setShowLangDropdown(false);
+  };
 
   return (
-    <nav className="w-full bg-transparent absolute z-50">
-      <div className="container mx-auto flex items-center justify-between py-4 px-6">
-        {/* Logo */}
-        <div>
-          <p className="text-2xl font-medium text-white">KSK TEXTILE</p>
-        </div>
-        <div className="hidden md:flex space-x-6 text-white items-center">
+    <nav className="w-full bg-pink-600 sticky top-0 z-50">
+      <div className="container mx-auto flex justify-between items-center py-4 px-6 relative">
+        <p className="text-2xl font-medium text-white">KSK TEXTILE</p>
+        <div className="hidden md:flex flex-1 justify-center space-x-6 text-white font-medium">
           {menuItems.map((item, index) => (
-            <a
-              key={index}
-              href={`#${item.id}`}
-              className="hover:text-blue-300 transition"
-            >
+            <a key={index} href={`#${item.id}`} className="hover:text-blue-300 transition">
               {item.label}
             </a>
           ))}
         </div>
-
+        <div className="hidden md:block relative">
+          <button onClick={() => setShowLangDropdown(!showLangDropdown)} className="text-white font-semibold">
+            {lang}
+          </button>
+          {showLangDropdown && (
+            <div className="absolute right-0 mt-2 w-24 bg-white text-black rounded shadow-lg z-50">
+              <button onClick={() => toggleLang("EN")} className="block w-full px-4 py-2 hover:bg-gray-100 text-left">
+                English
+              </button>
+              <button onClick={() => toggleLang("FR")} className="block w-full px-4 py-2 hover:bg-gray-100 text-left">
+                French
+              </button>
+            </div>
+          )}
+        </div>
         <div className="md:hidden">
           <button onClick={() => setIsOpen(!isOpen)} className="text-white">
             {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -71,25 +93,34 @@ const NavBar = () => {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-black/80 backdrop-blur-sm px-6 pb-4">
-          <div className="flex flex-col space-y-4 text-white">
+        <div className="md:hidden bg-black/80 backdrop-blur-sm px-6 pb-6 flex justify-center">
+          <div className="flex flex-col items-center space-y-4 text-white font-medium mt-4 w-full">
             {menuItems.map((item, index) => (
-              <a
-                key={index}
-                href={`#${item.id}`}
-                className="hover:text-blue-300 transition"
-              >
+              <a key={index} href={`#${item.id}`} className="hover:text-blue-300 transition">
                 {item.label}
               </a>
             ))}
+            <div className="relative">
+              <button onClick={() => setShowLangDropdown(!showLangDropdown)} className="text-white font-semibold">
+                {lang}
+              </button>
+              {showLangDropdown && (
+                <div className="absolute right-0 mt-2 w-24 bg-white text-black rounded shadow-lg z-50">
+                  <button onClick={() => toggleLang("EN")} className="block w-full px-4 py-2 hover:bg-gray-100 text-left">
+                    English
+                  </button>
+                  <button onClick={() => toggleLang("FR")} className="block w-full px-4 py-2 hover:bg-gray-100 text-left">
+                    French
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}
     </nav>
   );
 };
-
-
 
 const Hero = () => {
   const slides = [
@@ -117,7 +148,7 @@ const Hero = () => {
   ];
 
   return (
-    <div>
+    <div id="home">
       <Swiper pagination={true}
         autoplay={{
           delay: 2500,
@@ -245,30 +276,17 @@ const AboutUs = () => {
                 Whether you're managing a boutique hotel, running an industrial laundry, or sourcing for a large operation,
                 we work with trusted manufacturers to offer tailored solutions to match your standards and budget.
               </p>
+
+              <a
+                href="#contact-us"
+                className="inline-block mt-4 bg-pink-600 hover:bg-pink-700 text-white font-semibold py-3 px-8 rounded-full shadow-md transition duration-300 ease-in-out"
+              >
+                Contact Us
+              </a>
             </div>
           </article>
 
-          <section aria-labelledby="why-intro" className="grid md:grid-cols-2 gap-5 pt-16 md:pt-32">
-            <div className="flex items-center text-pink-600">
-              <Dot size={50} />
-              <h2 id="why-intro" className="font-medium">Introduction</h2>
-            </div>
-            <div>
-              <h3 className="text-4xl font-medium">
-                We are a trusted textile supplier delivering solutions{" "}
-                <span className="text-pink-600">
-                  tailored to the highest standards of the hospitality industry
-                </span>
-              </h3>
-            </div>
-          </section>
-
-          <section aria-labelledby="why-choose-us">
-            <div className="flex items-center py-10 text-pink-600">
-              <Dot size={50} />
-              <h2 id="why-choose-us" className="font-medium">Why Choose Us</h2>
-            </div>
-
+          <section aria-labelledby="why-choose-us" className="pt-16">
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
               {statsData.map((item, index) => (
                 <article key={index} className="p-5 bg-white rounded-md" aria-label={item.label}>
@@ -291,89 +309,163 @@ const AboutUs = () => {
   );
 };
 
-interface ExpertiseItem {
-  title: string;
-  active?: boolean;
-}
-
-interface ExpertiseCategory {
-  title: string;
-  items: ExpertiseItem[];
-}
 
 const Expertise = () => {
-  const categories: ExpertiseCategory[] = [
-    {
-      title: "Product Categories",
-      items: [
-        { title: "Bed Linens" },
-        { title: "Bath Towels" },
-        { title: "Table Linens" },
-        { title: "Kitchen Textiles" },
-        { title: "Spa & Wellness Fabrics" },
-        { title: "Custom-Made Orders" },
-      ],
-    },
-    {
-      title: "Industries We Serve",
-      items: [
-        { title: "Hotels & Resorts" },
-        { title: "Laundries" },
-        { title: "Restaurants & Catering" },
-        { title: "Wellness & Spa Centers" },
-      ],
-    },
-  ];
   return (
-    <div id="expertise">
-      <div className="max-w-7xl mx-auto  py-8 pb-16 p-5">
-        <div className=" mb-8">
-          <div className="flex items-center text-pink-600">
-            <Dot size={50} />
-            <h2 className="font-medium">Our Expertise</h2>
+    <div id="expertise" className="bg-gradient-to-b from-white to-pink-50">
+      <div className="max-w-7xl mx-auto py-20 px-5 space-y-16">
+
+        <div className="text-center">
+          <div className="inline-flex items-center justify-center bg-pink-100 rounded-full px-4 py-1 mb-4">
+            <span className="text-pink-600 font-medium text-sm">What We Offer</span>
           </div>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-800 tracking-tight">Our Expertise</h2>
+          <p className="mt-6 text-gray-600 max-w-3xl mx-auto text-lg">
+            At KSK Textile, we provide a carefully curated selection of high-quality textile products designed to meet
+            the standards of hotels, laundries, and professional service providers across Europe.
+          </p>
         </div>
 
-        <div className="space-y-12">
-          {categories.map((category) => (
-            <div key={category.title} className="space-y-4">
-              <h3 className="text-gray-500 text-sm font-medium">
-                {category.title}
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {category.items.map((item) => (
-                  <div
-                    key={item.title}
-                    className="flex justify-between items-center border-t border-gray-200 hover:border-pink-600 py-4 px-4 cursor-pointer hover:bg-gray-50  hover:text-pink-600 transition-colors"
-                  >
-                    <span className="font-medium">/ {item.title}</span>
-                    <div className="w-10 h-10 rounded-full bg-gray-100  flex items-center justify-center  text-pink-600 ">
-                      <ArrowRight className="h-5 w-5 " />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white">
+            <div className="bg-gradient-to-r from-pink-600 to-pink-500 text-white p-6">
+              <div className="flex items-center gap-3">
+                <div className="bg-white/20 p-2 rounded-lg">
+                  <Bed className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-semibold">Bed Linen</h3>
+              </div>
+            </div>
+            <div className="p-6">
+              <div className="space-y-4">
+                <p className="text-gray-600 leading-relaxed">
+                  Our woven bed sheets combine durability and elegance — perfect for frequent use in hospitality
+                  settings.
+                </p>
+                <div className="bg-pink-50 rounded-lg p-4 space-y-3">
+                  <h4 className="font-medium text-gray-800">Available Options:</h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="bg-white rounded-md p-3 shadow-sm">
+                      <span className="text-pink-600 font-medium">Satin Sheets</span>
+                      <p className="text-sm text-gray-600 mt-1">T-200, T-250, T-300, T-400</p>
+                    </div>
+                    <div className="bg-white rounded-md p-3 shadow-sm">
+                      <span className="text-pink-600 font-medium">Satin Stripes</span>
+                      <p className="text-sm text-gray-600 mt-1">0.5cm, 1cm, 2cm, 3cm</p>
+                    </div>
+                    <div className="bg-white rounded-md p-3 shadow-sm">
+                      <span className="text-pink-600 font-medium">Percale Sheets</span>
+                      <p className="text-sm text-gray-600 mt-1">T-180, T-200</p>
+                    </div>
+                    <div className="bg-white rounded-md p-3 shadow-sm">
+                      <span className="text-pink-600 font-medium">Materials</span>
+                      <p className="text-sm text-gray-600 mt-1">100% cotton, poly-cotton</p>
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
 
-        <div className="mt-32">
-          <div className="grid md:grid-cols-2 gap-5 ">
-            <div>
-              <div className="flex items-center text-pink-600">
-                <Dot size={50} />
-                <p className="font-medium">Mission</p>
+
+          <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white">
+            <div className="bg-gradient-to-r from-pink-600 to-pink-500 text-white p-6">
+              <div className="flex items-center gap-3">
+                <div className="bg-white/20 p-2 rounded-lg">
+                  <Waves className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-semibold">Towels</h3>
               </div>
             </div>
-            <div>
-              <h2 className="text-4xl font-medium">
-                We combine decades of textile expertise with a client-first mindset to deliver
-                <span className="text-pink-600">
-                  {" "}
-                  tailored, high-quality products that meet the demands of the hospitality industry.
-                </span>
-              </h2>
+            <div className="p-6">
+              <div className="space-y-4">
+                <p className="text-gray-600 leading-relaxed">
+                  We offer soft, absorbent towels built to withstand industrial washing cycles — ideal for hotels, spas,
+                  and laundries.
+                </p>
+                <div className="bg-pink-50 rounded-lg p-4 space-y-3">
+                  <h4 className="font-medium text-gray-800">Available Options:</h4>
+                  <div className="grid grid-cols-1 gap-3">
+                    <div className="bg-white rounded-md p-3 shadow-sm">
+                      <span className="text-pink-600 font-medium">Weight Options</span>
+                      <p className="text-sm text-gray-600 mt-1">450, 500, and 550 gsm</p>
+                    </div>
+                    <div className="bg-white rounded-md p-3 shadow-sm">
+                      <span className="text-pink-600 font-medium">Customization</span>
+                      <p className="text-sm text-gray-600 mt-1">
+                        Customizable sizes and colors to match your brand identity
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
+
+          <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white">
+            <div className="bg-gradient-to-r from-pink-600 to-pink-500 text-white p-6">
+              <div className="flex items-center gap-3">
+                <div className="bg-white/20 p-2 rounded-lg">
+                  <Shirt className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-semibold">Uniforms & Workwear</h3>
+              </div>
+            </div>
+            <div className="p-6">
+              <div className="space-y-4">
+                <p className="text-gray-600 leading-relaxed">
+                  We supply professional-grade uniforms and accessories for cleaning services, hotel staff, and other
+                  frontline professionals.
+                </p>
+                <div className="bg-pink-50 rounded-lg p-4 space-y-3">
+                  <h4 className="font-medium text-gray-800">Key Features:</h4>
+                  <div className="grid grid-cols-1 gap-3">
+                    <div className="bg-white rounded-md p-3 shadow-sm flex items-center gap-3">
+                      <div className="h-8 w-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-600">
+                        <span className="font-bold">1</span>
+                      </div>
+                      <span className="text-gray-700">Durable, comfortable fabrics</span>
+                    </div>
+                    <div className="bg-white rounded-md p-3 shadow-sm flex items-center gap-3">
+                      <div className="h-8 w-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-600">
+                        <span className="font-bold">2</span>
+                      </div>
+                      <span className="text-gray-700">Tailored to function and form</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white">
+            <div className="bg-gradient-to-r from-pink-600 to-pink-500 text-white p-6">
+              <div className="flex items-center gap-3">
+                <div className="bg-white/20 p-2 rounded-lg">
+                  <Sparkles className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-semibold">Custom Orders</h3>
+              </div>
+            </div>
+            <div className="p-6">
+              <div className="space-y-4">
+                <p className="text-gray-600 leading-relaxed">
+                  Need something specific? We also offer custom textile sourcing through our trusted manufacturing
+                  partners. Whether you are looking for a particular fabric, finish, or bulk order solution.
+                </p>
+                <div className="bg-pink-50 rounded-lg p-4">
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <p className="font-medium text-gray-800">Ready to discuss your requirements?</p>
+                    <a href="#contact-us" className="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-md font-medium transition-colors duration-200">
+                      Request a Quote
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -587,14 +679,7 @@ const Contacts = () => {
 };
 
 const Footer = () => {
-  const menuItems = [
-    "Expertise",
-    "About",
-    "Our Work",
-    "Team",
-    "Blog",
-    "Contact",
-  ];
+
 
   return (
     <div className="bg-[#d9dce4] text-gray-800">
@@ -614,10 +699,14 @@ const Footer = () => {
           {/* Navigation Menu */}
           <div className="col-span-12 md:col-span-6 flex justify-center items-start mt-6 md:mt-0">
             <div className="flex flex-wrap justify-center gap-6 text-sm font-medium">
-              {menuItems.map((item, index) => (
-                <button key={index} className="hover:underline transition">
-                  {item}
-                </button>
+              {menuItems.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className="hover:underline transition"
+                >
+                  {item.label}
+                </a>
               ))}
             </div>
           </div>

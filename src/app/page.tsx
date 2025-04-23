@@ -497,106 +497,87 @@ interface Case {
 const Products = () => {
   const cases = [
     {
-      category: "Hotels & Resorts",
-      title: "plain towels",
+      title: "Plain Towels",
       img: "./products/plain-towels.webp",
     },
     {
-      category: "Spa & Wellness",
-      title: "dyed towels",
+      title: "Dyed Towels",
       img: "./products/dyed-towels.webp",
     },
     {
-      category: "Laundries",
-      title: "Bulk Supply for Industrial Laundry",
+      title: "Bathrobes",
       img: "./products/bathrobes.webp",
     },
     {
-      category: "Boutique Hotels",
-      title: "Elegant Bedding for Boutique Suites",
+      title: "Printed Bedsheets",
       img: "./products/printed-bedsheets.webp",
     },
     {
-      category: "Restaurants",
-      title: "Custom Table Linen Collection",
+      title: "Dyed Sheetsets",
       img: "./products/dyed-sheetsets.webp",
     },
     {
-      category: "Healthcare & Wellness",
-      title: "Sanitary Textiles for Clinics",
+      title: "Fitted Sheetsets",
       img: "./products/fitted-sheetsets.webp",
     },
     {
-      category: "Healthcare & Wellness",
-      title: "Sanitary Textiles for Clinics",
+      title: "Percale Sheetsets",
       img: "./products/percale-sheetsets.webp",
     },
     {
-      category: "Healthcare & Wellness",
-      title: "Sanitary Textiles for Clinics",
+      title: "Satin Stripe",
       img: "./products/satin-stripe.webp",
     },
     {
-      category: "Healthcare & Wellness",
-      title: "Sanitary Textiles for Clinics",
+      title: "Dyed Fabrics",
       img: "./products/dyed-fabrics.webp",
     },
     {
-      category: "Healthcare & Wellness",
-      title: "Sanitary Textiles for Clinics",
+      title: "Knitted Fabrics",
       img: "./products/knitted-fabrics.webp",
     },
     {
-      category: "Healthcare & Wellness",
-      title: "Sanitary Textiles for Clinics",
+      title: "Printed Fabrics",
       img: "./products/printed-fabrics.webp",
     },
     {
-      category: "Healthcare & Wellness",
-      title: "Sanitary Textiles for Clinics",
+      title: "Terry Mattress Protectors",
       img: "./products/terry-mattress-protectors.webp",
     },
     {
-      category: "Healthcare & Wellness",
-      title: "Sanitary Textiles for Clinics",
+      title: "Hospital Sheetsets",
       img: "./products/hospital-sheetsets.webp",
     },
     {
-      category: "Healthcare & Wellness",
-      title: "Sanitary Textiles for Clinics",
+      title: "Jersey Fitted Sheets",
       img: "./products/jersey-fitted-sheets.webp",
     },
     {
-      category: "Healthcare & Wellness",
-      title: "Sanitary Textiles for Clinics",
+      title: "Chef Gowns",
       img: "./products/chef-gowns.webp",
     },
     {
-      category: "Healthcare & Wellness",
-      title: "Sanitary Textiles for Clinics",
+      title: "Chef Coats",
       img: "./products/chef-coats.webp",
     },
     {
-      category: "Healthcare & Wellness",
-      title: "Sanitary Textiles for Clinics",
+      title: "Chef Hats And Approns",
       img: "./products/chef-hats-and-approns.webp",
     },
     {
-      category: "Healthcare & Wellness",
-      title: "Sanitary Textiles for Clinics",
+      title: "Doctor Gowns",
       img: "./products/doctor-gowns.webp",
     },
     {
-      category: "Healthcare & Wellness",
-      title: "Sanitary Textiles for Clinics",
+      title: "Patient Gowns1",
       img: "./products/patient-gowns1.webp",
     },
     {
-      category: "Healthcare & Wellness",
-      title: "Sanitary Textiles for Clinics",
+      title: "Doctor Scrubs",
       img: "./products/doctor-scrubs.webp",
     },
   ];
+
 
   const [showAll, setShowAll] = useState(false);
   const visibleProducts = showAll ? cases : cases.slice(0, 6);
@@ -625,9 +606,6 @@ const Products = () => {
                 />
               </div>
               <div className="p-5">
-                <p className="text-sm text-pink-600 font-medium py-1">
-                  {item.category}
-                </p>
                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
               </div>
             </div>

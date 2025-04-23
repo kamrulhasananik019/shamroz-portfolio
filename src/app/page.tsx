@@ -829,10 +829,13 @@ const ContactUs: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const fullName = `${formData.firstName} ${formData.lastName}`;
-    const mailtoLink = `mailto:info@neelumfabrics.com?subject=Contact%20Form%20Submission&body=${encodeURIComponent(
+    const mailLink = `mailto:info@neelumfabrics.com?subject=Contact%20Form%20Submission&body=${encodeURIComponent(
       `Name: ${fullName}\nPhone: ${formData.phone}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     )}`;
-    window.location.href = mailtoLink;
+    const a = document.createElement("a")
+    a.href = mailLink;
+    document.body.appendChild(a);
+    a.click()
   };
 
   const contactInfoItems: ContactInfoItem[] = [

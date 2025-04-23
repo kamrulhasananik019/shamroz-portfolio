@@ -40,11 +40,11 @@ export default function HomePage() {
         <AboutUs />
       </div>
       <Expertise />
-      <OurWork />
+      <Products />
       <QualityAssurance />
       <Reviews />
-      <CtaBar />
       <ContactUs />
+      <CtaBar />
       <Footer />
     </div>
   );
@@ -54,7 +54,8 @@ const menuItems = [
   { label: "Home", id: "home" },
   { label: "About", id: "about" },
   { label: "Expertise", id: "expertise" },
-  { label: "Our Work", id: "our-work" },
+  { label: "Products", id: "products" },
+  { label: "Quality Assurance", id: "quality-assurance" },
   { label: "Reviews", id: "reviews" },
   { label: "Contact Us", id: "contact-us" },
 
@@ -493,65 +494,125 @@ interface Case {
   team: string[];
 }
 
-const OurWork = () => {
+const Products = () => {
   const cases = [
     {
       category: "Hotels & Resorts",
-      title: "Luxury Hotel Linen Upgrade",
-      description:
-        "Partnered with a 5-star hotel chain in Paris to supply premium bed linens and towels, enhancing guest comfort and sustainability…",
-      img: "./card-1.jpg",
+      title: "plain towels",
+      img: "./products/plain-towels.webp",
     },
     {
       category: "Spa & Wellness",
-      title: "Tailored Spa Textiles",
-      description:
-        "Delivered custom-made soft cotton robes and treatment bed covers for a luxury wellness resort in the South of France…",
-      img: "./card-2.jpg",
+      title: "dyed towels",
+      img: "./products/dyed-towels.webp",
     },
     {
       category: "Laundries",
       title: "Bulk Supply for Industrial Laundry",
-      description:
-        "Supported a commercial laundry service in Belgium with durable, easy-to-maintain textiles for hotels and restaurants…",
-      img: "./card-3.jpg",
+      img: "./products/bathrobes.webp",
     },
     {
       category: "Boutique Hotels",
       title: "Elegant Bedding for Boutique Suites",
-      description:
-        "Collaborated with a boutique hotel in Lyon to design elegant, hypoallergenic bedding sets for premium guest experiences…",
-      img: "./card-4.jpg",
+      img: "./products/printed-bedsheets.webp",
     },
     {
       category: "Restaurants",
       title: "Custom Table Linen Collection",
-      description:
-        "Supplied a chain of fine-dining restaurants in Marseille with stain-resistant, stylish tablecloths and napkins…",
-      img: "./card-5.jpg",
+      img: "./products/dyed-sheetsets.webp",
     },
     {
       category: "Healthcare & Wellness",
       title: "Sanitary Textiles for Clinics",
-      description:
-        "Delivered anti-bacterial, high-durability towels and sheets to a private wellness clinic in Geneva…",
-      img: "./hero.jpg",
+      img: "./products/fitted-sheetsets.webp",
+    },
+    {
+      category: "Healthcare & Wellness",
+      title: "Sanitary Textiles for Clinics",
+      img: "./products/percale-sheetsets.webp",
+    },
+    {
+      category: "Healthcare & Wellness",
+      title: "Sanitary Textiles for Clinics",
+      img: "./products/satin-stripe.webp",
+    },
+    {
+      category: "Healthcare & Wellness",
+      title: "Sanitary Textiles for Clinics",
+      img: "./products/dyed-fabrics.webp",
+    },
+    {
+      category: "Healthcare & Wellness",
+      title: "Sanitary Textiles for Clinics",
+      img: "./products/knitted-fabrics.webp",
+    },
+    {
+      category: "Healthcare & Wellness",
+      title: "Sanitary Textiles for Clinics",
+      img: "./products/printed-fabrics.webp",
+    },
+    {
+      category: "Healthcare & Wellness",
+      title: "Sanitary Textiles for Clinics",
+      img: "./products/terry-mattress-protectors.webp",
+    },
+    {
+      category: "Healthcare & Wellness",
+      title: "Sanitary Textiles for Clinics",
+      img: "./products/hospital-sheetsets.webp",
+    },
+    {
+      category: "Healthcare & Wellness",
+      title: "Sanitary Textiles for Clinics",
+      img: "./products/jersey-fitted-sheets.webp",
+    },
+    {
+      category: "Healthcare & Wellness",
+      title: "Sanitary Textiles for Clinics",
+      img: "./products/chef-gowns.webp",
+    },
+    {
+      category: "Healthcare & Wellness",
+      title: "Sanitary Textiles for Clinics",
+      img: "./products/chef-coats.webp",
+    },
+    {
+      category: "Healthcare & Wellness",
+      title: "Sanitary Textiles for Clinics",
+      img: "./products/chef-hats-and-approns.webp",
+    },
+    {
+      category: "Healthcare & Wellness",
+      title: "Sanitary Textiles for Clinics",
+      img: "./products/doctor-gowns.webp",
+    },
+    {
+      category: "Healthcare & Wellness",
+      title: "Sanitary Textiles for Clinics",
+      img: "./products/patient-gowns1.webp",
+    },
+    {
+      category: "Healthcare & Wellness",
+      title: "Sanitary Textiles for Clinics",
+      img: "./products/doctor-scrubs.webp",
     },
   ];
+
+  const [showAll, setShowAll] = useState(false);
+  const visibleProducts = showAll ? cases : cases.slice(0, 6);
 
   return (
     <div id="our-work" className="bg-gray-100 py-10 md:py-20">
       <div className="max-w-7xl mx-auto py-8 p-5">
-        <div className=" mb-10">
+        <div className="mb-10">
           <div className="flex items-center text-pink-600">
             <Dot size={50} />
             <p className="font-medium">Our Projects</p>
           </div>
-
         </div>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {cases.map((item, index) => (
+          {visibleProducts.map((item, index) => (
             <div
               key={index}
               className="bg-white rounded-xl shadow-md flex flex-col justify-between overflow-hidden"
@@ -568,16 +629,18 @@ const OurWork = () => {
                   {item.category}
                 </p>
                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm">{item.description}</p>
-                <a
-                  href="#"
-                  className="text-pink-600 text-sm mt-4 font-medium hover:underline inline-block"
-                >
-                  Read more
-                </a>
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="flex justify-center mt-10">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="bg-pink-600 text-white font-semibold px-6 py-2 rounded-full shadow hover:bg-pink-700 transition"
+          >
+            {showAll ? "Show Less" : "Show All"}
+          </button>
         </div>
       </div>
     </div>
@@ -586,7 +649,7 @@ const OurWork = () => {
 
 const QualityAssurance = () => {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-pink-50">
+    <section id="quality-assurance" className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-pink-50">
       <div className="max-w-7xl mx-auto">
 
         <div className="flex flex-col md:flex-row items-center mb-12">
@@ -763,25 +826,6 @@ const Reviews = () => {
   );
 };
 
-const CtaBar = () => {
-  return (
-    <div className="bg-[url('/hero.jpg')] m-1 rounded-3xl py-28 mt-5">
-      <div className="container mx-auto flex flex-col md:flex-row justify-center items-center gap-5">
-        <div className="flex justify-center text-center md:block md:text-start">
-          <h2 className="lg:text-7xl md:text-5xl text-4xl  font-medium text-white w-7/12">
-            Let’s plan your textile solution
-          </h2>
-        </div>
-        <div>
-          <Link href="https://www.linkedin.com/in/ksk-textile-quality-textile-solutions-9a5288361/" className=" bg-white text-black py-3 px-7 rounded-3xl">
-            Request a Consultation
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const ContactUs = () => {
   return (
     <div className="w-full min-h-screen bg-white mb-5 pt-10" id="contact-us">
@@ -898,6 +942,25 @@ const ContactUs = () => {
     </div>
   )
 }
+
+const CtaBar = () => {
+  return (
+    <div className="bg-[url('/hero.jpg')] m-1 rounded-3xl py-28 mt-5">
+      <div className="container mx-auto flex flex-col md:flex-row justify-center items-center gap-5">
+        <div className="flex justify-center text-center md:block md:text-start">
+          <h2 className="lg:text-7xl md:text-5xl text-4xl  font-medium text-white w-7/12">
+            Let’s plan your textile solution
+          </h2>
+        </div>
+        <div>
+          <Link href="https://www.linkedin.com/in/ksk-textile-quality-textile-solutions-9a5288361/" className=" bg-white text-black py-3 px-7 rounded-3xl">
+            Request a Consultation
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Footer = () => {
 

@@ -804,45 +804,143 @@ const Reviews = () => {
   );
 };
 
-const ContactUs = () => {
+interface ContactInfoItem {
+  title: string;
+  icon: React.ReactNode;
+  content: string;
+}
+
+const ContactUs: React.FC = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const fullName = `${formData.firstName} ${formData.lastName}`;
+    const mailtoLink = `mailto:info@neelumfabrics.com?subject=Contact%20Form%20Submission&body=${encodeURIComponent(
+      `Name: ${fullName}\nPhone: ${formData.phone}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )}`;
+    window.location.href = mailtoLink;
+  };
+
+  const contactInfoItems: ContactInfoItem[] = [
+    {
+      title: "Head Office",
+      icon: <Building className="h-6 w-6 text-pink-600" />,
+      content: "132 Regency Arcade, Mall Road, Faisalabad - Pakistan.",
+    },
+    {
+      title: "Factory",
+      icon: <Factory className="h-6 w-6 text-pink-600" />,
+      content: `Bawa Chak Main Stop, Masjid Wali Gali, Opp. Sultan Chemicals\nSargodha Road, Faisalabad - Pakistan`,
+    },
+    {
+      title: "Call or Text",
+      icon: <Phone className="h-6 w-6 text-pink-600" />,
+      content: "+33 7 82 86 55 18",
+    },
+    {
+      title: "Send Email",
+      icon: <Mail className="h-6 w-6 text-pink-600" />,
+      content: "info@neelumfabrics.com",
+    },
+  ];
+
   return (
-    <div className="w-full min-h-screen bg-white mb-5 pt-10" id="contact-us">
-      <div className="container mx-auto px-4 " >
-
+    <div className="w-full min-h-screen bg-white mb-10 pt-16" id="contact-us">
+      <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center mb-12">
-
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">Contact Us</h1>
-          <p className=" text-gray-600 text-center max-w-3xl">
-            We're here to support you with all your textile needs — whether you're looking for product
-            information, placing an order, or exploring a partnership.
+          <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
+            Contact Us
+          </h1>
+          <p className="text-gray-600 text-center max-w-3xl">
+            We're here to support you with all your textile needs — whether
+            you're looking for product information, placing an order, or
+            exploring a partnership.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl mx-auto">
-
-          <div className="lg:col-span-6 bg-white p-6 rounded-lg">
+          <div className="lg:col-span-6 bg-white p-6 rounded-lg shadow-sm border border-gray-100">
             <h2 className="text-2xl font-bold mb-4">Send Us A Message</h2>
             <p className="text-gray-600 mb-6">
-              Reach out to us for inquiries, quotes, or collaborations, and our team will be happy to
-              provide tailored solutions with prompt and professional service
+              Reach out to us for inquiries, quotes, or collaborations, and our
+              team will be happy to provide tailored solutions with prompt and
+              professional service
             </p>
 
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="text" placeholder="First Name" className="w-full p-4 border rounded-md" />
-                <input type="text" placeholder="Last Name" className="w-full p-4 border rounded-md" />
+                <input
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
+                  className="w-full p-4 border rounded-md focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                  onChange={handleChange}
+                  value={formData.firstName}
+                  required
+                  aria-label="First Name"
+                />
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  className="w-full p-4 border rounded-md focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                  onChange={handleChange}
+                  value={formData.lastName}
+                  required
+                  aria-label="Last Name"
+                />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="tel" placeholder="Phone Number" className="w-full p-4 border rounded-md" />
-                <input type="email" placeholder="Email Address" className="w-full p-4 border rounded-md" />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone Number"
+                  className="w-full p-4 border rounded-md focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                  onChange={handleChange}
+                  value={formData.phone}
+                  required
+                  aria-label="Phone Number"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  className="w-full p-4 border rounded-md focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                  onChange={handleChange}
+                  value={formData.email}
+                  required
+                  aria-label="Email Address"
+                />
               </div>
 
-              <textarea placeholder="Message" className="w-full p-4 border rounded-md h-40"></textarea>
+              <textarea
+                name="message"
+                placeholder="Message"
+                className="w-full p-4 border rounded-md h-40 focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                onChange={handleChange}
+                value={formData.message}
+                required
+                aria-label="Your Message"
+              ></textarea>
 
               <button
                 type="submit"
-                className="bg-pink-600 hover:bg-pink-700 text-white px-8 py-3 rounded-full flex items-center"
+                className="bg-pink-600 hover:bg-pink-700 text-white px-8 py-3 rounded-full flex items-center transition-colors duration-300"
               >
                 Send Message
                 <ArrowUp className="ml-2 h-4 w-4 rotate-45" />
@@ -850,76 +948,39 @@ const ContactUs = () => {
             </form>
           </div>
 
-
           <div className="lg:col-span-6 space-y-6">
-
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-              <div className="flex items-start gap-4">
-                <div className="bg-gray-100 p-4 rounded-full">
-                  <Building className="h-6 w-6 text-pink-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Head Office</h3>
-                  <p className="text-gray-600">132 Regency Arcade, Mall Road, Faisalabad - Pakistan.</p>
-                </div>
-              </div>
-            </div>
-
-
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-              <div className="flex items-start gap-4">
-                <div className="bg-gray-100 p-4 rounded-full">
-                  <Factory className="h-6 w-6 text-pink-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Factory</h3>
-                  <p className="text-gray-600">
-                    Bawa Chak Main Stop, Masjid Wali Gali, Opp. Sultan Chemicals
-                    <br />
-                    Sargodha Road, Faisalabad - Pakistan
-                  </p>
+            {contactInfoItems.map((item, i) => (
+              <div
+                key={i}
+                className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="bg-gray-100 p-4 rounded-full">{item.icon}</div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                    <p className="text-gray-600 whitespace-pre-line">{item.content}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-
-
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-              <div className="flex items-start gap-4">
-                <div className="bg-gray-100 p-4 rounded-full">
-                  <Phone className="h-6 w-6 text-pink-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Call or Text</h3>
-                  <p className="text-gray-600">+33 7 82 86 55 18</p>
-                </div>
-              </div>
-            </div>
-
-
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-              <div className="flex items-start gap-4">
-                <div className="bg-gray-100 p-4 rounded-full">
-                  <Mail className="h-6 w-6 text-pink-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Send Email</h3>
-                  <p className="text-gray-600">info@neelumfabrics.com</p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
 
-
       <div className="fixed bottom-6 right-6">
-        <button className="bg-pink-600 hover:bg-pink-700 text-white p-3 rounded-sm shadow-lg" aria-label="Scroll to top">
+        <button
+          className="bg-pink-600 hover:bg-pink-700 text-white p-3 rounded-full shadow-lg transition-colors duration-300"
+          aria-label="Scroll to top"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
           <ArrowUp className="h-5 w-5" />
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
+
+
 
 const CtaBar = () => {
   return (

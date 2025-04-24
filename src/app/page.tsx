@@ -8,9 +8,7 @@ import {
   Bed,
   Building,
   CheckCircle,
-  Dot,
-  Factory,
-  Linkedin,
+  Dot, Linkedin,
   Mail,
   Menu,
   Phone,
@@ -75,7 +73,7 @@ const NavBar = () => {
   return (
     <nav className="w-full bg-pink-600 sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center py-4 px-6 relative">
-        <p className="text-2xl font-medium text-white">KSK TEXTILE</p>
+        <p className="text-2xl font-medium text-white">KSK Textile</p>
         <div className="hidden md:flex flex-1 justify-center space-x-6 text-white font-medium">
           {menuItems.map((item, index) => (
             <a key={index} href={`#${item.id}`} className="hover:text-pink-300 transition">
@@ -583,12 +581,12 @@ const Products = () => {
   const visibleProducts = showAll ? cases : cases.slice(0, 6);
 
   return (
-    <div id="our-work" className="bg-gray-100 py-10 md:py-20">
+    <div id="products" className="bg-gray-100 py-10 md:py-20">
       <div className="max-w-7xl mx-auto py-8 p-5">
         <div className="mb-10">
           <div className="flex items-center text-pink-600">
             <Dot size={50} />
-            <p className="font-medium">Our Projects</p>
+            <p className="font-medium">Products</p>
           </div>
         </div>
 
@@ -763,7 +761,7 @@ const Reviews = () => {
       <div className="flex justify-between items-center mb-10">
         <div className="flex items-center text-pink-600">
           <Dot size={40} />
-          <p className="font-medium text-lg ml-2">Client Feedback</p>
+          <p className="font-medium text-lg ml-2">Reviews</p>
         </div>
 
       </div>
@@ -842,22 +840,17 @@ const ContactUs: React.FC = () => {
     {
       title: "Head Office",
       icon: <Building className="h-6 w-6 text-pink-600" />,
-      content: "132 Regency Arcade, Mall Road, Faisalabad - Pakistan.",
-    },
-    {
-      title: "Factory",
-      icon: <Factory className="h-6 w-6 text-pink-600" />,
-      content: `Bawa Chak Main Stop, Masjid Wali Gali, Opp. Sultan Chemicals\nSargodha Road, Faisalabad - Pakistan`,
+      content: "50 avenue des Champs-Élysées, 75008 Paris",
     },
     {
       title: "Call or Text",
       icon: <Phone className="h-6 w-6 text-pink-600" />,
-      content: "+33 7 82 86 55 18",
+      content: "+33 (0)7 82 86 55 18",
     },
     {
       title: "Send Email",
       icon: <Mail className="h-6 w-6 text-pink-600" />,
-      content: "info@neelumfabrics.com",
+      content: "business@kskimex.com",
     },
   ];
 
@@ -1014,7 +1007,7 @@ const Footer = () => {
           {/* Logo + Socials */}
           <div className="col-span-12 md:col-span-3 flex flex-col items-center md:items-start gap-4 text-center md:text-left">
 
-            <p className="text-2xl font-medium ">KSK TEXTILE</p>
+            <p className="text-2xl font-medium ">KSK Textile</p>
             <div className="flex gap-4">
               <Link href="https://www.linkedin.com/in/ksk-textile-quality-textile-solutions-9a5288361/" className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition">
                 <Linkedin size={18} />
@@ -1041,15 +1034,15 @@ const Footer = () => {
           <div className="col-span-12 md:col-span-3 flex flex-col items-center md:items-start text-sm space-y-4 mt-6 md:mt-0">
             <div className="text-center md:text-left">
               <p className="font-semibold">Phone</p>
-              <p>+44 20 482 705 41</p>
+              <p>+33 (0)7 82 86 55 18</p>
             </div>
             <div className="text-center md:text-left">
               <p className="font-semibold">Address</p>
-              <p>6 Murray Glens Lake, France</p>
+              <p>50 avenue des Champs-Élysées, 75008 Paris</p>
             </div>
             <div className="text-center md:text-left">
               <p className="font-semibold">Email</p>
-              <p>contact@textileexperts.fr</p>
+              <p>business@kskimex.com</p>
             </div>
           </div>
         </div>
@@ -1059,7 +1052,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 gap-3">
-          <p>Textile Experts © 2024. All rights reserved.</p>
+          <p>KSK Textile © 2025. All rights reserved.</p>
           <div className="flex gap-4">
             <a href="#" className="hover:underline">
               Cookies Policy

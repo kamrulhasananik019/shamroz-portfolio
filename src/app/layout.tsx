@@ -6,7 +6,7 @@ import "~/styles/globals.css";
 import { TRPCReactProvider } from "~/trpc/react";
 
 export const metadata: Metadata = {
-  title: "KSK TEXTILE",
+  title: "KSK Textile | Your dedicated partner in high-quality textile supply.",
   description: "",
 };
 
@@ -22,7 +22,7 @@ export default function RootLayout({
       <head>
         <link
           rel="icon"
-          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>"
+          href="/favicon.webp"
         />
       </head>
       <body>

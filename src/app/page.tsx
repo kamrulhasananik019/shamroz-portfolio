@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 import {
@@ -20,11 +22,9 @@ import {
   X
 } from "lucide-react";
 
+
 import "swiper/css";
 import "swiper/css/pagination";
-
-import Image from "next/image";
-import Link from "next/link";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -71,7 +71,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="w-full bg-pink-600 sticky top-0 z-50">
+    <nav className="w-full bg-zinc-900/80 backdrop-blur-md backdrop-saturate-50 sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center py-4 px-6 relative">
         <p className="text-2xl font-medium text-white">KSK Textile</p>
         <div className="hidden md:flex flex-1 justify-center space-x-6 text-white font-medium">
@@ -494,94 +494,33 @@ interface Case {
 
 const Products = () => {
   const cases = [
-    {
-      title: "Plain Towels",
-      img: "./products/plain-towels.webp",
-    },
-    {
-      title: "Dyed Towels",
-      img: "./products/dyed-towels.webp",
-    },
-    {
-      title: "Bathrobes",
-      img: "./products/bathrobes.webp",
-    },
-    {
-      title: "Printed Bedsheets",
-      img: "./products/printed-bedsheets.webp",
-    },
-    {
-      title: "Dyed Sheetsets",
-      img: "./products/dyed-sheetsets.webp",
-    },
-    {
-      title: "Fitted Sheetsets",
-      img: "./products/fitted-sheetsets.webp",
-    },
-    {
-      title: "Percale Sheetsets",
-      img: "./products/percale-sheetsets.webp",
-    },
-    {
-      title: "Satin Stripe",
-      img: "./products/satin-stripe.webp",
-    },
-    {
-      title: "Dyed Fabrics",
-      img: "./products/dyed-fabrics.webp",
-    },
-    {
-      title: "Knitted Fabrics",
-      img: "./products/knitted-fabrics.webp",
-    },
-    {
-      title: "Printed Fabrics",
-      img: "./products/printed-fabrics.webp",
-    },
-    {
-      title: "Terry Mattress Protectors",
-      img: "./products/terry-mattress-protectors.webp",
-    },
-    {
-      title: "Hospital Sheetsets",
-      img: "./products/hospital-sheetsets.webp",
-    },
-    {
-      title: "Jersey Fitted Sheets",
-      img: "./products/jersey-fitted-sheets.webp",
-    },
-    {
-      title: "Chef Gowns",
-      img: "./products/chef-gowns.webp",
-    },
-    {
-      title: "Chef Coats",
-      img: "./products/chef-coats.webp",
-    },
-    {
-      title: "Chef Hats And Approns",
-      img: "./products/chef-hats-and-approns.webp",
-    },
-    {
-      title: "Doctor Gowns",
-      img: "./products/doctor-gowns.webp",
-    },
-    {
-      title: "Patient Gowns1",
-      img: "./products/patient-gowns1.webp",
-    },
-    {
-      title: "Doctor Scrubs",
-      img: "./products/doctor-scrubs.webp",
-    },
+    { title: "Plain Towels", img: "./products/plain-towels.webp" },
+    { title: "Dyed Towels", img: "./products/dyed-towels.webp" },
+    { title: "Bathrobes", img: "./products/bathrobes.webp" },
+    { title: "Printed Bedsheets", img: "./products/printed-bedsheets.webp" },
+    { title: "Dyed Sheetsets", img: "./products/dyed-sheetsets.webp" },
+    { title: "Fitted Sheetsets", img: "./products/fitted-sheetsets.webp" },
+    { title: "Percale Sheetsets", img: "./products/percale-sheetsets.webp" },
+    { title: "Satin Stripe", img: "./products/satin-stripe.webp" },
+    { title: "Dyed Fabrics", img: "./products/dyed-fabrics.webp" },
+    { title: "Knitted Fabrics", img: "./products/knitted-fabrics.webp" },
+    { title: "Printed Fabrics", img: "./products/printed-fabrics.webp" },
+    { title: "Terry Mattress Protectors", img: "./products/terry-mattress-protectors.webp" },
+    { title: "Hospital Sheetsets", img: "./products/hospital-sheetsets.webp" },
+    { title: "Jersey Fitted Sheets", img: "./products/jersey-fitted-sheets.webp" },
+    { title: "Chef Gowns", img: "./products/chef-gowns.webp" },
+    { title: "Chef Coats", img: "./products/chef-coats.webp" },
+    { title: "Chef Hats And Approns", img: "./products/chef-hats-and-approns.webp" },
+    { title: "Doctor Gowns", img: "./products/doctor-gowns.webp" },
+    { title: "Patient Gowns1", img: "./products/patient-gowns1.webp" },
+    { title: "Doctor Scrubs", img: "./products/doctor-scrubs.webp" },
   ];
-
 
   const [showAll, setShowAll] = useState(false);
   const visibleProducts = showAll ? cases : cases.slice(0, 6);
 
   return (
-    <div id="products" className="bg-gray-100 py-10 md:py-20">
+    <div id="products" className="bg-gray-100 py-10 md:py-20 transition-all duration-500 ease-in-out">
       <div className="max-w-7xl mx-auto py-8 p-5">
         <div className="mb-10">
           <div className="flex items-center text-pink-600">
@@ -590,17 +529,18 @@ const Products = () => {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 transition-all duration-500 ease-in-out">
           {visibleProducts.map((item, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-md flex flex-col justify-between overflow-hidden"
+              className="bg-white rounded-xl shadow-md flex flex-col justify-between overflow-hidden transform hover:scale-[1.02] transition-transform duration-300"
             >
               <div className="h-60 w-full overflow-hidden">
                 <img
                   src={item.img}
                   alt={item.title}
-                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-opacity duration-500"
                 />
               </div>
               <div className="p-5">
@@ -613,7 +553,7 @@ const Products = () => {
         <div className="flex justify-center mt-10">
           <button
             onClick={() => setShowAll(!showAll)}
-            className="bg-pink-600 text-white font-semibold px-6 py-2 rounded-full shadow hover:bg-pink-700 transition"
+            className="bg-pink-600 text-white font-semibold px-6 py-2 rounded-full shadow hover:bg-pink-700 transition duration-300"
           >
             {showAll ? "Show Less" : "Show All"}
           </button>
@@ -622,6 +562,7 @@ const Products = () => {
     </div>
   );
 };
+
 
 const QualityAssurance = () => {
   return (

@@ -119,7 +119,7 @@ export default function HomePage() {
       <NavBar lang={lang} setLang={setLang} />
       <Hero lang={lang} />
       <div className="bg-gray-100 py-10">
-        <AboutUs />
+        <AboutUs lang={lang} />
       </div>
       <Expertise />
       <Products />
@@ -147,7 +147,7 @@ const NavBar: React.FC<NavBarProps> = ({ lang, setLang }) => {
       <div className="container mx-auto flex justify-between items-center py-4 px-6 relative">
         <p className="text-2xl font-medium text-white">KSK Textile</p>
 
-        {/* Menu Items */}
+
         <div className="hidden md:flex flex-1 justify-center space-x-6 text-white font-medium">
           {menuItems[lang].map((item, index) => (
             <a
@@ -161,7 +161,7 @@ const NavBar: React.FC<NavBarProps> = ({ lang, setLang }) => {
           ))}
         </div>
 
-        {/* Language Dropdown */}
+
         <div className="hidden md:block relative">
           <button
             onClick={() => setShowLangDropdown(!showLangDropdown)}
@@ -193,7 +193,7 @@ const NavBar: React.FC<NavBarProps> = ({ lang, setLang }) => {
           )}
         </div>
 
-        {/* Hamburger Menu for Mobile */}
+
         <div className="md:hidden">
           <button onClick={() => setIsOpen(!isOpen)} className="text-white">
             {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -201,7 +201,7 @@ const NavBar: React.FC<NavBarProps> = ({ lang, setLang }) => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+
       {isOpen && (
         <div className="md:hidden bg-black/80 backdrop-blur-sm px-6 pb-6 flex justify-center">
           <div className="flex flex-col items-center space-y-4 text-white font-medium mt-4 w-full">
@@ -350,48 +350,145 @@ const Hero: React.FC<{ lang: string }> = ({ lang }) => {
 };
 
 
-const AboutUs = () => {
+const AboutUs: React.FC<{ lang: Language }> = ({ lang }) => {
   const statsData = [
     {
-      value: "40+",
-      label: "years",
-      description:
-        "of family heritage in textile manufacturing, delivering consistent quality and reliability",
+      value: {
+        en: "40+",
+        fr: "40+",
+        de: "40+"
+      },
+      label: {
+        en: "years",
+        fr: "années",
+        de: "Jahre"
+      },
+      description: {
+        en: "of family heritage in textile manufacturing, delivering consistent quality and reliability",
+        fr: "d'héritage familial dans la fabrication de textiles, offrant une qualité et une fiabilité constantes",
+        de: "von Familientradition in der Textilproduktion, die konstante Qualität und Zuverlässigkeit liefert",
+      },
     },
     {
-      value: "12",
-      label: "countries",
-      description:
-        "served across Europe, with a strong focus on the French hospitality sector",
+      value: {
+        en: "12",
+        fr: "12",
+        de: "12"
+      },
+      label: {
+        en: "countries",
+        fr: "pays",
+        de: "Länder"
+      },
+      description: {
+        en: "served across Europe, with a strong focus on the French hospitality sector",
+        fr: "desservi à travers l'Europe, avec un fort accent sur le secteur hôtelier français",
+        de: "in ganz Europa tätig, mit einem starken Fokus auf den französischen Gastsektor",
+      },
     },
     {
-      value: "100+",
-      label: "clients",
-      description:
-        "including hotels, laundries, and other hospitality businesses who trust our quality",
+      value: {
+        en: "100+",
+        fr: "100+",
+        de: "100+"
+      },
+      label: {
+        en: "clients",
+        fr: "clients",
+        de: "Kunden"
+      },
+      description: {
+        en: "including hotels, laundries, and other hospitality businesses who trust our quality",
+        fr: "y compris des hôtels, des blanchisseries et d'autres entreprises hôtelières qui font confiance à notre qualité",
+        de: "einschließlich Hotels, Wäschereien und andere Gastgewerbebetriebe, die auf unsere Qualität vertrauen",
+      },
     },
     {
-      value: "98%",
-      label: "satisfaction",
-      description:
-        "customer satisfaction rate based on feedback and long-term partnerships",
+      value: {
+        en: "98%",
+        fr: "98%",
+        de: "98%"
+      },
+      label: {
+        en: "satisfaction",
+        fr: "satisfaction",
+        de: "Zufriedenheit"
+      },
+      description: {
+        en: "customer satisfaction rate based on feedback and long-term partnerships",
+        fr: "taux de satisfaction client basé sur les retours et partenariats à long terme",
+        de: "Kundenzufriedenheitsrate basierend auf Feedback und langfristigen Partnerschaften",
+      },
     },
     {
-      value: "24/7",
-      label: "support",
-      description:
-        "dedicated service to ensure smooth communication and on-time delivery",
+      value: {
+        en: "24/7",
+        fr: "24/7",
+        de: "24/7"
+      },
+      label: {
+        en: "support",
+        fr: "support",
+        de: "Support"
+      },
+      description: {
+        en: "dedicated service to ensure smooth communication and on-time delivery",
+        fr: "service dédié pour garantir une communication fluide et une livraison à temps",
+        de: "dedizierter Service, um eine reibungslose Kommunikation und pünktliche Lieferung zu gewährleisten",
+      },
     },
     {
-      value: "100%",
-      label: "customizable",
-      description:
-        "textile solutions tailored to the unique requirements of your business",
+      value: {
+        en: "100%",
+        fr: "100%",
+        de: "100%"
+      },
+      label: {
+        en: "customizable",
+        fr: "personnalisable",
+        de: "anpassbar"
+      },
+      description: {
+        en: "textile solutions tailored to the unique requirements of your business",
+        fr: "solutions textiles adaptées aux exigences uniques de votre entreprise",
+        de: "Textillösungen, die auf die einzigartigen Anforderungen Ihres Unternehmens zugeschnitten sind",
+      },
     },
   ];
 
+
+  const content = {
+    en: {
+      title: "About KSK Textile",
+      intro: "KSK Textile is your dedicated partner in high-quality textile supply, proudly serving hospitality professionals, laundries, and cleaning companies across Europe.",
+      specialization: "We specialize in delivering a wide range of textile solutions, including hotel and hospital linens, home textiles, and more — combining competitive pricing, durable quality, and reliable service.",
+      needs: "We understand the unique needs of businesses that rely on textile products daily. That's why we focus on consistency, flexibility, and quick response — ensuring you always have what you need, when you need it.",
+      partnership: "Whether you're managing a boutique hotel, running an industrial laundry, or sourcing for a large operation, we work with trusted manufacturers to offer tailored solutions to match your standards and budget.",
+      contact: "Contact Us",
+    },
+    fr: {
+      title: "À propos de KSK Textile",
+      intro: "KSK Textile est votre partenaire dédié pour la fourniture de textiles de haute qualité, au service des professionnels de l'hôtellerie, des blanchisseries et des entreprises de nettoyage à travers l'Europe.",
+      specialization: "Nous nous spécialisons dans la fourniture d'une large gamme de solutions textiles, notamment des draps d'hôtel et d'hôpital, des textiles pour la maison, et bien plus encore — alliant prix compétitifs, qualité durable et service fiable.",
+      needs: "Nous comprenons les besoins uniques des entreprises qui dépendent quotidiennement des produits textiles. C'est pourquoi nous nous concentrons sur la cohérence, la flexibilité et une réponse rapide — vous garantissant toujours ce dont vous avez besoin, quand vous en avez besoin.",
+      partnership: "Que vous gériez un hôtel boutique, une blanchisserie industrielle ou que vous approvisionniez une grande opération, nous travaillons avec des fabricants de confiance pour offrir des solutions adaptées à vos normes et à votre budget.",
+      contact: "Contactez-nous",
+    },
+    de: {
+      title: "Über KSK Textile",
+      intro: "KSK Textile ist Ihr engagierter Partner für hochwertige Textilversorgung und bedient stolz Fachleute aus der Hotellerie, Wäschereien und Reinigungsunternehmen in ganz Europa.",
+      specialization: "Wir sind spezialisiert auf die Lieferung einer breiten Palette von Textillösungen, einschließlich Hotel- und Krankenhausbettwäsche, Heimtextilien und mehr — mit wettbewerbsfähigen Preisen, langlebiger Qualität und zuverlässigem Service.",
+      needs: "Wir verstehen die einzigartigen Bedürfnisse von Unternehmen, die täglich auf Textilprodukte angewiesen sind. Deshalb konzentrieren wir uns auf Konsistenz, Flexibilität und schnelle Reaktionsfähigkeit — damit Sie immer das haben, was Sie brauchen, wenn Sie es brauchen.",
+      partnership: "Ob Sie ein Boutique-Hotel leiten, eine industrielle Wäscherei betreiben oder für einen großen Betrieb einkaufen, wir arbeiten mit vertrauenswürdigen Herstellern zusammen, um maßgeschneiderte Lösungen anzubieten, die Ihren Standards und Ihrem Budget entsprechen.",
+      contact: "Kontaktieren Sie uns",
+    },
+  };
+
+
+  const { title, intro, specialization, needs, partnership, contact } = content[lang];
+
   return (
-    <section id="about" className="flex justify-center" lang="en" title="About KSK Textile - European Textile Supplier">
+    <section id="about" className="flex justify-center" lang={lang} title={`${title} - European Textile Supplier`}>
       <div className="max-w-7xl w-full">
         <div className="md:pt-16 px-5">
           <article className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 items-center">
@@ -417,31 +514,25 @@ const AboutUs = () => {
             </figure>
 
             <div className="text-gray-800 order-2 lg:order-2">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-pink-600">About KSK Textile</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-pink-600">{title}</h2>
               <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-3 sm:mb-4">
-                <span className="font-semibold text-pink-600">KSK Textile</span> is your dedicated partner in high-quality
-                textile supply, proudly serving hospitality professionals, laundries, and cleaning companies across Europe.
+                <span className="font-semibold text-pink-600">KSK Textile</span> {intro}
               </p>
               <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-3 sm:mb-4">
-                We specialize in delivering a{" "}
-                <span className="font-semibold text-pink-600">wide range of textile solutions</span>, including hotel and
-                hospital linens, home textiles, and more — combining competitive pricing, durable quality, and reliable
-                service.
+                {specialization}
               </p>
               <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-3 sm:mb-4">
-                We understand the unique needs of businesses that rely on textile products daily. That's why we focus on
-                consistency, flexibility, and quick response — ensuring you always have what you need, when you need it.
+                {needs}
               </p>
               <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-                Whether you're managing a boutique hotel, running an industrial laundry, or sourcing for a large operation,
-                we work with trusted manufacturers to offer tailored solutions to match your standards and budget.
+                {partnership}
               </p>
 
               <a
                 href="#contact-us"
                 className="inline-block mt-4 bg-pink-600 hover:bg-pink-700 text-white font-semibold py-3 px-8 rounded-full shadow-md transition duration-300 ease-in-out"
               >
-                Contact Us
+                {contact}
               </a>
             </div>
           </article>
@@ -449,15 +540,15 @@ const AboutUs = () => {
           <section aria-labelledby="why-choose-us" className="pt-16">
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
               {statsData.map((item, index) => (
-                <article key={index} className="p-5 bg-white rounded-md" aria-label={item.label}>
+                <article key={index} className="p-5 bg-white rounded-md" aria-label={item.label[lang]}>
                   <div className="pt-20">
                     <p className="text-5xl py-2 text-pink-600">
-                      {item.value}{" "}
-                      {item.label && (
-                        <span className="text-2xl">{item.label}</span>
+                      {item.value[lang]}{" "}
+                      {item.label[lang] && (
+                        <span className="text-2xl">{item.label[lang]}</span>
                       )}
                     </p>
-                    <p className="text-sm w-9/12">{item.description}</p>
+                    <p className="text-sm w-9/12">{item.description[lang]}</p>
                   </div>
                 </article>
               ))}

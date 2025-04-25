@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   ArrowUp,
@@ -10,7 +10,8 @@ import {
   Bed,
   Building,
   CheckCircle,
-  Dot, Linkedin,
+  Dot,
+  Linkedin,
   Mail,
   Menu,
   Phone,
@@ -22,18 +23,97 @@ import {
   X
 } from "lucide-react";
 
+import { FaFlag as FaFlagDe, FaFlag as FaFlagFr, FaFlag as FaFlagUs } from "react-icons/fa";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+type Language = "en" | "fr" | "de";
+
+interface NavBarProps {
+  lang: Language;
+  setLang: (lang: Language) => void;
+}
+
+interface SlideItem {
+  id: number;
+  title: Record<string, string>;
+  description: Record<string, string>;
+  image: string;
+}
+
+interface Case {
+  category: string;
+  title: string;
+  description: string;
+  team: string[];
+}
+
+interface ContactInfoItem {
+  title: string;
+  icon: React.ReactNode;
+  content: string;
+}
+
+type MenuItem = {
+  label: string;
+  id: string;
+};
+
+const menuItems: Record<Language, MenuItem[]> = {
+  en: [
+    { label: "Home", id: "home" },
+    { label: "About", id: "about" },
+    { label: "Expertise", id: "expertise" },
+    { label: "Products", id: "products" },
+    { label: "Quality Assurance", id: "quality-assurance" },
+    { label: "Reviews", id: "reviews" },
+    { label: "Contact Us", id: "contact-us" },
+  ],
+  fr: [
+    { label: "Accueil", id: "home" },
+    { label: "À propos", id: "about" },
+    { label: "Expertise", id: "expertise" },
+    { label: "Produits", id: "products" },
+    { label: "Assurance qualité", id: "quality-assurance" },
+    { label: "Avis", id: "reviews" },
+    { label: "Contactez-nous", id: "contact-us" },
+  ],
+  de: [
+    { label: "Startseite", id: "home" },
+    { label: "Über uns", id: "about" },
+    { label: "Expertise", id: "expertise" },
+    { label: "Produkte", id: "products" },
+    { label: "Qualitätssicherung", id: "quality-assurance" },
+    { label: "Bewertungen", id: "reviews" },
+    { label: "Kontakt", id: "contact-us" },
+  ],
+};
 
 export default function HomePage() {
+  const [lang, setLang] = useState<Language>("en");
+
+  useEffect(() => {
+    const savedLang = localStorage.getItem("ksk-lang");
+
+    if (savedLang && ["en", "fr", "de"].includes(savedLang)) {
+      setLang(savedLang as Language);
+    } else {
+      localStorage.setItem("ksk-lang", "en");
+      setLang("en");
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("ksk-lang", lang);
+  }, [lang]);
+
   return (
-    <div className="">
-      <NavBar />
-      <Hero />
+    <div>
+      <NavBar lang={lang} setLang={setLang} />
+      <Hero lang={lang} />
       <div className="bg-gray-100 py-10">
         <AboutUs />
       </div>
@@ -43,29 +123,16 @@ export default function HomePage() {
       <Reviews />
       <ContactUs />
       <CtaBar />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
 
-const menuItems = [
-  { label: "Home", id: "home" },
-  { label: "About", id: "about" },
-  { label: "Expertise", id: "expertise" },
-  { label: "Products", id: "products" },
-  { label: "Quality Assurance", id: "quality-assurance" },
-  { label: "Reviews", id: "reviews" },
-  { label: "Contact Us", id: "contact-us" },
+const NavBar: React.FC<NavBarProps> = ({ lang, setLang }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [showLangDropdown, setShowLangDropdown] = useState<boolean>(false);
 
-];
-
-
-const NavBar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [lang, setLang] = useState("EN");
-  const [showLangDropdown, setShowLangDropdown] = useState(false);
-
-  const toggleLang = (language: any) => {
+  const toggleLang = (language: Language) => {
     setLang(language);
     setShowLangDropdown(false);
   };
@@ -74,28 +141,43 @@ const NavBar = () => {
     <nav className="w-full bg-zinc-900/80 backdrop-blur-md backdrop-saturate-50 sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center py-4 px-6 relative">
         <p className="text-2xl font-medium text-white">KSK Textile</p>
+
+        {/* Menu Items */}
         <div className="hidden md:flex flex-1 justify-center space-x-6 text-white font-medium">
-          {menuItems.map((item, index) => (
+          {menuItems[lang].map((item, index) => (
             <a key={index} href={`#${item.id}`} className="hover:text-pink-300 transition">
               {item.label}
             </a>
           ))}
         </div>
+
+        {/* Language Dropdown */}
         <div className="hidden md:block relative">
-          <button onClick={() => setShowLangDropdown(!showLangDropdown)} className="text-white font-semibold">
-            {lang}
+          <button
+            onClick={() => setShowLangDropdown(!showLangDropdown)}
+            className="text-white font-semibold flex items-center space-x-2"
+          >
+            <span>{lang.toUpperCase()}</span>
+            {lang === "en" && <FaFlagUs />}
+            {lang === "fr" && <FaFlagFr />}
+            {lang === "de" && <FaFlagDe />}
           </button>
           {showLangDropdown && (
-            <div className="absolute right-0 mt-2 w-24 bg-white text-black rounded shadow-lg z-50">
-              <button onClick={() => toggleLang("EN")} className="block w-full px-4 py-2 hover:bg-gray-100 text-left">
-                English
+            <div className="absolute right-0 mt-2 w-28 bg-white text-black rounded shadow-lg z-50">
+              <button onClick={() => toggleLang("en")} className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left">
+                <FaFlagUs /> English
               </button>
-              <button onClick={() => toggleLang("FR")} className="block w-full px-4 py-2 hover:bg-gray-100 text-left">
-                French
+              <button onClick={() => toggleLang("fr")} className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left">
+                <FaFlagFr /> Français
+              </button>
+              <button onClick={() => toggleLang("de")} className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left">
+                <FaFlagDe /> Deutsch
               </button>
             </div>
           )}
         </div>
+
+        {/* Hamburger Menu for Mobile */}
         <div className="md:hidden">
           <button onClick={() => setIsOpen(!isOpen)} className="text-white">
             {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -103,25 +185,35 @@ const NavBar = () => {
         </div>
       </div>
 
+      {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-black/80 backdrop-blur-sm px-6 pb-6 flex justify-center">
           <div className="flex flex-col items-center space-y-4 text-white font-medium mt-4 w-full">
-            {menuItems.map((item, index) => (
+            {menuItems[lang].map((item, index) => (
               <a key={index} href={`#${item.id}`} className="hover:text-pink-300 transition">
                 {item.label}
               </a>
             ))}
             <div className="relative">
-              <button onClick={() => setShowLangDropdown(!showLangDropdown)} className="text-white font-semibold">
-                {lang}
+              <button
+                onClick={() => setShowLangDropdown(!showLangDropdown)}
+                className="text-white font-semibold flex items-center space-x-2"
+              >
+                <span>{lang.toUpperCase()}</span>
+                {lang === "en" && <FaFlagUs />}
+                {lang === "fr" && <FaFlagFr />}
+                {lang === "de" && <FaFlagDe />}
               </button>
               {showLangDropdown && (
-                <div className="absolute right-0 mt-2 w-24 bg-white text-black rounded shadow-lg z-50">
-                  <button onClick={() => toggleLang("EN")} className="block w-full px-4 py-2 hover:bg-gray-100 text-left">
-                    English
+                <div className="absolute right-0 mt-2 w-28 bg-white text-black rounded shadow-lg z-50">
+                  <button onClick={() => toggleLang("en")} className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left">
+                    <FaFlagUs /> English
                   </button>
-                  <button onClick={() => toggleLang("FR")} className="block w-full px-4 py-2 hover:bg-gray-100 text-left">
-                    French
+                  <button onClick={() => toggleLang("fr")} className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left">
+                    <FaFlagFr /> Français
+                  </button>
+                  <button onClick={() => toggleLang("de")} className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left">
+                    <FaFlagDe /> Deutsch
                   </button>
                 </div>
               )}
@@ -133,59 +225,89 @@ const NavBar = () => {
   );
 };
 
-const Hero = () => {
-  const slides = [
-    {
-      id: 1,
-      title: "Supplying Premium Textiles for the Hospitality Sector Across Europe",
-      description:
-        "With over 40 years of family expertise in textile manufacturing and a solid foundation in legal and commercial operations, we provide premium bed linens, towels, and customized textile solutions tailored to the needs of hotels, laundries, and hospitality professionals.",
-      image: "/hero.jpg",
-    },
-    {
-      id: 2,
-      title: "Tailored Textile Solutions for Hotels, Spas, and Laundries",
-      description:
-        "Our products are designed to meet the rigorous standards of the hospitality industry. From durability to elegance, we ensure your guests enjoy luxurious comfort while maintaining cost-effectiveness for your business.",
-      image: "/hero-2.jpg",
-    },
-    {
-      id: 3,
-      title: "Elevate Guest Experience with European-Quality Linens",
-      description:
-        "We specialize in premium-quality linens and towels sourced and crafted in Europe. Whether you run a boutique hotel or a large-scale laundry service, we deliver consistency and quality with every thread.",
-      image: "/hero-1.jpg",
-    },
-  ];
+const Hero: React.FC<{ lang: string }> = ({ lang }) => {
+  const TEXTS: { hero: SlideItem[] } = {
+    hero: [
+      {
+        "id": 1,
+        "title": {
+          "en": "Supplying Premium Textiles for the Hospitality Sector Across Europe",
+          "fr": "Fourniture de textiles haut de gamme pour le secteur de l'hôtellerie à travers l'Europe",
+          "de": "Lieferung hochwertiger Textilien für die Hotelbranche in ganz Europa"
+        },
+        "description": {
+          "en": "With over 40 years of family expertise in textile manufacturing and a solid foundation in legal and commercial operations, we provide premium bed linens, towels, and customized textile solutions tailored to the needs of hotels, laundries, and hospitality professionals.",
+          "fr": "Avec plus de 40 ans d'expertise familiale dans la fabrication de textiles et une solide expérience en droit et commerce, nous fournissons du linge de lit haut de gamme, des serviettes et des solutions textiles personnalisées adaptées aux besoins des hôtels, blanchisseries et professionnels de l'hôtellerie.",
+          "de": "Mit über 40 Jahren familiärer Erfahrung in der Textilproduktion und einer soliden Basis in rechtlichen und kommerziellen Abläufen bieten wir hochwertige Bettwäsche, Handtücher und maßgeschneiderte Textillösungen für Hotels, Wäschereien und Gastgewerbeprofis."
+        },
+        "image": "/hero.jpg"
+      },
+      {
+        "id": 2,
+        "title": {
+          "en": "Tailored Textile Solutions for Hotels, Spas, and Laundries",
+          "fr": "Solutions textiles sur mesure pour hôtels, spas et blanchisseries",
+          "de": "Maßgeschneiderte Textillösungen für Hotels, Spas und Wäschereien"
+        },
+        "description": {
+          "en": "Our products are designed to meet the rigorous standards of the hospitality industry. From durability to elegance, we ensure your guests enjoy luxurious comfort while maintaining cost-effectiveness for your business.",
+          "fr": "Nos produits sont conçus pour répondre aux normes rigoureuses de l'industrie hôtelière. De la durabilité à l'élégance, nous veillons à ce que vos clients profitent d'un confort luxueux tout en maintenant la rentabilité de votre entreprise.",
+          "de": "Unsere Produkte sind auf die strengen Anforderungen der Hotelbranche ausgelegt. Von Langlebigkeit bis Eleganz sorgen wir dafür, dass Ihre Gäste luxuriösen Komfort genießen und Ihr Unternehmen gleichzeitig wirtschaftlich bleibt."
+        },
+        "image": "/hero-2.jpg"
+      },
+      {
+        "id": 3,
+        "title": {
+          "en": "Elevate Guest Experience with European-Quality Linens",
+          "fr": "Améliorez l'expérience client avec du linge de qualité européenne",
+          "de": "Steigern Sie das Gästeerlebnis mit hochwertiger Bettwäsche aus Europa"
+        },
+        "description": {
+          "en": "We specialize in premium-quality linens and towels sourced and crafted in Europe. Whether you run a boutique hotel or a large-scale laundry service, we deliver consistency and quality with every thread.",
+          "fr": "Nous sommes spécialisés dans le linge et les serviettes de qualité supérieure, fabriqués en Europe. Que vous dirigiez un hôtel de charme ou un service de blanchisserie à grande échelle, nous garantissons une qualité constante à chaque fil.",
+          "de": "Wir spezialisieren uns auf hochwertige Bettwäsche und Handtücher, die in Europa bezogen und gefertigt werden. Ob Boutiquehotel oder Großwäscherei – wir liefern durchgehend Qualität bei jedem Faden."
+        },
+        "image": "/hero-1.jpg"
+      }
+    ]
+
+  };
 
   return (
     <div id="home">
-      <Swiper pagination={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        modules={[Pagination, Autoplay]} className="mySwiper">
-        {slides.map((slide) => (
+      <Swiper
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 2500, disableOnInteraction: false }}
+        modules={[Pagination, Autoplay]}
+        className="mySwiper"
+      >
+        {TEXTS.hero.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div
-              className="relative flex items-center py-10 h-screen  text-white bg-cover bg-center bg-no-repeat"
+              className="relative flex items-center py-10 h-screen text-white bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${slide.image})` }}
             >
-
               <div className="absolute inset-0 bg-black opacity-60 z-0" />
               <div className="relative z-10 container mx-auto px-5 md:text-start text-center md:block flex flex-col justify-center items-center">
-                <h1 className="md:text-4xl lg:text-5xl pt-5  sm:text-4xl text-3xl xl:text-6xl font-semibold md:w-5/12">
-                  {slide.title}
+                <h1 className="md:text-4xl lg:text-5xl pt-5 sm:text-4xl text-3xl xl:text-6xl font-semibold md:w-5/12">
+                  {slide.title[lang]}
                 </h1>
                 <div className="md:text-start text-center flex flex-col justify-center items-center md:grid grid-cols-2">
                   <div>
-                    <p className="py-10">{slide.description}</p>
-                    <a href="#our-work" className=" bg-white text-black py-3 px-7 rounded-3xl">
-                      Explore Our Products
+                    <p className="py-10">{slide.description[lang]}</p>
+                    <a href="#our-work" className="bg-white text-black py-3 px-7 rounded-3xl">
+                      {{
+                        en: "Explore Our Products",
+                        fr: "Voir Nos Produits",
+                        de: "Unsere Produkte entdecken",
+                      }[lang]}
                     </a>
                     <div className="flex gap-5 pt-10 md:justify-start justify-center">
-                      <Link href="https://www.linkedin.com/in/ksk-textile-quality-textile-solutions-9a5288361/" className="h-10 w-10 text-black bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition">
+                      <Link
+                        href="https://www.linkedin.com/in/ksk-textile-quality-textile-solutions-9a5288361/"
+                        className="h-10 w-10 text-black bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition"
+                      >
                         <Linkedin size={18} />
                       </Link>
                     </div>
@@ -485,12 +607,6 @@ const Expertise = () => {
   );
 };
 
-interface Case {
-  category: string;
-  title: string;
-  description: string;
-  team: string[];
-}
 
 const Products = () => {
   const cases = [
@@ -743,11 +859,6 @@ const Reviews = () => {
   );
 };
 
-interface ContactInfoItem {
-  title: string;
-  icon: React.ReactNode;
-  content: string;
-}
 
 const ContactUs: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -938,76 +1049,76 @@ const CtaBar = () => {
   );
 };
 
-const Footer = () => {
+// const Footer = () => {
 
 
-  return (
-    <div className="bg-[#d9dce4] text-gray-800">
-      <div className="container mx-auto px-4 pt-12 pb-6">
-        <div className="grid grid-cols-12 gap-6 items-start">
-          {/* Logo + Socials */}
-          <div className="col-span-12 md:col-span-3 flex flex-col items-center md:items-start gap-4 text-center md:text-left">
+//   return (
+//     <div className="bg-[#d9dce4] text-gray-800">
+//       <div className="container mx-auto px-4 pt-12 pb-6">
+//         <div className="grid grid-cols-12 gap-6 items-start">
+//           {/* Logo + Socials */}
+//           <div className="col-span-12 md:col-span-3 flex flex-col items-center md:items-start gap-4 text-center md:text-left">
 
-            <p className="text-2xl font-medium ">KSK Textile</p>
-            <div className="flex gap-4">
-              <Link href="https://www.linkedin.com/in/ksk-textile-quality-textile-solutions-9a5288361/" className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition">
-                <Linkedin size={18} />
-              </Link>
-            </div>
-          </div>
+//             <p className="text-2xl font-medium ">KSK Textile</p>
+//             <div className="flex gap-4">
+//               <Link href="https://www.linkedin.com/in/ksk-textile-quality-textile-solutions-9a5288361/" className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition">
+//                 <Linkedin size={18} />
+//               </Link>
+//             </div>
+//           </div>
 
-          {/* Navigation Menu */}
-          <div className="col-span-12 md:col-span-6 flex justify-center items-start mt-6 md:mt-0">
-            <div className="flex flex-wrap justify-center gap-6 text-sm font-medium">
-              {menuItems.map((item) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  className="hover:underline transition"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
+//           {/* Navigation Menu */}
+//           <div className="col-span-12 md:col-span-6 flex justify-center items-start mt-6 md:mt-0">
+//             <div className="flex flex-wrap justify-center gap-6 text-sm font-medium">
+//               {menuItems.map((item) => (
+//                 <a
+//                   key={item.id}
+//                   href={`#${item.id}`}
+//                   className="hover:underline transition"
+//                 >
+//                   {item.label}
+//                 </a>
+//               ))}
+//             </div>
+//           </div>
 
-          {/* Contact Info */}
-          <div className="col-span-12 md:col-span-3 flex flex-col items-center md:items-start text-sm space-y-4 mt-6 md:mt-0">
-            <div className="text-center md:text-left">
-              <p className="font-semibold">Phone</p>
-              <p>+33 (0)7 82 86 55 18</p>
-            </div>
-            <div className="text-center md:text-left">
-              <p className="font-semibold">Address</p>
-              <p>50 avenue des Champs-Élysées, 75008 Paris</p>
-            </div>
-            <div className="text-center md:text-left">
-              <p className="font-semibold">Email</p>
-              <p>business@kskimex.com</p>
-            </div>
-          </div>
-        </div>
+//           {/* Contact Info */}
+//           <div className="col-span-12 md:col-span-3 flex flex-col items-center md:items-start text-sm space-y-4 mt-6 md:mt-0">
+//             <div className="text-center md:text-left">
+//               <p className="font-semibold">Phone</p>
+//               <p>+33 (0)7 82 86 55 18</p>
+//             </div>
+//             <div className="text-center md:text-left">
+//               <p className="font-semibold">Address</p>
+//               <p>50 avenue des Champs-Élysées, 75008 Paris</p>
+//             </div>
+//             <div className="text-center md:text-left">
+//               <p className="font-semibold">Email</p>
+//               <p>business@kskimex.com</p>
+//             </div>
+//           </div>
+//         </div>
 
-        {/* Divider */}
-        <div className="border-t border-gray-300 my-6" />
+//         {/* Divider */}
+//         <div className="border-t border-gray-300 my-6" />
 
-        {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 gap-3">
-          <p>KSK Textile © 2025. All rights reserved.</p>
-          <div className="flex gap-4">
-            <a href="#" className="hover:underline">
-              Cookies Policy
-            </a>
-            <a href="#" className="hover:underline">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:underline">
-              Terms & Conditions
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+//         {/* Bottom Bar */}
+//         <div className="flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 gap-3">
+//           <p>KSK Textile © 2025. All rights reserved.</p>
+//           <div className="flex gap-4">
+//             <a href="#" className="hover:underline">
+//               Cookies Policy
+//             </a>
+//             <a href="#" className="hover:underline">
+//               Privacy Policy
+//             </a>
+//             <a href="#" className="hover:underline">
+//               Terms & Conditions
+//             </a>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 

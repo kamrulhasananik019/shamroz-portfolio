@@ -23,8 +23,6 @@ import {
   X
 } from "lucide-react";
 
-import { FaFlag as FaFlagDe, FaFlag as FaFlagFr, FaFlag as FaFlagUs } from "react-icons/fa";
-
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
@@ -92,6 +90,12 @@ const menuItems: Record<Language, MenuItem[]> = {
   ],
 };
 
+const flagEmojis: Record<Language, string> = {
+  en: "🇬🇧",
+  fr: "🇫🇷",
+  de: "🇩🇪"
+};
+
 export default function HomePage() {
   const [lang, setLang] = useState<Language>("en");
 
@@ -135,6 +139,7 @@ const NavBar: React.FC<NavBarProps> = ({ lang, setLang }) => {
   const toggleLang = (language: Language) => {
     setLang(language);
     setShowLangDropdown(false);
+    if (isOpen) setIsOpen(false);
   };
 
   return (
@@ -145,7 +150,12 @@ const NavBar: React.FC<NavBarProps> = ({ lang, setLang }) => {
         {/* Menu Items */}
         <div className="hidden md:flex flex-1 justify-center space-x-6 text-white font-medium">
           {menuItems[lang].map((item, index) => (
-            <a key={index} href={`#${item.id}`} className="hover:text-pink-300 transition">
+            <a
+              key={index}
+              href={`#${item.id}`}
+              className="hover:text-pink-300 transition"
+              onClick={() => setIsOpen(false)}
+            >
               {item.label}
             </a>
           ))}
@@ -157,21 +167,27 @@ const NavBar: React.FC<NavBarProps> = ({ lang, setLang }) => {
             onClick={() => setShowLangDropdown(!showLangDropdown)}
             className="text-white font-semibold flex items-center space-x-2"
           >
-            <span>{lang.toUpperCase()}</span>
-            {lang === "en" && <FaFlagUs />}
-            {lang === "fr" && <FaFlagFr />}
-            {lang === "de" && <FaFlagDe />}
+            <span>{flagEmojis[lang]} {lang.toUpperCase()}</span>
           </button>
           {showLangDropdown && (
-            <div className="absolute right-0 mt-2 w-28 bg-white text-black rounded shadow-lg z-50">
-              <button onClick={() => toggleLang("en")} className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left">
-                <FaFlagUs /> English
+            <div className="absolute right-0 mt-2 w-32 bg-white text-black rounded shadow-lg z-50">
+              <button
+                onClick={() => toggleLang("en")}
+                className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left"
+              >
+                🇬🇧 English
               </button>
-              <button onClick={() => toggleLang("fr")} className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left">
-                <FaFlagFr /> Français
+              <button
+                onClick={() => toggleLang("fr")}
+                className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left"
+              >
+                🇫🇷 Français
               </button>
-              <button onClick={() => toggleLang("de")} className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left">
-                <FaFlagDe /> Deutsch
+              <button
+                onClick={() => toggleLang("de")}
+                className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left"
+              >
+                🇩🇪 Deutsch
               </button>
             </div>
           )}
@@ -190,30 +206,41 @@ const NavBar: React.FC<NavBarProps> = ({ lang, setLang }) => {
         <div className="md:hidden bg-black/80 backdrop-blur-sm px-6 pb-6 flex justify-center">
           <div className="flex flex-col items-center space-y-4 text-white font-medium mt-4 w-full">
             {menuItems[lang].map((item, index) => (
-              <a key={index} href={`#${item.id}`} className="hover:text-pink-300 transition">
+              <a
+                key={index}
+                href={`#${item.id}`}
+                className="hover:text-pink-300 transition"
+                onClick={() => setIsOpen(false)}
+              >
                 {item.label}
               </a>
             ))}
-            <div className="relative">
+            <div className="relative mt-4">
               <button
                 onClick={() => setShowLangDropdown(!showLangDropdown)}
                 className="text-white font-semibold flex items-center space-x-2"
               >
-                <span>{lang.toUpperCase()}</span>
-                {lang === "en" && <FaFlagUs />}
-                {lang === "fr" && <FaFlagFr />}
-                {lang === "de" && <FaFlagDe />}
+                <span>{flagEmojis[lang]} {lang.toUpperCase()}</span>
               </button>
               {showLangDropdown && (
-                <div className="absolute right-0 mt-2 w-28 bg-white text-black rounded shadow-lg z-50">
-                  <button onClick={() => toggleLang("en")} className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left">
-                    <FaFlagUs /> English
+                <div className="absolute right-0 mt-2 w-32 bg-white text-black rounded shadow-lg z-50">
+                  <button
+                    onClick={() => toggleLang("en")}
+                    className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left"
+                  >
+                    🇬🇧 English
                   </button>
-                  <button onClick={() => toggleLang("fr")} className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left">
-                    <FaFlagFr /> Français
+                  <button
+                    onClick={() => toggleLang("fr")}
+                    className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left"
+                  >
+                    🇫🇷 Français
                   </button>
-                  <button onClick={() => toggleLang("de")} className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left">
-                    <FaFlagDe /> Deutsch
+                  <button
+                    onClick={() => toggleLang("de")}
+                    className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left"
+                  >
+                    🇩🇪 Deutsch
                   </button>
                 </div>
               )}

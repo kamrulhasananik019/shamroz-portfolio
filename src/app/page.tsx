@@ -1443,4 +1443,3 @@ const CtaBar = ({ lang }: { lang: Language }) => {
     </div>
   );
 };
-

@@ -19,10 +19,11 @@ import {
   Sparkles,
   Waves
 } from "lucide-react";
-
 import "swiper/css";
+import 'swiper/css/effect-fade';
+import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Footer } from "./footer";
 import { NavBar } from "./navbar";
@@ -136,9 +137,11 @@ const Hero: React.FC<{ lang: string }> = ({ lang }) => {
   return (
     <div id="home">
       <Swiper
+        effect={'fade'}
+        navigation={true}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 2500, disableOnInteraction: false }}
-        modules={[Pagination, Autoplay]}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        modules={[Pagination, Autoplay, Navigation, EffectFade]}
         className="mySwiper"
       >
         {TEXTS.hero.map((slide) => (

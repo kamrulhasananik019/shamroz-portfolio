@@ -145,7 +145,10 @@ export const NavBar: React.FC<NavBarProps> = ({ lang, setLang }) => {
   return (
     <nav className="w-full bg-zinc-900/80 backdrop-blur-md backdrop-saturate-50 sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center py-4 px-6 relative">
-        <p className="text-2xl font-medium text-white">KSK Textile</p>
+        <Link href="/" className="text-2xl font-medium text-white flex items-center gap-2">
+          <img src="/logo-icon-only.png" alt="KSK Textile" width={28} height={28} />
+          KSK Textile
+        </Link>
 
 
         <div className="hidden md:flex flex-1 justify-center space-x-6 text-white font-medium">

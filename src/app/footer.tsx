@@ -1,7 +1,7 @@
 import { Linkedin } from "lucide-react";
 import Link from "next/link";
 import { menuItems } from "./config";
-import { Language, MenuItem } from "./types";
+import { Language } from "./types";
 
 export const Footer = ({ lang }: { lang: Language }) => {
     const contactInfo: Record<Language, { phone: string; address: string; email: string }> = {
@@ -61,12 +61,6 @@ export const Footer = ({ lang }: { lang: Language }) => {
         }
     };
 
-    const footerLinks: Record<Language, MenuItem[]> = {
-        en: [...menuItems[lang], { label: "Cookies Policy", id: "/cookies-policy" }, { label: "Privacy Policy", id: "/privacy" }, { label: "Terms & Conditions", id: "/terms" }],
-        fr: [...menuItems[lang], { label: "Politique des cookies", id: "/cookies-policy" }, { label: "Politique de confidentialité", id: "/privacy" }, { label: "Conditions générales", id: "/terms" }],
-        de: [...menuItems[lang], { label: "Cookie-Richtlinie", id: "/cookies-policy" }, { label: "Datenschutzrichtlinie", id: "/privacy" }, { label: "Geschäftsbedingungen", id: "/terms" }]
-    }
-
     return (
         <div className="bg-[#d9dce4] text-gray-800">
             <div className="container mx-auto px-4 pt-12 pb-6">
@@ -87,7 +81,7 @@ export const Footer = ({ lang }: { lang: Language }) => {
                     {/* Navigation Menu */}
                     <div className="col-span-12 md:col-span-6 flex justify-center items-start mt-6 md:mt-0">
                         <div className="flex flex-wrap justify-center gap-6 text-sm font-medium">
-                            {footerLinks[lang].map((item) => (
+                            {menuItems[lang].map((item) => (
                                 <Link
                                     key={item.id}
                                     href={item.id.startsWith("/") ? item.id : `#${item.id}`}
@@ -123,15 +117,15 @@ export const Footer = ({ lang }: { lang: Language }) => {
                 <div className="flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 gap-3">
                     <p>{footerTexts[lang].rights}</p>
                     <div className="flex gap-4">
-                        <a href="#" className="hover:underline">
+                        <Link href="/cookies-policy" className="hover:underline">
                             {footerTexts[lang].cookies}
-                        </a>
-                        <a href="#" className="hover:underline">
+                        </Link>
+                        <Link href="/privacy" className="hover:underline">
                             {footerTexts[lang].privacy}
-                        </a>
-                        <a href="#" className="hover:underline">
+                        </Link>
+                        <Link href="/terms" className="hover:underline">
                             {footerTexts[lang].terms}
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

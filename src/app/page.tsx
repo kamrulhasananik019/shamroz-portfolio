@@ -12,28 +12,21 @@ import {
   CheckCircle,
   Dot,
   Linkedin,
-  Mail,
-  Menu,
-  Phone,
+  Mail, Phone,
   RefreshCw,
   Shield,
   Shirt,
   Sparkles,
-  Waves,
-  X
+  Waves
 } from "lucide-react";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-type Language = "en" | "fr" | "de";
-
-interface NavBarProps {
-  lang: Language;
-  setLang: (lang: Language) => void;
-}
+import { Footer } from "./footer";
+import { NavBar } from "./navbar";
+import { Language } from "./types";
 
 interface SlideItem {
   id: number;
@@ -54,47 +47,6 @@ interface ContactInfoItem {
   icon: React.ReactNode;
   content: string;
 }
-
-type MenuItem = {
-  label: string;
-  id: string;
-};
-
-const menuItems: Record<Language, MenuItem[]> = {
-  en: [
-    { label: "Home", id: "home" },
-    { label: "About", id: "about" },
-    { label: "Expertise", id: "expertise" },
-    { label: "Products", id: "products" },
-    { label: "Quality Assurance", id: "quality-assurance" },
-    { label: "Reviews", id: "reviews" },
-    { label: "Contact Us", id: "contact-us" },
-  ],
-  fr: [
-    { label: "Accueil", id: "home" },
-    { label: "À propos", id: "about" },
-    { label: "Expertise", id: "expertise" },
-    { label: "Produits", id: "products" },
-    { label: "Assurance qualité", id: "quality-assurance" },
-    { label: "Avis", id: "reviews" },
-    { label: "Contactez-nous", id: "contact-us" },
-  ],
-  de: [
-    { label: "Startseite", id: "home" },
-    { label: "Über uns", id: "about" },
-    { label: "Expertise", id: "expertise" },
-    { label: "Produkte", id: "products" },
-    { label: "Qualitätssicherung", id: "quality-assurance" },
-    { label: "Bewertungen", id: "reviews" },
-    { label: "Kontakt", id: "contact-us" },
-  ],
-};
-
-const flagEmojis: Record<Language, string> = {
-  en: "🇬🇧",
-  fr: "🇫🇷",
-  de: "🇩🇪"
-};
 
 export default function HomePage() {
   const [lang, setLang] = useState<Language>("en");
@@ -131,129 +83,6 @@ export default function HomePage() {
     </div>
   );
 }
-
-export const NavBar: React.FC<NavBarProps> = ({ lang, setLang }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [showLangDropdown, setShowLangDropdown] = useState<boolean>(false);
-
-  const toggleLang = (language: Language) => {
-    setLang(language);
-    setShowLangDropdown(false);
-    if (isOpen) setIsOpen(false);
-  };
-
-  return (
-    <nav className="w-full bg-zinc-900/80 backdrop-blur-md backdrop-saturate-50 sticky top-0 z-50">
-      <div className="container mx-auto flex justify-between items-center py-4 px-6 relative">
-        <Link href="/" className="text-2xl font-medium text-white flex items-center gap-2">
-          <img src="/logo-icon-only.png" alt="KSK Textile" width={28} height={28} />
-          KSK Textile
-        </Link>
-
-
-        <div className="hidden md:flex flex-1 justify-center space-x-6 text-white font-medium">
-          {menuItems[lang].map((item, index) => (
-            <a
-              key={index}
-              href={`#${item.id}`}
-              className="hover:text-pink-300 transition"
-              onClick={() => setIsOpen(false)}
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
-
-
-        <div className="hidden md:block relative">
-          <button
-            onClick={() => setShowLangDropdown(!showLangDropdown)}
-            className="text-white font-semibold flex items-center space-x-2"
-          >
-            <span>{flagEmojis[lang]} {lang.toUpperCase()}</span>
-          </button>
-          {showLangDropdown && (
-            <div className="absolute right-0 mt-2 w-32 bg-white text-black rounded shadow-lg z-50">
-              <button
-                onClick={() => toggleLang("en")}
-                className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left"
-              >
-                🇬🇧 English
-              </button>
-              <button
-                onClick={() => toggleLang("fr")}
-                className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left"
-              >
-                🇫🇷 Français
-              </button>
-              <button
-                onClick={() => toggleLang("de")}
-                className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left"
-              >
-                🇩🇪 Deutsch
-              </button>
-            </div>
-          )}
-        </div>
-
-
-        <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-white">
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-      </div>
-
-
-      {isOpen && (
-        <div className="md:hidden bg-black/80 backdrop-blur-sm px-6 pb-6 flex justify-center">
-          <div className="flex flex-col items-center space-y-4 text-white font-medium mt-4 w-full">
-            {menuItems[lang].map((item, index) => (
-              <a
-                key={index}
-                href={`#${item.id}`}
-                className="hover:text-pink-300 transition"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-            <div className="relative mt-4">
-              <button
-                onClick={() => setShowLangDropdown(!showLangDropdown)}
-                className="text-white font-semibold flex items-center space-x-2"
-              >
-                <span>{flagEmojis[lang]} {lang.toUpperCase()}</span>
-              </button>
-              {showLangDropdown && (
-                <div className="absolute right-0 mt-2 w-32 bg-white text-black rounded shadow-lg z-50">
-                  <button
-                    onClick={() => toggleLang("en")}
-                    className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left"
-                  >
-                    🇬🇧 English
-                  </button>
-                  <button
-                    onClick={() => toggleLang("fr")}
-                    className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left"
-                  >
-                    🇫🇷 Français
-                  </button>
-                  <button
-                    onClick={() => toggleLang("de")}
-                    className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 text-left"
-                  >
-                    🇩🇪 Deutsch
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-    </nav>
-  );
-};
 
 const Hero: React.FC<{ lang: string }> = ({ lang }) => {
   const TEXTS: { hero: SlideItem[] } = {
@@ -1609,142 +1438,6 @@ const CtaBar = ({ lang }: { lang: Language }) => {
           <Link href="https://www.linkedin.com/in/ksk-textile-quality-textile-solutions-9a5288361/" className="bg-white text-black py-3 px-7 rounded-3xl">
             {content.button}
           </Link>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export const Footer = ({ lang }: { lang: Language }) => {
-  const contactInfo: Record<Language, { phone: string; address: string; email: string }> = {
-    en: {
-      phone: "+33 (0)7 82 86 55 18",
-      address: "50 avenue des Champs-Élysées, 75008 Paris",
-      email: "business@kskimex.com"
-    },
-    fr: {
-      phone: "+33 (0)7 82 86 55 18",
-      address: "50 avenue des Champs-Élysées, 75008 Paris",
-      email: "business@kskimex.com"
-    },
-    de: {
-      phone: "+33 (0)7 82 86 55 18",
-      address: "50 avenue des Champs-Élysées, 75008 Paris",
-      email: "business@kskimex.com"
-    }
-  };
-
-  const footerTexts: Record<Language, { rights: string; cookies: string; privacy: string; terms: string }> = {
-    en: {
-      rights: "KSK Textile © 2025. All rights reserved.",
-      cookies: "Cookies Policy",
-      privacy: "Privacy Policy",
-      terms: "Terms & Conditions"
-    },
-    fr: {
-      rights: "KSK Textile © 2025. Tous droits réservés.",
-      cookies: "Politique des cookies",
-      privacy: "Politique de confidentialité",
-      terms: "Conditions générales"
-    },
-    de: {
-      rights: "KSK Textile © 2025. Alle Rechte vorbehalten.",
-      cookies: "Cookie-Richtlinie",
-      privacy: "Datenschutzrichtlinie",
-      terms: "Geschäftsbedingungen"
-    }
-  };
-
-  const contactLabels: Record<Language, { phone: string; address: string; email: string }> = {
-    en: {
-      phone: "Phone",
-      address: "Address",
-      email: "Email"
-    },
-    fr: {
-      phone: "Téléphone",
-      address: "Adresse",
-      email: "Email"
-    },
-    de: {
-      phone: "Telefon",
-      address: "Adresse",
-      email: "E-Mail"
-    }
-  };
-
-  const footerLinks: Record<Language, MenuItem[]> = {
-    en: [...menuItems[lang], { label: "Cookies Policy", id: "/cookies-policy" }, { label: "Privacy Policy", id: "/privacy" }, { label: "Terms & Conditions", id: "/terms" }],
-    fr: [...menuItems[lang], { label: "Politique des cookies", id: "/cookies-policy" }, { label: "Politique de confidentialité", id: "/privacy" }, { label: "Conditions générales", id: "/terms" }],
-    de: [...menuItems[lang], { label: "Cookie-Richtlinie", id: "/cookies-policy" }, { label: "Datenschutzrichtlinie", id: "/privacy" }, { label: "Geschäftsbedingungen", id: "/terms" }]
-  }
-
-  return (
-    <div className="bg-[#d9dce4] text-gray-800">
-      <div className="container mx-auto px-4 pt-12 pb-6">
-        <div className="grid grid-cols-12 gap-6 items-start">
-          {/* Logo + Socials */}
-          <div className="col-span-12 md:col-span-3 flex flex-col items-center md:items-start gap-4 text-center md:text-left">
-            <p className="text-2xl font-medium">KSK Textile</p>
-            <div className="flex gap-4">
-              <Link
-                href="https://www.linkedin.com/in/ksk-textile-quality-textile-solutions-9a5288361/"
-                className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition"
-              >
-                <Linkedin size={18} />
-              </Link>
-            </div>
-          </div>
-
-          {/* Navigation Menu */}
-          <div className="col-span-12 md:col-span-6 flex justify-center items-start mt-6 md:mt-0">
-            <div className="flex flex-wrap justify-center gap-6 text-sm font-medium">
-              {footerLinks[lang].map((item) => (
-                <Link
-                  key={item.id}
-                  href={item.id.startsWith("/") ? item.id : `#${item.id}`}
-                  className="hover:underline transition"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Contact Info */}
-          <div className="col-span-12 md:col-span-3 flex flex-col items-center md:items-start text-sm space-y-4 mt-6 md:mt-0">
-            <div className="text-center md:text-left">
-              <p className="font-semibold">{contactLabels[lang].phone}</p>
-              <p>{contactInfo[lang].phone}</p>
-            </div>
-            <div className="text-center md:text-left">
-              <p className="font-semibold">{contactLabels[lang].address}</p>
-              <p>{contactInfo[lang].address}</p>
-            </div>
-            <div className="text-center md:text-left">
-              <p className="font-semibold">{contactLabels[lang].email}</p>
-              <p>{contactInfo[lang].email}</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div className="border-t border-gray-300 my-6" />
-
-        {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 gap-3">
-          <p>{footerTexts[lang].rights}</p>
-          <div className="flex gap-4">
-            <a href="#" className="hover:underline">
-              {footerTexts[lang].cookies}
-            </a>
-            <a href="#" className="hover:underline">
-              {footerTexts[lang].privacy}
-            </a>
-            <a href="#" className="hover:underline">
-              {footerTexts[lang].terms}
-            </a>
-          </div>
         </div>
       </div>
     </div>

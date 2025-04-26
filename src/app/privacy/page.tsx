@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Footer, NavBar } from "../page";
+import { Footer } from "../footer";
+import { NavBar } from "../navbar";
 
 type Language = "en" | "fr" | "de";
 

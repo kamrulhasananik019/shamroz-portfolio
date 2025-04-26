@@ -132,7 +132,7 @@ export default function HomePage() {
   );
 }
 
-const NavBar: React.FC<NavBarProps> = ({ lang, setLang }) => {
+export const NavBar: React.FC<NavBarProps> = ({ lang, setLang }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [showLangDropdown, setShowLangDropdown] = useState<boolean>(false);
 
@@ -1612,7 +1612,7 @@ const CtaBar = ({ lang }: { lang: Language }) => {
   );
 };
 
-const Footer = ({ lang }: { lang: Language }) => {
+export const Footer = ({ lang }: { lang: Language }) => {
   const contactInfo: Record<Language, { phone: string; address: string; email: string }> = {
     en: {
       phone: "+33 (0)7 82 86 55 18",
@@ -1670,6 +1670,12 @@ const Footer = ({ lang }: { lang: Language }) => {
     }
   };
 
+  const footerLinks: Record<Language, MenuItem[]> = {
+    en: [...menuItems[lang], { label: "Cookies Policy", id: "/cookies-policy" }, { label: "Privacy Policy", id: "/privacy" }, { label: "Terms & Conditions", id: "/terms" }],
+    fr: [...menuItems[lang], { label: "Politique des cookies", id: "/cookies-policy" }, { label: "Politique de confidentialité", id: "/privacy" }, { label: "Conditions générales", id: "/terms" }],
+    de: [...menuItems[lang], { label: "Cookie-Richtlinie", id: "/cookies-policy" }, { label: "Datenschutzrichtlinie", id: "/privacy" }, { label: "Geschäftsbedingungen", id: "/terms" }]
+  }
+
   return (
     <div className="bg-[#d9dce4] text-gray-800">
       <div className="container mx-auto px-4 pt-12 pb-6">
@@ -1690,14 +1696,14 @@ const Footer = ({ lang }: { lang: Language }) => {
           {/* Navigation Menu */}
           <div className="col-span-12 md:col-span-6 flex justify-center items-start mt-6 md:mt-0">
             <div className="flex flex-wrap justify-center gap-6 text-sm font-medium">
-              {menuItems[lang].map((item) => (
-                <a
+              {footerLinks[lang].map((item) => (
+                <Link
                   key={item.id}
-                  href={`#${item.id}`}
+                  href={item.id.startsWith("/") ? item.id : `#${item.id}`}
                   className="hover:underline transition"
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
             </div>
           </div>

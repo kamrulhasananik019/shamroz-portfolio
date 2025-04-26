@@ -1265,7 +1265,7 @@ const ContactUs: React.FC<{ lang: Language }> = ({ lang }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const fullName = `${formData.firstName} ${formData.lastName}`;
-    const mailLink = `mailto:info@neelumfabrics.com?subject=Contact%20Form%20Submission&body=${encodeURIComponent(
+    const mailLink = `mailto:business@kskimex.com?subject=Contact%20Form%20Submission&body=${encodeURIComponent(
       `Name: ${fullName}\nPhone: ${formData.phone}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     )}`;
     const a = document.createElement("a")

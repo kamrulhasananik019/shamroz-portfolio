@@ -158,7 +158,7 @@ const Hero: React.FC<{ lang: string }> = ({ lang }) => {
                 <div className="md:text-start text-center flex flex-col justify-center items-center md:grid grid-cols-2">
                   <div>
                     <p className="py-10">{slide.description[lang]}</p>
-                    <a href="#our-work" className="bg-white text-black py-3 px-7 rounded-3xl">
+                    <a href="#products" className="bg-white text-black py-3 px-7 rounded-3xl">
                       {{
                         en: "Explore Our Products",
                         fr: "Voir Nos Produits",
@@ -295,7 +295,7 @@ const AboutUs: React.FC<{ lang: Language }> = ({ lang }) => {
   const content = {
     en: {
       title: "About KSK Textile",
-      intro: "KSK Textile is your dedicated partner in high-quality textile supply, proudly serving hospitality professionals, laundries, and cleaning companies across Europe.",
+      intro: " is your dedicated partner in high-quality textile supply, proudly serving hospitality professionals, laundries, and cleaning companies across Europe.",
       specialization: "We specialize in delivering a wide range of textile solutions, including hotel and hospital linens, home textiles, and more — combining competitive pricing, durable quality, and reliable service.",
       needs: "We understand the unique needs of businesses that rely on textile products daily. That's why we focus on consistency, flexibility, and quick response — ensuring you always have what you need, when you need it.",
       partnership: "Whether you're managing a boutique hotel, running an industrial laundry, or sourcing for a large operation, we work with trusted manufacturers to offer tailored solutions to match your standards and budget.",
@@ -303,7 +303,7 @@ const AboutUs: React.FC<{ lang: Language }> = ({ lang }) => {
     },
     fr: {
       title: "À propos de KSK Textile",
-      intro: "KSK Textile est votre partenaire dédié pour la fourniture de textiles de haute qualité, au service des professionnels de l'hôtellerie, des blanchisseries et des entreprises de nettoyage à travers l'Europe.",
+      intro: "est votre partenaire dédié pour la fourniture de textiles de haute qualité, au service des professionnels de l'hôtellerie, des blanchisseries et des entreprises de nettoyage à travers l'Europe.",
       specialization: "Nous nous spécialisons dans la fourniture d'une large gamme de solutions textiles, notamment des draps d'hôtel et d'hôpital, des textiles pour la maison, et bien plus encore — alliant prix compétitifs, qualité durable et service fiable.",
       needs: "Nous comprenons les besoins uniques des entreprises qui dépendent quotidiennement des produits textiles. C'est pourquoi nous nous concentrons sur la cohérence, la flexibilité et une réponse rapide — vous garantissant toujours ce dont vous avez besoin, quand vous en avez besoin.",
       partnership: "Que vous gériez un hôtel boutique, une blanchisserie industrielle ou que vous approvisionniez une grande opération, nous travaillons avec des fabricants de confiance pour offrir des solutions adaptées à vos normes et à votre budget.",
@@ -311,7 +311,7 @@ const AboutUs: React.FC<{ lang: Language }> = ({ lang }) => {
     },
     de: {
       title: "Über KSK Textile",
-      intro: "KSK Textile ist Ihr engagierter Partner für hochwertige Textilversorgung und bedient stolz Fachleute aus der Hotellerie, Wäschereien und Reinigungsunternehmen in ganz Europa.",
+      intro: "ist Ihr engagierter Partner für hochwertige Textilversorgung und bedient stolz Fachleute aus der Hotellerie, Wäschereien und Reinigungsunternehmen in ganz Europa.",
       specialization: "Wir sind spezialisiert auf die Lieferung einer breiten Palette von Textillösungen, einschließlich Hotel- und Krankenhausbettwäsche, Heimtextilien und mehr — mit wettbewerbsfähigen Preisen, langlebiger Qualität und zuverlässigem Service.",
       needs: "Wir verstehen die einzigartigen Bedürfnisse von Unternehmen, die täglich auf Textilprodukte angewiesen sind. Deshalb konzentrieren wir uns auf Konsistenz, Flexibilität und schnelle Reaktionsfähigkeit — damit Sie immer das haben, was Sie brauchen, wenn Sie es brauchen.",
       partnership: "Ob Sie ein Boutique-Hotel leiten, eine industrielle Wäscherei betreiben oder für einen großen Betrieb einkaufen, wir arbeiten mit vertrauenswürdigen Herstellern zusammen, um maßgeschneiderte Lösungen anzubieten, die Ihren Standards und Ihrem Budget entsprechen.",

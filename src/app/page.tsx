@@ -98,7 +98,7 @@ const Hero: React.FC<{ lang: string }> = ({ lang }) => {
           "fr": "Avec plus de 40 ans d'expertise familiale dans la fabrication de textiles et une solide expérience en droit et commerce, nous fournissons du linge de lit haut de gamme, des serviettes et des solutions textiles personnalisées adaptées aux besoins des hôtels, blanchisseries et professionnels de l'hôtellerie.",
           "de": "Mit über 40 Jahren familiärer Erfahrung in der Textilproduktion und einer soliden Basis in rechtlichen und kommerziellen Abläufen bieten wir hochwertige Bettwäsche, Handtücher und maßgeschneiderte Textillösungen für Hotels, Wäschereien und Gastgewerbeprofis."
         },
-        "image": "/hero.jpg"
+        "image": "/hero.webp"
       },
       {
         "id": 2,
@@ -112,7 +112,7 @@ const Hero: React.FC<{ lang: string }> = ({ lang }) => {
           "fr": "Nos produits sont conçus pour répondre aux normes rigoureuses de l'industrie hôtelière. De la durabilité à l'élégance, nous veillons à ce que vos clients profitent d'un confort luxueux tout en maintenant la rentabilité de votre entreprise.",
           "de": "Unsere Produkte sind auf die strengen Anforderungen der Hotelbranche ausgelegt. Von Langlebigkeit bis Eleganz sorgen wir dafür, dass Ihre Gäste luxuriösen Komfort genießen und Ihr Unternehmen gleichzeitig wirtschaftlich bleibt."
         },
-        "image": "/hero-2.jpg"
+        "image": "/hero-2.webp"
       },
       {
         "id": 3,
@@ -126,7 +126,7 @@ const Hero: React.FC<{ lang: string }> = ({ lang }) => {
           "fr": "Nous sommes spécialisés dans le linge et les serviettes de qualité supérieure, fabriqués en Europe. Que vous dirigiez un hôtel de charme ou un service de blanchisserie à grande échelle, nous garantissons une qualité constante à chaque fil.",
           "de": "Wir spezialisieren uns auf hochwertige Bettwäsche und Handtücher, die in Europa bezogen und gefertigt werden. Ob Boutiquehotel oder Großwäscherei – wir liefern durchgehend Qualität bei jedem Faden."
         },
-        "image": "/hero-1.jpg"
+        "image": "/hero-1.webp"
       }
     ]
 

@@ -285,7 +285,7 @@ const AboutUs: React.FC<{ lang: Language }> = ({ lang }) => {
             <figure className="relative mx-auto max-w-md lg:max-w-none mb-8 lg:mb-0 order-1 lg:order-1">
               <div className="relative">
                 <Image
-                  src="/about.png"
+                  src="/about.webp"
                   alt="Main textile display"
                   width={600}
                   height={400}
@@ -293,7 +293,7 @@ const AboutUs: React.FC<{ lang: Language }> = ({ lang }) => {
                 />
                 <div className="absolute -bottom-6 -right-4 sm:-bottom-8 sm:-right-6 md:-bottom-10 md:-right-8 lg:-bottom-12 lg:right-0">
                   <Image
-                    src="/about-2.png"
+                    src="/about-2.webp"
                     alt="Secondary textile display"
                     width={200}
                     height={150}

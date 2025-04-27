@@ -1170,7 +1170,7 @@ const ContactUs: React.FC<{ lang: Language }> = ({ lang }) => {
       },
       contactInfo: {
         headOffice: {
-          title: "Head Office",
+          title: "KSK IMEX GLOBAL TRADE",
           content: "50 avenue des Champs-Élysées, 75008 Paris"
         },
         callOrText: {
@@ -1201,7 +1201,7 @@ const ContactUs: React.FC<{ lang: Language }> = ({ lang }) => {
       },
       contactInfo: {
         headOffice: {
-          title: "Siège Social",
+          title: "KSK IMEX Commerce International",
           content: "50 avenue des Champs-Élysées, 75008 Paris"
         },
         callOrText: {
@@ -1232,7 +1232,7 @@ const ContactUs: React.FC<{ lang: Language }> = ({ lang }) => {
       },
       contactInfo: {
         headOffice: {
-          title: "Hauptsitz",
+          title: "KSK IMEX Internationaler Handel",
           content: "50 avenue des Champs-Élysées, 75008 Paris"
         },
         callOrText: {

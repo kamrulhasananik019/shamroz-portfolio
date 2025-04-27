@@ -9,7 +9,7 @@ import {
   Award,
   Bed,
   Building,
-  CheckCircle, Linkedin,
+  CheckCircle, Facebook, Linkedin,
   Mail, Phone,
   RefreshCw,
   Shield,
@@ -170,7 +170,15 @@ const Hero: React.FC<{ lang: string }> = ({ lang }) => {
                       >
                         <Linkedin size={18} />
                       </Link>
+
+                      <Link
+                        href="https://www.facebook.com/profile.php?id=61575685832057"
+                        className="h-10 w-10 text-black bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition"
+                      >
+                        <Facebook size={22} />
+                      </Link>
                     </div>
+
                   </div>
                 </div>
               </div>
@@ -1375,8 +1383,8 @@ const CtaBar = ({ lang }: { lang: Language }) => {
   const content = ctaContent[lang];
 
   return (
-    <div className=" relative bg-[url('/hero.jpg')] bg-cover bg-center m-1 rounded-3xl py-28 px-4 mt-5">
-      <div className="absolute inset-0 bg-black opacity-40 z-0 rounded-3xl" />
+    <div className=" relative bg-[url('/hero.jpg')] bg-cover bg-center m-1 rounded-3xl py-28 px-4 mt-5 mb-16">
+      <div className="absolute inset-0 bg-black opacity-30 z-0 rounded-3xl" />
       <div className="relative container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex justify-center text-center md:block md:text-start">
           <h2 className="lg:text-7xl md:text-5xl text-4xl font-medium text-white md:w-7/12 w-full">

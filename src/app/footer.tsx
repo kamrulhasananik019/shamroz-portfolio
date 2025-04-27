@@ -1,4 +1,4 @@
-import { Linkedin } from "lucide-react";
+import { Facebook, Linkedin } from "lucide-react";
 import Link from "next/link";
 import { menuItems } from "./config";
 import { Language } from "./types";
@@ -77,6 +77,12 @@ export const Footer = ({ lang }: { lang: Language }) => {
                                 className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition"
                             >
                                 <Linkedin size={18} />
+                            </Link>
+                            <Link
+                                href="https://www.facebook.com/profile.php?id=61575685832057"
+                                className="h-10 w-10 text-black bg-white rounded-full flex items-center justify-center shadow hover:shadow-md transition"
+                            >
+                                <Facebook size={22} />
                             </Link>
                         </div>
                     </div>

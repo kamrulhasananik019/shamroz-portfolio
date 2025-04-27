@@ -682,16 +682,19 @@ const Products = ({ lang }: { lang: Language }) => {
   const productsContent = {
     en: {
       title: "Products",
+      description: "Discover our premium range of textile products designed to meet the highest standards of the hospitality industry. From luxurious bed linens to elegant tablecloths, we offer quality, comfort, and durability tailored to your needs.",
       showAll: "Show All",
       showLess: "Show Less"
     },
     fr: {
       title: "Produits",
+      description: "Découvrez notre gamme de produits textiles haut de gamme conçus pour répondre aux normes les plus élevées du secteur de l'hôtellerie. Du linge de lit luxueux aux nappes élégantes, nous offrons qualité, confort et durabilité adaptés à vos besoins.",
       showAll: "Voir Tout",
       showLess: "Voir Moins"
     },
     de: {
       title: "Produkte",
+      description: "Entdecken Sie unser hochwertiges Sortiment an Textilprodukten, das den höchsten Ansprüchen der Hotel- und Gastgewerbebranche gerecht wird. Von luxuriöser Bettwäsche bis zu eleganten Tischdecken bieten wir Qualität, Komfort und Langlebigkeit nach Maß.",
       showAll: "Alle Anzeigen",
       showLess: "Weniger Anzeigen"
     }
@@ -776,11 +779,11 @@ const Products = ({ lang }: { lang: Language }) => {
   return (
     <div id="products" className="bg-gray-100 py-10 md:py-20 transition-all duration-500 ease-in-out">
       <div className="max-w-7xl mx-auto py-8 p-5">
-        <div className="mb-10">
-          <div className="flex items-center text-pink-600">
-            <Dot size={50} />
-            <p className="font-medium">{content.title}</p>
-          </div>
+        <div className="mb-16 text-center">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-pink-600 ">{content.title}</h2>
+          <p className="mt-6 text-gray-600 max-w-3xl mx-auto text-lg">
+            {content.description}
+          </p>
         </div>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 transition-all duration-500 ease-in-out">

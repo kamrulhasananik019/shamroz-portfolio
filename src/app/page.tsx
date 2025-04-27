@@ -206,57 +206,6 @@ const AboutUs: React.FC<{ lang: Language }> = ({ lang }) => {
     },
     {
       value: {
-        en: "12",
-        fr: "12",
-        de: "12"
-      },
-      label: {
-        en: "countries",
-        fr: "pays",
-        de: "Länder"
-      },
-      description: {
-        en: "served across Europe, with a strong focus on the French hospitality sector",
-        fr: "desservi à travers l'Europe, avec un fort accent sur le secteur hôtelier français",
-        de: "in ganz Europa tätig, mit einem starken Fokus auf den französischen Gastsektor",
-      },
-    },
-    {
-      value: {
-        en: "100+",
-        fr: "100+",
-        de: "100+"
-      },
-      label: {
-        en: "clients",
-        fr: "clients",
-        de: "Kunden"
-      },
-      description: {
-        en: "including hotels, laundries, and other hospitality businesses who trust our quality",
-        fr: "y compris des hôtels, des blanchisseries et d'autres entreprises hôtelières qui font confiance à notre qualité",
-        de: "einschließlich Hotels, Wäschereien und andere Gastgewerbebetriebe, die auf unsere Qualität vertrauen",
-      },
-    },
-    {
-      value: {
-        en: "98%",
-        fr: "98%",
-        de: "98%"
-      },
-      label: {
-        en: "satisfaction",
-        fr: "satisfaction",
-        de: "Zufriedenheit"
-      },
-      description: {
-        en: "customer satisfaction rate based on feedback and long-term partnerships",
-        fr: "taux de satisfaction client basé sur les retours et partenariats à long terme",
-        de: "Kundenzufriedenheitsrate basierend auf Feedback und langfristigen Partnerschaften",
-      },
-    },
-    {
-      value: {
         en: "24/7",
         fr: "24/7",
         de: "24/7"

@@ -9,9 +9,7 @@ import {
   Award,
   Bed,
   Building,
-  CheckCircle,
-  Dot,
-  Linkedin,
+  CheckCircle, Linkedin,
   Mail, Phone,
   RefreshCw,
   Shield,
@@ -1059,13 +1057,8 @@ const Reviews = ({ lang }: { lang: Language }) => {
 
   return (
     <div id="reviews" className="max-w-7xl mx-auto p-4 md:my-28 my-10">
-      <div className="flex justify-between items-center mb-10">
-        <div className="flex items-center text-pink-600">
-          <Dot size={40} />
-          <p className="font-medium text-lg ml-2">{content.title}</p>
-        </div>
 
-      </div>
+      <h2 className="text-3xl md:text-5xl font-bold text-pink-600 text-center tracking-tight mb-10">{content.title}</h2>
 
       <Swiper
         slidesPerView={1}

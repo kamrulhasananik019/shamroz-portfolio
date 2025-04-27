@@ -67,7 +67,10 @@ export const Footer = ({ lang }: { lang: Language }) => {
                 <div className="grid grid-cols-12 gap-6 items-start">
                     {/* Logo + Socials */}
                     <div className="col-span-12 md:col-span-3 flex flex-col items-center md:items-start gap-4 text-center md:text-left">
-                        <p className="text-2xl font-medium">KSK Textile</p>
+                        <Link href="/" className="text-2xl font-medium flex items-center gap-2">
+                            <img src="/logo-icon-only.png" alt="KSK Textile" width={28} height={28} />
+                            KSK Textile
+                        </Link>
                         <div className="flex gap-4">
                             <Link
                                 href="https://www.linkedin.com/in/ksk-textile-quality-textile-solutions-9a5288361/"

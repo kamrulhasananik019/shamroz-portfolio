@@ -1375,17 +1375,23 @@ const CtaBar = ({ lang }: { lang: Language }) => {
   const content = ctaContent[lang];
 
   return (
-    <div className="bg-[url('/hero.jpg')] m-1 rounded-3xl py-28 mt-5">
-      <div className="container mx-auto flex flex-col md:flex-row justify-center items-center gap-5">
+    <div className=" relative bg-[url('/hero.jpg')] bg-cover bg-center m-1 rounded-3xl py-28 px-4 mt-5">
+      <div className="absolute inset-0 bg-black opacity-40 z-0 rounded-3xl" />
+      <div className="relative container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex justify-center text-center md:block md:text-start">
-          <h2 className="lg:text-7xl md:text-5xl text-4xl font-medium text-white w-7/12">
+          <h2 className="lg:text-7xl md:text-5xl text-4xl font-medium text-white md:w-7/12 w-full">
             {content.title}
           </h2>
         </div>
-        <div>
-          <Link href="https://www.linkedin.com/in/ksk-textile-quality-textile-solutions-9a5288361/" className="bg-white text-black py-3 px-7 rounded-3xl">
+        <div className="flex justify-center md:justify-end">
+          <a
+            href="mailto:business@kskimex.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white text-black font-medium py-3 px-6 rounded-full whitespace-nowrap"
+          >
             {content.button}
-          </Link>
+          </a>
         </div>
       </div>
     </div>

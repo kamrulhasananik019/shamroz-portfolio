@@ -42,7 +42,7 @@ export default function Reviews({ lang }: { lang: Language }) {
         text: "",
     });
 
-    // Fetch reviews from KV on component mount
+
     useEffect(() => {
         async function fetchReviews() {
             const res = await fetch("/api/reviews");

@@ -25,7 +25,6 @@ import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Footer } from "./footer";
 import { NavBar } from "./navbar";
-import Reviews from "./review";
 import { Language } from "./types";
 
 interface SlideItem {
@@ -76,7 +75,7 @@ export default function HomePage() {
       <Expertise lang={lang} />
       <Products lang={lang} />
       <QualityAssurance lang={lang} />
-      <Reviews lang={lang} />
+      {/* <Reviews lang={lang} /> */}
       <ContactUs lang={lang} />
       <CtaBar lang={lang} />
       <Footer lang={lang} />

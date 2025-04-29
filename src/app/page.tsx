@@ -1,30 +1,36 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 import {
   ArrowUp,
   Award,
   Bed,
   Building,
-  CheckCircle, Facebook, Linkedin,
-  Mail, Phone,
+  CheckCircle,
+  Facebook,
+  Linkedin,
+  Mail,
+  Phone,
   RefreshCw,
   Shield,
   Shirt,
   Sparkles,
-  Waves
+  Waves,
 } from "lucide-react";
 import "swiper/css";
-import 'swiper/css/effect-fade';
+import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import { Footer } from "./footer";
 import { NavBar } from "./navbar";
+import Reviews from "./review";
 import { Language } from "./types";
 
 interface SlideItem {
@@ -75,7 +81,7 @@ export default function HomePage() {
       <Expertise lang={lang} />
       <Products lang={lang} />
       <QualityAssurance lang={lang} />
-      {/* <Reviews lang={lang} /> */}
+      <Reviews lang={lang} />
       <ContactUs lang={lang} />
       <CtaBar lang={lang} />
       <Footer lang={lang} />
@@ -87,55 +93,54 @@ const Hero: React.FC<{ lang: string }> = ({ lang }) => {
   const TEXTS: { hero: SlideItem[] } = {
     hero: [
       {
-        "id": 1,
-        "title": {
-          "en": "Supplying Premium Textiles for the Hospitality Sector Across Europe",
-          "fr": "Fourniture de textiles haut de gamme pour le secteur de l'hôtellerie à travers l'Europe",
-          "de": "Lieferung hochwertiger Textilien für die Hotelbranche in ganz Europa"
+        id: 1,
+        title: {
+          en: "Supplying Premium Textiles for the Hospitality Sector Across Europe",
+          fr: "Fourniture de textiles haut de gamme pour le secteur de l'hôtellerie à travers l'Europe",
+          de: "Lieferung hochwertiger Textilien für die Hotelbranche in ganz Europa",
         },
-        "description": {
-          "en": "With over 40 years of family expertise in textile manufacturing and a solid foundation in legal and commercial operations, we provide premium bed linens, towels, and customized textile solutions tailored to the needs of hotels, laundries, and hospitality professionals.",
-          "fr": "Avec plus de 40 ans d'expertise familiale dans la fabrication de textiles et une solide expérience en droit et commerce, nous fournissons du linge de lit haut de gamme, des serviettes et des solutions textiles personnalisées adaptées aux besoins des hôtels, blanchisseries et professionnels de l'hôtellerie.",
-          "de": "Mit über 40 Jahren familiärer Erfahrung in der Textilproduktion und einer soliden Basis in rechtlichen und kommerziellen Abläufen bieten wir hochwertige Bettwäsche, Handtücher und maßgeschneiderte Textillösungen für Hotels, Wäschereien und Gastgewerbeprofis."
+        description: {
+          en: "With over 40 years of family expertise in textile manufacturing and a solid foundation in legal and commercial operations, we provide premium bed linens, towels, and customized textile solutions tailored to the needs of hotels, laundries, and hospitality professionals.",
+          fr: "Avec plus de 40 ans d'expertise familiale dans la fabrication de textiles et une solide expérience en droit et commerce, nous fournissons du linge de lit haut de gamme, des serviettes et des solutions textiles personnalisées adaptées aux besoins des hôtels, blanchisseries et professionnels de l'hôtellerie.",
+          de: "Mit über 40 Jahren familiärer Erfahrung in der Textilproduktion und einer soliden Basis in rechtlichen und kommerziellen Abläufen bieten wir hochwertige Bettwäsche, Handtücher und maßgeschneiderte Textillösungen für Hotels, Wäschereien und Gastgewerbeprofis.",
         },
-        "image": "/hero.webp"
+        image: "/hero.webp",
       },
       {
-        "id": 2,
-        "title": {
-          "en": "Tailored Textile Solutions for Hotels, Spas, and Laundries",
-          "fr": "Solutions textiles sur mesure pour hôtels, spas et blanchisseries",
-          "de": "Maßgeschneiderte Textillösungen für Hotels, Spas und Wäschereien"
+        id: 2,
+        title: {
+          en: "Tailored Textile Solutions for Hotels, Spas, and Laundries",
+          fr: "Solutions textiles sur mesure pour hôtels, spas et blanchisseries",
+          de: "Maßgeschneiderte Textillösungen für Hotels, Spas und Wäschereien",
         },
-        "description": {
-          "en": "Our products are designed to meet the rigorous standards of the hospitality industry. From durability to elegance, we ensure your guests enjoy luxurious comfort while maintaining cost-effectiveness for your business.",
-          "fr": "Nos produits sont conçus pour répondre aux normes rigoureuses de l'industrie hôtelière. De la durabilité à l'élégance, nous veillons à ce que vos clients profitent d'un confort luxueux tout en maintenant la rentabilité de votre entreprise.",
-          "de": "Unsere Produkte sind auf die strengen Anforderungen der Hotelbranche ausgelegt. Von Langlebigkeit bis Eleganz sorgen wir dafür, dass Ihre Gäste luxuriösen Komfort genießen und Ihr Unternehmen gleichzeitig wirtschaftlich bleibt."
+        description: {
+          en: "Our products are designed to meet the rigorous standards of the hospitality industry. From durability to elegance, we ensure your guests enjoy luxurious comfort while maintaining cost-effectiveness for your business.",
+          fr: "Nos produits sont conçus pour répondre aux normes rigoureuses de l'industrie hôtelière. De la durabilité à l'élégance, nous veillons à ce que vos clients profitent d'un confort luxueux tout en maintenant la rentabilité de votre entreprise.",
+          de: "Unsere Produkte sind auf die strengen Anforderungen der Hotelbranche ausgelegt. Von Langlebigkeit bis Eleganz sorgen wir dafür, dass Ihre Gäste luxuriösen Komfort genießen und Ihr Unternehmen gleichzeitig wirtschaftlich bleibt.",
         },
-        "image": "/hero-2.webp"
+        image: "/hero-2.webp",
       },
       {
-        "id": 3,
-        "title": {
-          "en": "Elevate Guest Experience with European-Quality Linens",
-          "fr": "Améliorez l'expérience client avec du linge de qualité européenne",
-          "de": "Steigern Sie das Gästeerlebnis mit hochwertiger Bettwäsche aus Europa"
+        id: 3,
+        title: {
+          en: "Elevate Guest Experience with European-Quality Linens",
+          fr: "Améliorez l'expérience client avec du linge de qualité européenne",
+          de: "Steigern Sie das Gästeerlebnis mit hochwertiger Bettwäsche aus Europa",
         },
-        "description": {
-          "en": "We specialize in premium-quality linens and towels sourced and crafted in Europe. Whether you run a boutique hotel or a large-scale laundry service, we deliver consistency and quality with every thread.",
-          "fr": "Nous sommes spécialisés dans le linge et les serviettes de qualité supérieure, fabriqués en Europe. Que vous dirigiez un hôtel de charme ou un service de blanchisserie à grande échelle, nous garantissons une qualité constante à chaque fil.",
-          "de": "Wir spezialisieren uns auf hochwertige Bettwäsche und Handtücher, die in Europa bezogen und gefertigt werden. Ob Boutiquehotel oder Großwäscherei – wir liefern durchgehend Qualität bei jedem Faden."
+        description: {
+          en: "We specialize in premium-quality linens and towels sourced and crafted in Europe. Whether you run a boutique hotel or a large-scale laundry service, we deliver consistency and quality with every thread.",
+          fr: "Nous sommes spécialisés dans le linge et les serviettes de qualité supérieure, fabriqués en Europe. Que vous dirigiez un hôtel de charme ou un service de blanchisserie à grande échelle, nous garantissons une qualité constante à chaque fil.",
+          de: "Wir spezialisieren uns auf hochwertige Bettwäsche und Handtücher, die in Europa bezogen und gefertigt werden. Ob Boutiquehotel oder Großwäscherei – wir liefern durchgehend Qualität bei jedem Faden.",
         },
-        "image": "/hero-1.webp"
-      }
-    ]
-
+        image: "/hero-1.webp",
+      },
+    ],
   };
 
   return (
     <div id="home">
       <Swiper
-        effect={'fade'}
+        effect={"fade"}
         navigation={true}
         pagination={{ clickable: true }}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
@@ -156,12 +161,17 @@ const Hero: React.FC<{ lang: string }> = ({ lang }) => {
                 <div className="md:text-start text-center flex flex-col justify-center items-center md:grid grid-cols-2">
                   <div>
                     <p className="py-10">{slide.description[lang]}</p>
-                    <a href="#products" className="bg-white text-black py-3 px-7 rounded-3xl">
-                      {{
-                        en: "Explore Our Products",
-                        fr: "Voir Nos Produits",
-                        de: "Unsere Produkte entdecken",
-                      }[lang]}
+                    <a
+                      href="#products"
+                      className="bg-white text-black py-3 px-7 rounded-3xl"
+                    >
+                      {
+                        {
+                          en: "Explore Our Products",
+                          fr: "Voir Nos Produits",
+                          de: "Unsere Produkte entdecken",
+                        }[lang]
+                      }
                     </a>
                     <div className="flex gap-5 pt-10 md:justify-start justify-center">
                       <Link
@@ -178,7 +188,6 @@ const Hero: React.FC<{ lang: string }> = ({ lang }) => {
                         <Facebook size={22} />
                       </Link>
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -190,19 +199,18 @@ const Hero: React.FC<{ lang: string }> = ({ lang }) => {
   );
 };
 
-
 const AboutUs: React.FC<{ lang: Language }> = ({ lang }) => {
   const statsData = [
     {
       value: {
         en: "40+",
         fr: "40+",
-        de: "40+"
+        de: "40+",
       },
       label: {
         en: "years",
         fr: "années",
-        de: "Jahre"
+        de: "Jahre",
       },
       description: {
         en: "of family heritage in textile manufacturing, delivering consistent quality and reliability",
@@ -214,12 +222,12 @@ const AboutUs: React.FC<{ lang: Language }> = ({ lang }) => {
       value: {
         en: "24/7",
         fr: "24/7",
-        de: "24/7"
+        de: "24/7",
       },
       label: {
         en: "support",
         fr: "support",
-        de: "Support"
+        de: "Support",
       },
       description: {
         en: "dedicated service to ensure smooth communication and on-time delivery",
@@ -231,12 +239,12 @@ const AboutUs: React.FC<{ lang: Language }> = ({ lang }) => {
       value: {
         en: "100%",
         fr: "100%",
-        de: "100%"
+        de: "100%",
       },
       label: {
         en: "customizable",
         fr: "personnalisable",
-        de: "anpassbar"
+        de: "anpassbar",
       },
       description: {
         en: "textile solutions tailored to the unique requirements of your business",
@@ -246,39 +254,55 @@ const AboutUs: React.FC<{ lang: Language }> = ({ lang }) => {
     },
   ];
 
-
   const content = {
     en: {
       title: "About KSK Textile",
-      intro: " is your dedicated partner in high-quality textile supply, proudly serving hospitality professionals, laundries, and cleaning companies across Europe.",
-      specialization: "We specialize in delivering a wide range of textile solutions, including hotel and hospital linens, home textiles, and more — combining competitive pricing, durable quality, and reliable service.",
-      needs: "We understand the unique needs of businesses that rely on textile products daily. That's why we focus on consistency, flexibility, and quick response — ensuring you always have what you need, when you need it.",
-      partnership: "Whether you're managing a boutique hotel, running an industrial laundry, or sourcing for a large operation, we work with trusted manufacturers to offer <span class='text-pink-600 font-semibold'>tailored solutions</span> to match your standards and budget.",
+      intro:
+        " is your dedicated partner in high-quality textile supply, proudly serving hospitality professionals, laundries, and cleaning companies across Europe.",
+      specialization:
+        "We specialize in delivering a wide range of textile solutions, including hotel and hospital linens, home textiles, and more — combining competitive pricing, durable quality, and reliable service.",
+      needs:
+        "We understand the unique needs of businesses that rely on textile products daily. That's why we focus on consistency, flexibility, and quick response — ensuring you always have what you need, when you need it.",
+      partnership:
+        "Whether you're managing a boutique hotel, running an industrial laundry, or sourcing for a large operation, we work with trusted manufacturers to offer <span class='text-pink-600 font-semibold'>tailored solutions</span> to match your standards and budget.",
       contact: "Contact Us",
     },
     fr: {
       title: "À propos de KSK Textile",
-      intro: "est votre partenaire dédié pour la fourniture de textiles de haute qualité, au service des professionnels de l'hôtellerie, des blanchisseries et des entreprises de nettoyage à travers l'Europe.",
-      specialization: "Nous nous spécialisons dans la fourniture d'une large gamme de solutions textiles, notamment des draps d'hôtel et d'hôpital, des textiles pour la maison, et bien plus encore — alliant prix compétitifs, qualité durable et service fiable.",
-      needs: "Nous comprenons les besoins uniques des entreprises qui dépendent quotidiennement des produits textiles. C'est pourquoi nous nous concentrons sur la cohérence, la flexibilité et une réponse rapide — vous garantissant toujours ce dont vous avez besoin, quand vous en avez besoin.",
-      partnership: "Que vous gériez un hôtel boutique, une blanchisserie industrielle ou que vous approvisionniez une grande opération, nous travaillons avec des fabricants de confiance pour offrir des <span class='text-pink-600 font-semibold'>solutions adaptées</span> à vos normes et à votre budget.",
+      intro:
+        "est votre partenaire dédié pour la fourniture de textiles de haute qualité, au service des professionnels de l'hôtellerie, des blanchisseries et des entreprises de nettoyage à travers l'Europe.",
+      specialization:
+        "Nous nous spécialisons dans la fourniture d'une large gamme de solutions textiles, notamment des draps d'hôtel et d'hôpital, des textiles pour la maison, et bien plus encore — alliant prix compétitifs, qualité durable et service fiable.",
+      needs:
+        "Nous comprenons les besoins uniques des entreprises qui dépendent quotidiennement des produits textiles. C'est pourquoi nous nous concentrons sur la cohérence, la flexibilité et une réponse rapide — vous garantissant toujours ce dont vous avez besoin, quand vous en avez besoin.",
+      partnership:
+        "Que vous gériez un hôtel boutique, une blanchisserie industrielle ou que vous approvisionniez une grande opération, nous travaillons avec des fabricants de confiance pour offrir des <span class='text-pink-600 font-semibold'>solutions adaptées</span> à vos normes et à votre budget.",
       contact: "Contactez-nous",
     },
     de: {
       title: "Über KSK Textile",
-      intro: "ist Ihr engagierter Partner für hochwertige Textilversorgung und bedient stolz Fachleute aus der Hotellerie, Wäschereien und Reinigungsunternehmen in ganz Europa.",
-      specialization: "Wir sind spezialisiert auf die Lieferung einer breiten Palette von Textillösungen, einschließlich Hotel- und Krankenhausbettwäsche, Heimtextilien und mehr — mit wettbewerbsfähigen Preisen, langlebiger Qualität und zuverlässigem Service.",
-      needs: "Wir verstehen die einzigartigen Bedürfnisse von Unternehmen, die täglich auf Textilprodukte angewiesen sind. Deshalb konzentrieren wir uns auf Konsistenz, Flexibilität und schnelle Reaktionsfähigkeit — damit Sie immer das haben, was Sie brauchen, wenn Sie es brauchen.",
-      partnership: "Ob Sie ein Boutique-Hotel leiten, eine industrielle Wäscherei betreiben oder für einen großen Betrieb einkaufen, wir arbeiten mit vertrauenswürdigen Herstellern zusammen, um <span class='text-pink-600 font-semibold'>maßgeschneiderte Lösungen</span> anzubieten, die Ihren Standards und Ihrem Budget entsprechen.",
+      intro:
+        "ist Ihr engagierter Partner für hochwertige Textilversorgung und bedient stolz Fachleute aus der Hotellerie, Wäschereien und Reinigungsunternehmen in ganz Europa.",
+      specialization:
+        "Wir sind spezialisiert auf die Lieferung einer breiten Palette von Textillösungen, einschließlich Hotel- und Krankenhausbettwäsche, Heimtextilien und mehr — mit wettbewerbsfähigen Preisen, langlebiger Qualität und zuverlässigem Service.",
+      needs:
+        "Wir verstehen die einzigartigen Bedürfnisse von Unternehmen, die täglich auf Textilprodukte angewiesen sind. Deshalb konzentrieren wir uns auf Konsistenz, Flexibilität und schnelle Reaktionsfähigkeit — damit Sie immer das haben, was Sie brauchen, wenn Sie es brauchen.",
+      partnership:
+        "Ob Sie ein Boutique-Hotel leiten, eine industrielle Wäscherei betreiben oder für einen großen Betrieb einkaufen, wir arbeiten mit vertrauenswürdigen Herstellern zusammen, um <span class='text-pink-600 font-semibold'>maßgeschneiderte Lösungen</span> anzubieten, die Ihren Standards und Ihrem Budget entsprechen.",
       contact: "Kontaktieren Sie uns",
     },
   };
 
-
-  const { title, intro, specialization, needs, partnership, contact } = content[lang];
+  const { title, intro, specialization, needs, partnership, contact } =
+    content[lang];
 
   return (
-    <section id="about" className="flex justify-center" lang={lang} title={`${title} - European Textile Supplier`}>
+    <section
+      id="about"
+      className="flex justify-center"
+      lang={lang}
+      title={`${title} - European Textile Supplier`}
+    >
       <div className="max-w-7xl w-full">
         <div className="md:pt-16 px-5">
           <article className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 items-center">
@@ -304,9 +328,12 @@ const AboutUs: React.FC<{ lang: Language }> = ({ lang }) => {
             </figure>
 
             <div className="text-gray-800 order-2 lg:order-2">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-pink-600">{title}</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-pink-600">
+                {title}
+              </h2>
               <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-3 sm:mb-4">
-                <span className="font-semibold text-pink-600">KSK Textile</span> {intro}
+                <span className="font-semibold text-pink-600">KSK Textile</span>{" "}
+                {intro}
               </p>
               <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-3 sm:mb-4">
                 {specialization}
@@ -330,7 +357,11 @@ const AboutUs: React.FC<{ lang: Language }> = ({ lang }) => {
           <section aria-labelledby="why-choose-us" className="pt-16">
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
               {statsData.map((item, index) => (
-                <article key={index} className="p-5 bg-white rounded-md" aria-label={item.label[lang]}>
+                <article
+                  key={index}
+                  className="p-5 bg-white rounded-md"
+                  aria-label={item.label[lang]}
+                >
                   <div className="pt-20">
                     <p className="text-5xl py-2 text-pink-600">
                       {item.value[lang]}{" "}
@@ -350,17 +381,18 @@ const AboutUs: React.FC<{ lang: Language }> = ({ lang }) => {
   );
 };
 
-
 const Expertise = ({ lang }: { lang: Language }) => {
   const expertiseContent = {
     en: {
       sectionTitle: "What We Offer",
       title: "Our Expertise",
-      description: "At KSK Textile, we provide a carefully curated selection of high-quality textile products designed to meet the standards of hotels, laundries, and professional service providers across Europe.",
+      description:
+        "At KSK Textile, we provide a carefully curated selection of high-quality textile products designed to meet the standards of hotels, laundries, and professional service providers across Europe.",
 
       // Bed Linen
       bedLinen: "Bed Linen",
-      bedLinenDesc: "Our woven bed sheets combine durability and elegance — perfect for frequent use in hospitality settings.",
+      bedLinenDesc:
+        "Our woven bed sheets combine durability and elegance — perfect for frequent use in hospitality settings.",
       availableOptions: "Available Options:",
       satinSheets: "Satin Sheets",
       satinSheetsOptions: "T-200, T-250, T-300, T-400",
@@ -373,33 +405,39 @@ const Expertise = ({ lang }: { lang: Language }) => {
 
       // Towels
       towels: "Towels",
-      towelsDesc: "We offer soft, absorbent towels built to withstand industrial washing cycles — ideal for hotels, spas, and laundries.",
+      towelsDesc:
+        "We offer soft, absorbent towels built to withstand industrial washing cycles — ideal for hotels, spas, and laundries.",
       weightOptions: "Weight Options",
       weightOptionsDetails: "450, 500, and 550 gsm",
       customization: "Customization",
-      customizationDetails: "Customizable sizes and colors to match your brand identity",
+      customizationDetails:
+        "Customizable sizes and colors to match your brand identity",
 
       // Uniforms
       uniforms: "Uniforms & Workwear",
-      uniformsDesc: "We supply professional-grade uniforms and accessories for cleaning services, hotel staff, and other frontline professionals.",
+      uniformsDesc:
+        "We supply professional-grade uniforms and accessories for cleaning services, hotel staff, and other frontline professionals.",
       keyFeatures: "Key Features:",
       feature1: "Durable, comfortable fabrics",
       feature2: "Tailored to function and form",
 
       // Custom Orders
       customOrders: "Custom Orders",
-      customOrdersDesc: "Need something specific? We also offer custom textile sourcing through our trusted manufacturing partners. Whether you are looking for a particular fabric, finish, or bulk order solution.",
+      customOrdersDesc:
+        "Need something specific? We also offer custom textile sourcing through our trusted manufacturing partners. Whether you are looking for a particular fabric, finish, or bulk order solution.",
       readyToDiscuss: "Ready to discuss your requirements?",
-      requestQuote: "Request a Quote"
+      requestQuote: "Request a Quote",
     },
     fr: {
       sectionTitle: "Ce Que Nous Offrons",
       title: "Notre Expertise",
-      description: "Chez KSK Textile, nous proposons une sélection soigneusement organisée de produits textiles de haute qualité conçus pour répondre aux normes des hôtels, blanchisseries et prestataires de services professionnels à travers l'Europe.",
+      description:
+        "Chez KSK Textile, nous proposons une sélection soigneusement organisée de produits textiles de haute qualité conçus pour répondre aux normes des hôtels, blanchisseries et prestataires de services professionnels à travers l'Europe.",
 
       // Bed Linen
       bedLinen: "Linge de Lit",
-      bedLinenDesc: "Nos draps tissés allient durabilité et élégance — parfaits pour une utilisation fréquente dans les établissements hôteliers.",
+      bedLinenDesc:
+        "Nos draps tissés allient durabilité et élégance — parfaits pour une utilisation fréquente dans les établissements hôteliers.",
       availableOptions: "Options Disponibles:",
       satinSheets: "Draps en Satin",
       satinSheetsOptions: "T-200, T-250, T-300, T-400",
@@ -412,33 +450,39 @@ const Expertise = ({ lang }: { lang: Language }) => {
 
       // Towels
       towels: "Serviettes",
-      towelsDesc: "Nous proposons des serviettes douces et absorbantes conçues pour résister aux cycles de lavage industriels — idéales pour les hôtels, spas et blanchisseries.",
+      towelsDesc:
+        "Nous proposons des serviettes douces et absorbantes conçues pour résister aux cycles de lavage industriels — idéales pour les hôtels, spas et blanchisseries.",
       weightOptions: "Options de Poids",
       weightOptionsDetails: "450, 500, et 550 g/m²",
       customization: "Personnalisation",
-      customizationDetails: "Tailles et couleurs personnalisables pour correspondre à l'identité de votre marque",
+      customizationDetails:
+        "Tailles et couleurs personnalisables pour correspondre à l'identité de votre marque",
 
       // Uniforms
       uniforms: "Uniformes & Vêtements de Travail",
-      uniformsDesc: "Nous fournissons des uniformes et accessoires de qualité professionnelle pour les services de nettoyage, le personnel hôtelier et autres professionnels de première ligne.",
+      uniformsDesc:
+        "Nous fournissons des uniformes et accessoires de qualité professionnelle pour les services de nettoyage, le personnel hôtelier et autres professionnels de première ligne.",
       keyFeatures: "Caractéristiques Principales:",
       feature1: "Tissus durables et confortables",
       feature2: "Adaptés à la fonction et à la forme",
 
       // Custom Orders
       customOrders: "Commandes Personnalisées",
-      customOrdersDesc: "Besoin de quelque chose de spécifique? Nous proposons également des solutions textiles sur mesure via nos partenaires de fabrication de confiance. Que vous recherchiez un tissu particulier, une finition ou une solution de commande en gros.",
+      customOrdersDesc:
+        "Besoin de quelque chose de spécifique? Nous proposons également des solutions textiles sur mesure via nos partenaires de fabrication de confiance. Que vous recherchiez un tissu particulier, une finition ou une solution de commande en gros.",
       readyToDiscuss: "Prêt à discuter de vos besoins?",
-      requestQuote: "Demander un Devis"
+      requestQuote: "Demander un Devis",
     },
     de: {
       sectionTitle: "Was Wir Anbieten",
       title: "Unsere Expertise",
-      description: "Bei KSK Textile bieten wir eine sorgfältig zusammengestellte Auswahl an hochwertigen Textilprodukten, die den Anforderungen von Hotels, Wäschereien und professionellen Dienstleistern in ganz Europa gerecht werden.",
+      description:
+        "Bei KSK Textile bieten wir eine sorgfältig zusammengestellte Auswahl an hochwertigen Textilprodukten, die den Anforderungen von Hotels, Wäschereien und professionellen Dienstleistern in ganz Europa gerecht werden.",
 
       // Bed Linen
       bedLinen: "Bettwäsche",
-      bedLinenDesc: "Unsere gewebten Bettlaken verbinden Haltbarkeit und Eleganz — perfekt für den häufigen Einsatz im Gastgewerbe.",
+      bedLinenDesc:
+        "Unsere gewebten Bettlaken verbinden Haltbarkeit und Eleganz — perfekt für den häufigen Einsatz im Gastgewerbe.",
       availableOptions: "Verfügbare Optionen:",
       satinSheets: "Satin-Bettwäsche",
       satinSheetsOptions: "T-200, T-250, T-300, T-400",
@@ -451,25 +495,29 @@ const Expertise = ({ lang }: { lang: Language }) => {
 
       // Towels
       towels: "Handtücher",
-      towelsDesc: "Wir bieten weiche, saugfähige Handtücher, die industriellen Waschzyklen standhalten — ideal für Hotels, Spas und Wäschereien.",
+      towelsDesc:
+        "Wir bieten weiche, saugfähige Handtücher, die industriellen Waschzyklen standhalten — ideal für Hotels, Spas und Wäschereien.",
       weightOptions: "Gewichtsoptionen",
       weightOptionsDetails: "450, 500 und 550 g/m²",
       customization: "Anpassung",
-      customizationDetails: "Anpassbare Größen und Farben, die zu Ihrer Markenidentität passen",
+      customizationDetails:
+        "Anpassbare Größen und Farben, die zu Ihrer Markenidentität passen",
 
       // Uniforms
       uniforms: "Uniformen & Arbeitskleidung",
-      uniformsDesc: "Wir liefern professionelle Uniformen und Zubehör für Reinigungsdienste, Hotelpersonal und andere Fachkräfte mit Kundenkontakt.",
+      uniformsDesc:
+        "Wir liefern professionelle Uniformen und Zubehör für Reinigungsdienste, Hotelpersonal und andere Fachkräfte mit Kundenkontakt.",
       keyFeatures: "Hauptmerkmale:",
       feature1: "Strapazierfähige, bequeme Stoffe",
       feature2: "Auf Funktion und Form abgestimmt",
 
       // Custom Orders
       customOrders: "Sonderanfertigungen",
-      customOrdersDesc: "Benötigen Sie etwas Bestimmtes? Wir bieten auch maßgeschneiderte Textillösungen über unsere vertrauenswürdigen Herstellungspartner an. Ob Sie nach einem bestimmten Stoff, einer Veredelung oder einer Großbestellungslösung suchen.",
+      customOrdersDesc:
+        "Benötigen Sie etwas Bestimmtes? Wir bieten auch maßgeschneiderte Textillösungen über unsere vertrauenswürdigen Herstellungspartner an. Ob Sie nach einem bestimmten Stoff, einer Veredelung oder einer Großbestellungslösung suchen.",
       readyToDiscuss: "Bereit, Ihre Anforderungen zu besprechen?",
-      requestQuote: "Angebot anfragen"
-    }
+      requestQuote: "Angebot anfragen",
+    },
   };
 
   const content = expertiseContent[lang];
@@ -477,20 +525,21 @@ const Expertise = ({ lang }: { lang: Language }) => {
   return (
     <div id="expertise" className="bg-gradient-to-b from-white to-pink-50">
       <div className="max-w-7xl mx-auto py-20 px-5 space-y-16">
-
         <div className="text-center">
           <div className="inline-flex items-center justify-center bg-pink-100 rounded-full px-4 py-1 mb-4">
-            <span className="text-pink-600 font-medium text-sm">{content.sectionTitle}</span>
+            <span className="text-pink-600 font-medium text-sm">
+              {content.sectionTitle}
+            </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-800 tracking-tight">{content.title}</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-800 tracking-tight">
+            {content.title}
+          </h2>
           <p className="mt-6 text-gray-600 max-w-3xl mx-auto text-lg">
             {content.description}
           </p>
         </div>
 
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-
           <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white">
             <div className="bg-gradient-to-r from-pink-600 to-pink-500 text-white p-6">
               <div className="flex items-center gap-3">
@@ -506,30 +555,47 @@ const Expertise = ({ lang }: { lang: Language }) => {
                   {content.bedLinenDesc}
                 </p>
                 <div className="bg-pink-50 rounded-lg p-4 space-y-3">
-                  <h4 className="font-medium text-gray-800">{content.availableOptions}</h4>
+                  <h4 className="font-medium text-gray-800">
+                    {content.availableOptions}
+                  </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div className="bg-white rounded-md p-3 shadow-sm">
-                      <span className="text-pink-600 font-medium">{content.satinSheets}</span>
-                      <p className="text-sm text-gray-600 mt-1">{content.satinSheetsOptions}</p>
+                      <span className="text-pink-600 font-medium">
+                        {content.satinSheets}
+                      </span>
+                      <p className="text-sm text-gray-600 mt-1">
+                        {content.satinSheetsOptions}
+                      </p>
                     </div>
                     <div className="bg-white rounded-md p-3 shadow-sm">
-                      <span className="text-pink-600 font-medium">{content.satinStripes}</span>
-                      <p className="text-sm text-gray-600 mt-1">{content.satinStripesOptions}</p>
+                      <span className="text-pink-600 font-medium">
+                        {content.satinStripes}
+                      </span>
+                      <p className="text-sm text-gray-600 mt-1">
+                        {content.satinStripesOptions}
+                      </p>
                     </div>
                     <div className="bg-white rounded-md p-3 shadow-sm">
-                      <span className="text-pink-600 font-medium">{content.percaleSheets}</span>
-                      <p className="text-sm text-gray-600 mt-1">{content.percaleSheetsOptions}</p>
+                      <span className="text-pink-600 font-medium">
+                        {content.percaleSheets}
+                      </span>
+                      <p className="text-sm text-gray-600 mt-1">
+                        {content.percaleSheetsOptions}
+                      </p>
                     </div>
                     <div className="bg-white rounded-md p-3 shadow-sm">
-                      <span className="text-pink-600 font-medium">{content.materials}</span>
-                      <p className="text-sm text-gray-600 mt-1">{content.materialsOptions}</p>
+                      <span className="text-pink-600 font-medium">
+                        {content.materials}
+                      </span>
+                      <p className="text-sm text-gray-600 mt-1">
+                        {content.materialsOptions}
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
 
           <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white">
             <div className="bg-gradient-to-r from-pink-600 to-pink-500 text-white p-6">
@@ -546,14 +612,22 @@ const Expertise = ({ lang }: { lang: Language }) => {
                   {content.towelsDesc}
                 </p>
                 <div className="bg-pink-50 rounded-lg p-4 space-y-3">
-                  <h4 className="font-medium text-gray-800">{content.availableOptions}</h4>
+                  <h4 className="font-medium text-gray-800">
+                    {content.availableOptions}
+                  </h4>
                   <div className="grid grid-cols-1 gap-3">
                     <div className="bg-white rounded-md p-3 shadow-sm">
-                      <span className="text-pink-600 font-medium">{content.weightOptions}</span>
-                      <p className="text-sm text-gray-600 mt-1">{content.weightOptionsDetails}</p>
+                      <span className="text-pink-600 font-medium">
+                        {content.weightOptions}
+                      </span>
+                      <p className="text-sm text-gray-600 mt-1">
+                        {content.weightOptionsDetails}
+                      </p>
                     </div>
                     <div className="bg-white rounded-md p-3 shadow-sm">
-                      <span className="text-pink-600 font-medium">{content.customization}</span>
+                      <span className="text-pink-600 font-medium">
+                        {content.customization}
+                      </span>
                       <p className="text-sm text-gray-600 mt-1">
                         {content.customizationDetails}
                       </p>
@@ -563,7 +637,6 @@ const Expertise = ({ lang }: { lang: Language }) => {
               </div>
             </div>
           </div>
-
 
           <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white">
             <div className="bg-gradient-to-r from-pink-600 to-pink-500 text-white p-6">
@@ -580,7 +653,9 @@ const Expertise = ({ lang }: { lang: Language }) => {
                   {content.uniformsDesc}
                 </p>
                 <div className="bg-pink-50 rounded-lg p-4 space-y-3">
-                  <h4 className="font-medium text-gray-800">{content.keyFeatures}</h4>
+                  <h4 className="font-medium text-gray-800">
+                    {content.keyFeatures}
+                  </h4>
                   <div className="grid grid-cols-1 gap-3">
                     <div className="bg-white rounded-md p-3 shadow-sm flex items-center gap-3">
                       <div className="h-8 w-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-600">
@@ -600,14 +675,15 @@ const Expertise = ({ lang }: { lang: Language }) => {
             </div>
           </div>
 
-
           <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white">
             <div className="bg-gradient-to-r from-pink-600 to-pink-500 text-white p-6">
               <div className="flex items-center gap-3">
                 <div className="bg-white/20 p-2 rounded-lg">
                   <Sparkles className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-semibold">{content.customOrders}</h3>
+                <h3 className="text-xl font-semibold">
+                  {content.customOrders}
+                </h3>
               </div>
             </div>
             <div className="p-6">
@@ -617,8 +693,13 @@ const Expertise = ({ lang }: { lang: Language }) => {
                 </p>
                 <div className="bg-pink-50 rounded-lg p-4">
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <p className="font-medium text-gray-800">{content.readyToDiscuss}</p>
-                    <a href="#contact-us" className="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-md font-medium transition-colors duration-200">
+                    <p className="font-medium text-gray-800">
+                      {content.readyToDiscuss}
+                    </p>
+                    <a
+                      href="#contact-us"
+                      className="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-md font-medium transition-colors duration-200"
+                    >
                       {content.requestQuote}
                     </a>
                   </div>
@@ -632,27 +713,29 @@ const Expertise = ({ lang }: { lang: Language }) => {
   );
 };
 
-
 const Products = ({ lang }: { lang: Language }) => {
   const productsContent = {
     en: {
       title: "Products",
-      description: "Discover our premium range of textile products designed to meet the highest standards of the hospitality industry. From luxurious bed linens to elegant tablecloths, we offer quality, comfort, and durability tailored to your needs.",
+      description:
+        "Discover our premium range of textile products designed to meet the highest standards of the hospitality industry. From luxurious bed linens to elegant tablecloths, we offer quality, comfort, and durability tailored to your needs.",
       showAll: "Show All",
-      showLess: "Show Less"
+      showLess: "Show Less",
     },
     fr: {
       title: "Produits",
-      description: "Découvrez notre gamme de produits textiles haut de gamme conçus pour répondre aux normes les plus élevées du secteur de l'hôtellerie. Du linge de lit luxueux aux nappes élégantes, nous offrons qualité, confort et durabilité adaptés à vos besoins.",
+      description:
+        "Découvrez notre gamme de produits textiles haut de gamme conçus pour répondre aux normes les plus élevées du secteur de l'hôtellerie. Du linge de lit luxueux aux nappes élégantes, nous offrons qualité, confort et durabilité adaptés à vos besoins.",
       showAll: "Voir Tout",
-      showLess: "Voir Moins"
+      showLess: "Voir Moins",
     },
     de: {
       title: "Produkte",
-      description: "Entdecken Sie unser hochwertiges Sortiment an Textilprodukten, das den höchsten Ansprüchen der Hotel- und Gastgewerbebranche gerecht wird. Von luxuriöser Bettwäsche bis zu eleganten Tischdecken bieten wir Qualität, Komfort und Langlebigkeit nach Maß.",
+      description:
+        "Entdecken Sie unser hochwertiges Sortiment an Textilprodukten, das den höchsten Ansprüchen der Hotel- und Gastgewerbebranche gerecht wird. Von luxuriöser Bettwäsche bis zu eleganten Tischdecken bieten wir Qualität, Komfort und Langlebigkeit nach Maß.",
       showAll: "Alle Anzeigen",
-      showLess: "Weniger Anzeigen"
-    }
+      showLess: "Weniger Anzeigen",
+    },
   };
 
   const content = productsContent[lang];
@@ -670,12 +753,24 @@ const Products = ({ lang }: { lang: Language }) => {
       { title: "Dyed Fabrics", img: "./products/dyed-fabrics.webp" },
       { title: "Knitted Fabrics", img: "./products/knitted-fabrics.webp" },
       { title: "Printed Fabrics", img: "./products/printed-fabrics.webp" },
-      { title: "Terry Mattress Protectors", img: "./products/terry-mattress-protectors.webp" },
-      { title: "Hospital Sheetsets", img: "./products/hospital-sheetsets.webp" },
-      { title: "Jersey Fitted Sheets", img: "./products/jersey-fitted-sheets.webp" },
+      {
+        title: "Terry Mattress Protectors",
+        img: "./products/terry-mattress-protectors.webp",
+      },
+      {
+        title: "Hospital Sheetsets",
+        img: "./products/hospital-sheetsets.webp",
+      },
+      {
+        title: "Jersey Fitted Sheets",
+        img: "./products/jersey-fitted-sheets.webp",
+      },
       { title: "Chef Gowns", img: "./products/chef-gowns.webp" },
       { title: "Chef Coats", img: "./products/chef-coats.webp" },
-      { title: "Chef Hats And Aprons", img: "./products/chef-hats-and-approns.webp" },
+      {
+        title: "Chef Hats And Aprons",
+        img: "./products/chef-hats-and-approns.webp",
+      },
       { title: "Doctor Gowns", img: "./products/doctor-gowns.webp" },
       { title: "Patient Gowns", img: "./products/patient-gowns1.webp" },
       { title: "Doctor Scrubs", img: "./products/doctor-scrubs.webp" },
@@ -685,19 +780,37 @@ const Products = ({ lang }: { lang: Language }) => {
       { title: "Serviettes Teintes", img: "./products/dyed-towels.webp" },
       { title: "Peignoirs", img: "./products/bathrobes.webp" },
       { title: "Draps Imprimés", img: "./products/printed-bedsheets.webp" },
-      { title: "Ensembles de Draps Teints", img: "./products/dyed-sheetsets.webp" },
+      {
+        title: "Ensembles de Draps Teints",
+        img: "./products/dyed-sheetsets.webp",
+      },
       { title: "Draps-housses", img: "./products/fitted-sheetsets.webp" },
-      { title: "Ensembles en Percale", img: "./products/percale-sheetsets.webp" },
+      {
+        title: "Ensembles en Percale",
+        img: "./products/percale-sheetsets.webp",
+      },
       { title: "Rayures en Satin", img: "./products/satin-stripe.webp" },
       { title: "Tissus Teints", img: "./products/dyed-fabrics.webp" },
       { title: "Tissus Tricotés", img: "./products/knitted-fabrics.webp" },
       { title: "Tissus Imprimés", img: "./products/printed-fabrics.webp" },
-      { title: "Protège-matelas en Éponge", img: "./products/terry-mattress-protectors.webp" },
-      { title: "Ensembles de Draps Hospitaliers", img: "./products/hospital-sheetsets.webp" },
-      { title: "Draps-housses en Jersey", img: "./products/jersey-fitted-sheets.webp" },
+      {
+        title: "Protège-matelas en Éponge",
+        img: "./products/terry-mattress-protectors.webp",
+      },
+      {
+        title: "Ensembles de Draps Hospitaliers",
+        img: "./products/hospital-sheetsets.webp",
+      },
+      {
+        title: "Draps-housses en Jersey",
+        img: "./products/jersey-fitted-sheets.webp",
+      },
       { title: "Blouses de Chef", img: "./products/chef-gowns.webp" },
       { title: "Vestes de Chef", img: "./products/chef-coats.webp" },
-      { title: "Toques et Tabliers de Chef", img: "./products/chef-hats-and-approns.webp" },
+      {
+        title: "Toques et Tabliers de Chef",
+        img: "./products/chef-hats-and-approns.webp",
+      },
       { title: "Blouses Médicales", img: "./products/doctor-gowns.webp" },
       { title: "Blouses de Patient", img: "./products/patient-gowns1.webp" },
       { title: "Tenues Médicales", img: "./products/doctor-scrubs.webp" },
@@ -706,24 +819,48 @@ const Products = ({ lang }: { lang: Language }) => {
       { title: "Einfarbige Handtücher", img: "./products/plain-towels.webp" },
       { title: "Gefärbte Handtücher", img: "./products/dyed-towels.webp" },
       { title: "Bademäntel", img: "./products/bathrobes.webp" },
-      { title: "Bedruckte Bettwäsche", img: "./products/printed-bedsheets.webp" },
-      { title: "Gefärbte Bettwäsche-Sets", img: "./products/dyed-sheetsets.webp" },
-      { title: "Spannbetttücher-Sets", img: "./products/fitted-sheetsets.webp" },
-      { title: "Perkal-Bettwäsche-Sets", img: "./products/percale-sheetsets.webp" },
+      {
+        title: "Bedruckte Bettwäsche",
+        img: "./products/printed-bedsheets.webp",
+      },
+      {
+        title: "Gefärbte Bettwäsche-Sets",
+        img: "./products/dyed-sheetsets.webp",
+      },
+      {
+        title: "Spannbetttücher-Sets",
+        img: "./products/fitted-sheetsets.webp",
+      },
+      {
+        title: "Perkal-Bettwäsche-Sets",
+        img: "./products/percale-sheetsets.webp",
+      },
       { title: "Satin-Streifen", img: "./products/satin-stripe.webp" },
       { title: "Gefärbte Stoffe", img: "./products/dyed-fabrics.webp" },
       { title: "Gestrickte Stoffe", img: "./products/knitted-fabrics.webp" },
       { title: "Bedruckte Stoffe", img: "./products/printed-fabrics.webp" },
-      { title: "Frottee-Matratzenschoner", img: "./products/terry-mattress-protectors.webp" },
-      { title: "Krankenhaus-Bettwäsche-Sets", img: "./products/hospital-sheetsets.webp" },
-      { title: "Jersey-Spannbetttücher", img: "./products/jersey-fitted-sheets.webp" },
+      {
+        title: "Frottee-Matratzenschoner",
+        img: "./products/terry-mattress-protectors.webp",
+      },
+      {
+        title: "Krankenhaus-Bettwäsche-Sets",
+        img: "./products/hospital-sheetsets.webp",
+      },
+      {
+        title: "Jersey-Spannbetttücher",
+        img: "./products/jersey-fitted-sheets.webp",
+      },
       { title: "Kochkittel", img: "./products/chef-gowns.webp" },
       { title: "Kochjacken", img: "./products/chef-coats.webp" },
-      { title: "Kochmützen und Schürzen", img: "./products/chef-hats-and-approns.webp" },
+      {
+        title: "Kochmützen und Schürzen",
+        img: "./products/chef-hats-and-approns.webp",
+      },
       { title: "Arztkittel", img: "./products/doctor-gowns.webp" },
       { title: "Patientenkittel", img: "./products/patient-gowns1.webp" },
       { title: "Arzt-Scrubs", img: "./products/doctor-scrubs.webp" },
-    ]
+    ],
   };
 
   const products = productsData[lang];
@@ -732,10 +869,15 @@ const Products = ({ lang }: { lang: Language }) => {
   const visibleProducts = showAll ? products : products.slice(0, 6);
 
   return (
-    <div id="products" className="bg-gray-100 py-10 md:py-20 transition-all duration-500 ease-in-out">
+    <div
+      id="products"
+      className="bg-gray-100 py-10 md:py-20 transition-all duration-500 ease-in-out"
+    >
       <div className="max-w-7xl mx-auto py-8 p-5">
         <div className="mb-16 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-pink-600 ">{content.title}</h2>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-pink-600 ">
+            {content.title}
+          </h2>
           <p className="mt-6 text-gray-600 max-w-3xl mx-auto text-lg">
             {content.description}
           </p>
@@ -751,7 +893,6 @@ const Products = ({ lang }: { lang: Language }) => {
                 <img
                   src={item.img}
                   alt={item.title}
-
                   className="w-full h-full object-cover transition-opacity duration-500"
                 />
               </div>
@@ -779,90 +920,110 @@ const QualityAssurance = ({ lang }: { lang: Language }) => {
   const qualityContent = {
     en: {
       title: "Quality Assurance",
-      description: "At <span class=\"font-semibold text-pink-600\">KSK Textile</span>, we know that our clients rely on textile products that are not only professional-grade but consistently reliable and durable. That's why we maintain strict quality control measures from sourcing to final delivery.",
+      description:
+        'At <span class="font-semibold text-pink-600">KSK Textile</span>, we know that our clients rely on textile products that are not only professional-grade but consistently reliable and durable. That\'s why we maintain strict quality control measures from sourcing to final delivery.',
 
       // Sections
       rigorous: {
         title: "Rigorous Standards",
-        content: "Our commitment is simple: every product we deliver must meet or exceed industry standards. From raw material selection to the final stitch, each production batch is carefully inspected for texture, strength, color consistency, and finish."
+        content:
+          "Our commitment is simple: every product we deliver must meet or exceed industry standards. From raw material selection to the final stitch, each production batch is carefully inspected for texture, strength, color consistency, and finish.",
       },
       certified: {
         title: "Certified Partners",
-        content: "We partner exclusively with vetted manufacturers who comply with internationally recognized quality benchmarks and ethical production practices. All our partner facilities hold essential certifications, including <span class=\"font-medium text-pink-600\">OEKO-TEX Standard 100</span>, guaranteeing safety and sustainability."
+        content:
+          'We partner exclusively with vetted manufacturers who comply with internationally recognized quality benchmarks and ethical production practices. All our partner facilities hold essential certifications, including <span class="font-medium text-pink-600">OEKO-TEX Standard 100</span>, guaranteeing safety and sustainability.',
       },
       performance: {
         title: "Performance Testing",
-        content: "Our textiles are rigorously tested to meet the demands of professional use — including washing durability, colorfastness, shrinkage resistance, and comfort under intensive conditions."
+        content:
+          "Our textiles are rigorously tested to meet the demands of professional use — including washing durability, colorfastness, shrinkage resistance, and comfort under intensive conditions.",
       },
       improvement: {
         title: "Continuous Improvement",
-        content: "We believe in continuous improvement. By actively monitoring client feedback and market trends, we adapt our sourcing and production strategies to stay ahead of evolving needs."
+        content:
+          "We believe in continuous improvement. By actively monitoring client feedback and market trends, we adapt our sourcing and production strategies to stay ahead of evolving needs.",
       },
 
       // Trust message
-      trust: "<span class=\"font-semibold\">Trust KSK Textile</span> to deliver quality you can feel — and rely on.",
-      contactUs: "Contact Us"
+      trust:
+        '<span class="font-semibold">Trust KSK Textile</span> to deliver quality you can feel — and rely on.',
+      contactUs: "Contact Us",
     },
     fr: {
       title: "Assurance Qualité",
-      description: "Chez <span class=\"font-semibold text-pink-600\">KSK Textile</span>, nous savons que nos clients comptent sur des produits textiles non seulement de qualité professionnelle, mais aussi fiables et durables. C'est pourquoi nous maintenons des mesures strictes de contrôle qualité, de l'approvisionnement à la livraison finale.",
+      description:
+        "Chez <span class=\"font-semibold text-pink-600\">KSK Textile</span>, nous savons que nos clients comptent sur des produits textiles non seulement de qualité professionnelle, mais aussi fiables et durables. C'est pourquoi nous maintenons des mesures strictes de contrôle qualité, de l'approvisionnement à la livraison finale.",
 
       // Sections
       rigorous: {
         title: "Normes Rigoureuses",
-        content: "Notre engagement est simple : chaque produit que nous livrons doit respecter ou dépasser les normes de l'industrie. De la sélection des matières premières à la dernière couture, chaque lot de production est soigneusement inspecté pour sa texture, sa résistance, la constance des couleurs et sa finition."
+        content:
+          "Notre engagement est simple : chaque produit que nous livrons doit respecter ou dépasser les normes de l'industrie. De la sélection des matières premières à la dernière couture, chaque lot de production est soigneusement inspecté pour sa texture, sa résistance, la constance des couleurs et sa finition.",
       },
       certified: {
         title: "Partenaires Certifiés",
-        content: "Nous travaillons exclusivement avec des fabricants contrôlés qui respectent les critères de qualité et les pratiques de production éthiques reconnus internationalement. Toutes nos installations partenaires détiennent des certifications essentielles, notamment la <span class=\"font-medium text-pink-600\">norme OEKO-TEX Standard 100</span>, garantissant sécurité et durabilité."
+        content:
+          'Nous travaillons exclusivement avec des fabricants contrôlés qui respectent les critères de qualité et les pratiques de production éthiques reconnus internationalement. Toutes nos installations partenaires détiennent des certifications essentielles, notamment la <span class="font-medium text-pink-600">norme OEKO-TEX Standard 100</span>, garantissant sécurité et durabilité.',
       },
       performance: {
         title: "Tests de Performance",
-        content: "Nos textiles sont rigoureusement testés pour répondre aux exigences d'un usage professionnel — einschließlich Waschbeständigkeit, Farbechtheit, Schrumpfresistenz und Komfort in intensiven Bedingungen."
+        content:
+          "Nos textiles sont rigoureusement testés pour répondre aux exigences d'un usage professionnel — einschließlich Waschbeständigkeit, Farbechtheit, Schrumpfresistenz und Komfort in intensiven Bedingungen.",
       },
       improvement: {
         title: "Amélioration Continue",
-        content: "Nous croyons en l'amélioration continue. En surveillant activement les retours des clients et les tendances du marché, nous adaptons nos stratégies d'approvisionnement et de production pour rester à la pointe des besoins en évolution."
+        content:
+          "Nous croyons en l'amélioration continue. En surveillant activement les retours des clients et les tendances du marché, nous adaptons nos stratégies d'approvisionnement et de production pour rester à la pointe des besoins en évolution.",
       },
 
       // Trust message
-      trust: "<span class=\"font-semibold\">Faites confiance à KSK Textile</span> pour vous livrer une qualité que vous pouvez ressentir — et sur laquelle vous pouvez compter.",
-      contactUs: "Contactez-nous"
+      trust:
+        '<span class="font-semibold">Faites confiance à KSK Textile</span> pour vous livrer une qualité que vous pouvez ressentir — et sur laquelle vous pouvez compter.',
+      contactUs: "Contactez-nous",
     },
     de: {
       title: "Qualitätssicherung",
-      description: "Bei <span class=\"font-semibold text-pink-600\">KSK Textile</span> wissen wir, dass unsere Kunden auf Textilprodukte angewiesen sind, die nicht nur professionell, sondern auch durchgehend zuverlässig und langlebig sind. Deshalb setzen wir strenge Qualitätskontrollmaßnahmen vom Einkauf bis zur endgültigen Lieferung ein.",
+      description:
+        'Bei <span class="font-semibold text-pink-600">KSK Textile</span> wissen wir, dass unsere Kunden auf Textilprodukte angewiesen sind, die nicht nur professionell, sondern auch durchgehend zuverlässig und langlebig sind. Deshalb setzen wir strenge Qualitätskontrollmaßnahmen vom Einkauf bis zur endgültigen Lieferung ein.',
 
       // Sections
       rigorous: {
         title: "Strenge Standards",
-        content: "Unser Engagement ist einfach: Jedes Produkt, das wir liefern, muss die Industriestandards erfüllen oder übertreffen. Von der Auswahl der Rohmaterialien bis zum letzten Stich wird jede Produktionscharge sorgfältig auf Textur, Festigkeit, Farbkonsistenz und Verarbeitung geprüft."
+        content:
+          "Unser Engagement ist einfach: Jedes Produkt, das wir liefern, muss die Industriestandards erfüllen oder übertreffen. Von der Auswahl der Rohmaterialien bis zum letzten Stich wird jede Produktionscharge sorgfältig auf Textur, Festigkeit, Farbkonsistenz und Verarbeitung geprüft.",
       },
       certified: {
         title: "Zertifizierte Partner",
-        content: "Wir arbeiten ausschließlich mit geprüften Herstellern zusammen, die international anerkannte Qualitätsstandards und ethische Produktionspraktiken einhalten. Alle unsere Partneranlagen verfügen über wesentliche Zertifizierungen, einschließlich des <span class=\"font-medium text-pink-600\">OEKO-TEX Standard 100</span>, der Sicherheit und Nachhaltigkeit garantiert."
+        content:
+          'Wir arbeiten ausschließlich mit geprüften Herstellern zusammen, die international anerkannte Qualitätsstandards und ethische Produktionspraktiken einhalten. Alle unsere Partneranlagen verfügen über wesentliche Zertifizierungen, einschließlich des <span class="font-medium text-pink-600">OEKO-TEX Standard 100</span>, der Sicherheit und Nachhaltigkeit garantiert.',
       },
       performance: {
         title: "Leistungstests",
-        content: "Unsere Textilien werden rigoros getestet, um den Anforderungen des professionellen Einsatzes gerecht zu werden — einschließlich Waschbeständigkeit, Farbechtheit, Schrumpfresistenz und Komfort unter intensiven Bedingungen."
+        content:
+          "Unsere Textilien werden rigoros getestet, um den Anforderungen des professionellen Einsatzes gerecht zu werden — einschließlich Waschbeständigkeit, Farbechtheit, Schrumpfresistenz und Komfort unter intensiven Bedingungen.",
       },
       improvement: {
         title: "Kontinuierliche Verbesserung",
-        content: "Wir glauben an kontinuierliche Verbesserung. Durch aktives Monitoring von Kundenfeedback und Markttrends passen wir unsere Beschaffungs- und Produktionsstrategien an, um den sich entwickelnden Bedürfnissen immer einen Schritt voraus zu sein."
+        content:
+          "Wir glauben an kontinuierliche Verbesserung. Durch aktives Monitoring von Kundenfeedback und Markttrends passen wir unsere Beschaffungs- und Produktionsstrategien an, um den sich entwickelnden Bedürfnissen immer einen Schritt voraus zu sein.",
       },
 
       // Trust message
-      trust: "<span class=\"font-semibold\">Vertrauen Sie KSK Textile</span>, um Qualität zu liefern, die Sie spüren können — und auf die Sie sich verlassen können.",
-      contactUs: "Kontaktieren Sie uns"
-    }
+      trust:
+        '<span class="font-semibold">Vertrauen Sie KSK Textile</span>, um Qualität zu liefern, die Sie spüren können — und auf die Sie sich verlassen können.',
+      contactUs: "Kontaktieren Sie uns",
+    },
   };
 
   const content = qualityContent[lang];
 
   return (
-    <section id="quality-assurance" className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-pink-50">
+    <section
+      id="quality-assurance"
+      className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-pink-50"
+    >
       <div className="max-w-7xl mx-auto">
-
         <div className="flex flex-col md:flex-row items-center mb-12">
           <div className="md:w-1/3 mb-6 md:mb-0 flex justify-center">
             <div className="relative">
@@ -873,55 +1034,66 @@ const QualityAssurance = ({ lang }: { lang: Language }) => {
             </div>
           </div>
           <div className="md:w-2/3 md:pl-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-pink-600 mb-4">{content.title}</h2>
-            <p className="text-gray-700 text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: content.description }}></p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-pink-600 mb-4">
+              {content.title}
+            </h2>
+            <p
+              className="text-gray-700 text-lg leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: content.description }}
+            ></p>
           </div>
         </div>
-
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           <div className="border border-pink-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6">
             <div className="flex items-start mb-4">
               <CheckCircle className="w-6 h-6 text-pink-600 mr-3 flex-shrink-0" />
-              <h3 className="font-semibold text-pink-600 text-xl">{content.rigorous.title}</h3>
+              <h3 className="font-semibold text-pink-600 text-xl">
+                {content.rigorous.title}
+              </h3>
             </div>
-            <p className="text-gray-700">
-              {content.rigorous.content}
-            </p>
+            <p className="text-gray-700">{content.rigorous.content}</p>
           </div>
 
           <div className="border border-pink-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6">
             <div className="flex items-start mb-4">
               <Shield className="w-6 h-6 text-pink-600 mr-3 flex-shrink-0" />
-              <h3 className="font-semibold text-pink-600 text-xl">{content.certified.title}</h3>
+              <h3 className="font-semibold text-pink-600 text-xl">
+                {content.certified.title}
+              </h3>
             </div>
-            <p className="text-gray-700" dangerouslySetInnerHTML={{ __html: content.certified.content }}></p>
+            <p
+              className="text-gray-700"
+              dangerouslySetInnerHTML={{ __html: content.certified.content }}
+            ></p>
           </div>
 
           <div className="border border-pink-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6">
             <div className="flex items-start mb-4">
               <Sparkles className="w-6 h-6 text-pink-600 mr-3 flex-shrink-0" />
-              <h3 className="font-semibold text-pink-600 text-xl">{content.performance.title}</h3>
+              <h3 className="font-semibold text-pink-600 text-xl">
+                {content.performance.title}
+              </h3>
             </div>
-            <p className="text-gray-700">
-              {content.performance.content}
-            </p>
+            <p className="text-gray-700">{content.performance.content}</p>
           </div>
 
           <div className="border border-pink-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6">
             <div className="flex items-start mb-4">
               <RefreshCw className="w-6 h-6 text-pink-600 mr-3 flex-shrink-0" />
-              <h3 className="font-semibold text-pink-600 text-xl">{content.improvement.title}</h3>
+              <h3 className="font-semibold text-pink-600 text-xl">
+                {content.improvement.title}
+              </h3>
             </div>
-            <p className="text-gray-700">
-              {content.improvement.content}
-            </p>
+            <p className="text-gray-700">{content.improvement.content}</p>
           </div>
         </div>
 
-
         <div className="bg-white border border-pink-200 rounded-lg p-8 text-center shadow-sm">
-          <p className="text-xl font-medium text-pink-600 mb-4" dangerouslySetInnerHTML={{ __html: content.trust }}></p>
+          <p
+            className="text-xl font-medium text-pink-600 mb-4"
+            dangerouslySetInnerHTML={{ __html: content.trust }}
+          ></p>
           <div className="inline-flex items-center justify-center mt-2">
             <a
               href="#contact-us"
@@ -933,105 +1105,110 @@ const QualityAssurance = ({ lang }: { lang: Language }) => {
         </div>
       </div>
     </section>
-  )
-}
-
+  );
+};
 
 const ContactUs: React.FC<{ lang: Language }> = ({ lang }) => {
   const contactContent = {
     en: {
       title: "Contact Us",
-      description: "We're here to support you with all your textile needs — whether you're looking for product information, placing an order, or exploring a partnership.",
+      description:
+        "We're here to support you with all your textile needs — whether you're looking for product information, placing an order, or exploring a partnership.",
       messageSection: {
         title: "Send Us A Message",
-        description: "Reach out to us for inquiries, quotes, or collaborations, and our team will be happy to provide tailored solutions with prompt and professional service",
+        description:
+          "Reach out to us for inquiries, quotes, or collaborations, and our team will be happy to provide tailored solutions with prompt and professional service",
         form: {
           firstName: "First Name",
           lastName: "Last Name",
           phone: "Phone Number",
           email: "Email Address",
           message: "Message",
-          button: "Send Message"
-        }
+          button: "Send Message",
+        },
       },
       contactInfo: {
         headOffice: {
           title: "KSK IMEX GLOBAL TRADE",
-          content: "50 avenue des Champs-Élysées, 75008 Paris"
+          content: "50 avenue des Champs-Élysées, 75008 Paris",
         },
         callOrText: {
           title: "Call or Text",
-          content: "+33 (0)7 82 86 55 18"
+          content: "+33 (0)7 82 86 55 18",
         },
         sendEmail: {
           title: "Send Email",
-          content: "business@kskimex.com"
-        }
+          content: "business@kskimex.com",
+        },
       },
-      scrollToTop: "Scroll to top"
+      scrollToTop: "Scroll to top",
     },
     fr: {
       title: "Contactez-Nous",
-      description: "Nous sommes là pour vous accompagner dans tous vos besoins en matière de textile — que vous recherchiez des informations sur nos produits, passiez une commande ou exploriez un partenariat.",
+      description:
+        "Nous sommes là pour vous accompagner dans tous vos besoins en matière de textile — que vous recherchiez des informations sur nos produits, passiez une commande ou exploriez un partenariat.",
       messageSection: {
         title: "Envoyez-Nous un Message",
-        description: "Contactez-nous pour vos demandes, devis ou collaborations, et notre équipe se fera un plaisir de vous proposer des solutions adaptées avec un service rapide et professionnel",
+        description:
+          "Contactez-nous pour vos demandes, devis ou collaborations, et notre équipe se fera un plaisir de vous proposer des solutions adaptées avec un service rapide et professionnel",
         form: {
           firstName: "Prénom",
           lastName: "Nom",
           phone: "Numéro de Téléphone",
           email: "Adresse Email",
           message: "Message",
-          button: "Envoyer le Message"
-        }
+          button: "Envoyer le Message",
+        },
       },
       contactInfo: {
         headOffice: {
           title: "KSK IMEX Commerce International",
-          content: "50 avenue des Champs-Élysées, 75008 Paris"
+          content: "50 avenue des Champs-Élysées, 75008 Paris",
         },
         callOrText: {
           title: "Appelez ou Envoyez un SMS",
-          content: "+33 (0)7 82 86 55 18"
+          content: "+33 (0)7 82 86 55 18",
         },
         sendEmail: {
           title: "Envoyez un Email",
-          content: "business@kskimex.com"
-        }
+          content: "business@kskimex.com",
+        },
       },
-      scrollToTop: "Remonter en haut"
+      scrollToTop: "Remonter en haut",
     },
     de: {
       title: "Kontakt",
-      description: "Wir sind für Sie da, um Sie bei all Ihren Textilanforderungen zu unterstützen — sei es für Produktinformationen, Bestellungen oder potenzielle Partnerschaften.",
+      description:
+        "Wir sind für Sie da, um Sie bei all Ihren Textilanforderungen zu unterstützen — sei es für Produktinformationen, Bestellungen oder potenzielle Partnerschaften.",
       messageSection: {
         title: "Senden Sie uns eine Nachricht",
-        description: "Kontaktieren Sie uns für Anfragen, Angebote oder Zusammenarbeit, und unser Team wird Ihnen gerne maßgeschneiderte Lösungen mit promptem und professionellem Service anbieten",
+        description:
+          "Kontaktieren Sie uns für Anfragen, Angebote oder Zusammenarbeit, und unser Team wird Ihnen gerne maßgeschneiderte Lösungen mit promptem und professionellem Service anbieten",
         form: {
           firstName: "Vorname",
           lastName: "Nachname",
           phone: "Telefonnummer",
           email: "E-Mail-Adresse",
           message: "Nachricht",
-          button: "Nachricht senden"
-        }
+          button: "Nachricht senden",
+        },
       },
       contactInfo: {
         headOffice: {
           title: "KSK IMEX Internationaler Handel",
-          content: "50 avenue des Champs-Élysées, 75008 Paris"
+          content: "50 avenue des Champs-Élysées, 75008 Paris",
         },
         callOrText: {
           title: "Anrufen oder SMS senden",
-          content: "+33 (0)7 82 86 55 18"
+          content: "+33 (0)7 82 86 55 18",
         },
         sendEmail: {
           title: "E-Mail senden",
-          content: "business@kskimex.com"
-        }
+          content: "business@kskimex.com",
+        },
       },
-      scrollToTop: "Nach oben scrollen"
-    }
+      scrollToTop: "Nach oben scrollen",
+    },
   };
 
   const content = contactContent[lang];
@@ -1057,10 +1234,10 @@ const ContactUs: React.FC<{ lang: Language }> = ({ lang }) => {
     const mailLink = `mailto:business@kskimex.com?subject=Contact%20Form%20Submission&body=${encodeURIComponent(
       `Name: ${fullName}\nPhone: ${formData.phone}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     )}`;
-    const a = document.createElement("a")
+    const a = document.createElement("a");
     a.href = mailLink;
     document.body.appendChild(a);
-    a.click()
+    a.click();
   };
 
   const contactInfoItems: ContactInfoItem[] = [
@@ -1095,8 +1272,12 @@ const ContactUs: React.FC<{ lang: Language }> = ({ lang }) => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl mx-auto">
           <div className="lg:col-span-6 bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-            <h2 className="text-2xl font-bold mb-4">{content.messageSection.title}</h2>
-            <p className="text-gray-600 mb-6">{content.messageSection.description}</p>
+            <h2 className="text-2xl font-bold mb-4">
+              {content.messageSection.title}
+            </h2>
+            <p className="text-gray-600 mb-6">
+              {content.messageSection.description}
+            </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1172,10 +1353,14 @@ const ContactUs: React.FC<{ lang: Language }> = ({ lang }) => {
                 className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
               >
                 <div className="flex items-start gap-4">
-                  <div className="bg-gray-100 p-4 rounded-full">{item.icon}</div>
+                  <div className="bg-gray-100 p-4 rounded-full">
+                    {item.icon}
+                  </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                    <p className="text-gray-600 whitespace-pre-line">{item.content}</p>
+                    <p className="text-gray-600 whitespace-pre-line">
+                      {item.content}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -1201,16 +1386,16 @@ const CtaBar = ({ lang }: { lang: Language }) => {
   const ctaContent = {
     en: {
       title: "Let's plan your textile solution",
-      button: "Request a Consultation"
+      button: "Request a Consultation",
     },
     fr: {
       title: "Planifions votre solution textile",
-      button: "Demander une Consultation"
+      button: "Demander une Consultation",
     },
     de: {
       title: "Lassen Sie uns Ihre Textillösung planen",
-      button: "Beratungsgespräch anfordern"
-    }
+      button: "Beratungsgespräch anfordern",
+    },
   };
 
   const content = ctaContent[lang];
